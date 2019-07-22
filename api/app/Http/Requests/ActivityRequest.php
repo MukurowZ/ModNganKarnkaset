@@ -8,7 +8,7 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Validation\ValidationException;
 
-class ActivitiesRequest extends FormRequest
+class ActivityRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

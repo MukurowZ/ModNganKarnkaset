@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\Activities;
-use App\Http\Requests\ActivitiesRequest;
+use App\Model\Activity;
+use App\Http\Requests\ActivityRequest;
 use App\Model\Contents;
 
-class ActivitiesController extends Controller
+class ActivityController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class ActivitiesController extends Controller
      */
     public function index()
     {
-        return Activities::all();
+        return Activity::all();
     }
 
     /**
@@ -24,51 +24,51 @@ class ActivitiesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ActivitiesRequest $request)
+    public function store(ActivityRequest $request)
     {
         $validated = $request->validated();
-        $x = Contents::created([
+        $x = Content::created([
             'owner_id' => $validated['owner_id'],
             'type' => 'Activity'
         ]);
         $validated['id'] = $x['id'];
-        return Activities::create($validated);
+        return Activity::create($validated);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Model\Activities  $activities
+     * @param  \App\Model\Activity  $activity
      * @return \Illuminate\Http\Response
      */
-    public function show(Activities $activities)
+    public function show(Activity $activity)
     {
-        return $activities;
+        return $activity;
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Model\Activities  $activities
+     * @param  \App\Model\Activity  $activity
      * @return \Illuminate\Http\Response
      */
-    public function update(ActivitiesRequest $request, Activities $activities)
+    public function update(ActivityRequest $request, Activity $activity)
     {
         $validated = $request->validated();
-        $activities->update($validated);
-        return $activities;
+        $activity->update($validated);
+        return $activity;
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Model\Activities  $activities
+     * @param  \App\Model\Activity  $activity
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Activities $activities)
+    public function destroy(Activity $activity)
     {
-        $activities->delete();
+        $activity->delete();
         return response('', 204);
     }
 }
