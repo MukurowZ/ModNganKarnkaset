@@ -17,7 +17,7 @@ class ImgTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('owners_id');
 
-            $table->foreign('owners_id')->references('id')->on('users')
+            $table->foreign('owners_id')->references('id')->on('user')
                 ->onDelete('cascade')->onUpdate('cascade');
         });
 

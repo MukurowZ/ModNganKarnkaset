@@ -13,16 +13,16 @@ class ProductAndServiceTable extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function(Blueprint $table){
+        Schema::create('category', function(Blueprint $table){
             $table->increments('id');
             $table->string('name',200);
             $table->unsignedInteger('head')->nullable();;
 
-            $table->foreign('head')->references('id')->on('categories')
+            $table->foreign('head')->references('id')->on('category')
                 ->onDelete('cascade')->onUpdate('cascade');
         });
 
-        Schema::create('products', function(Blueprint $table){
+        Schema::create('product', function(Blueprint $table){
             $table->increments('id');
             $table->string('name',200);
             $table->string('story',2000);
@@ -33,16 +33,16 @@ class ProductAndServiceTable extends Migration
             $table->unsignedInteger('type');
             $table->unsignedInteger('owner_id');
 
-            $table->foreign('owner_id')->references('id')->on('users')
+            $table->foreign('owner_id')->references('id')->on('user')
                 ->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('img_set_id')->references('id')->on('img_set')
                 ->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('type')->references('id')->on('categories')
+            $table->foreign('type')->references('id')->on('category')
                 ->onDelete('cascade')->onUpdate('cascade');
 
         });
 
-        Schema::create('services', function(Blueprint $table){
+        Schema::create('service', function(Blueprint $table){
             $table->increments('id');
             $table->string('name',200);
             $table->string('story',2000);
@@ -53,11 +53,11 @@ class ProductAndServiceTable extends Migration
             $table->unsignedInteger('type');
             $table->unsignedInteger('owner_id');
 
-            $table->foreign('owner_id')->references('id')->on('users')
+            $table->foreign('owner_id')->references('id')->on('user')
                 ->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('img_set_id')->references('id')->on('img_set')
                 ->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('type')->references('id')->on('categories')
+            $table->foreign('type')->references('id')->on('category')
                 ->onDelete('cascade')->onUpdate('cascade');
         });
     }
@@ -70,8 +70,8 @@ class ProductAndServiceTable extends Migration
     public function down()
     {
         //
-        Schema::dropIfExists('categories');
-        Schema::dropIfExists('products');
-        Schema::dropIfExists('services');
+        Schema::dropIfExists('category');
+        Schema::dropIfExists('product');
+        Schema::dropIfExists('service');
     }
 }

@@ -13,12 +13,12 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('departments', function (Blueprint $table) {
+        Schema::create('department', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
         });
 
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('user', function (Blueprint $table) {
             $table->increments('id');
             $table->string('userId')->unique();
             $table->string('email')->unique();
@@ -27,8 +27,10 @@ class CreateUsersTable extends Migration
             $table->string('lastname',50);
             $table->unsignedInteger('department_id');
             $table->enum('permission',['owner','admin','staff','premium','user']);
+            $table->dateTime('updated_at');
+            $table->dateTime('created_at');
 
-            $table->foreign('department_id')->references('id')->on('departments')
+            $table->foreign('department_id')->references('id')->on('department')
                 ->onDelete('cascade')->onUpdate('cascade');
         });
     }
@@ -40,6 +42,7 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('department');
+        Schema::dropIfExists('user');
     }
 }

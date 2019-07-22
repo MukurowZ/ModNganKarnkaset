@@ -13,36 +13,36 @@ class Content extends Migration
      */
     public function up()
     {
-        Schema::create('contents', function(Blueprint $table){
+        Schema::create('content', function(Blueprint $table){
             $table->increments('id');
             $table->unsignedInteger('owner_id');
             $table->enum('type',['event','activity','board']);
 
-            $table->foreign('owner_id')->references('id')->on('users')
+            $table->foreign('owner_id')->references('id')->on('user')
                 ->onDelete('cascade')->onUpdate('cascade');
         });
 
-        Schema::create('events', function(Blueprint $table){
+        Schema::create('event', function(Blueprint $table){
             $table->unsignedInteger('id');
             $table->string('event_name',200);
             $table->string('event_description',5000);
             $table->unsignedInteger('img_set_id');
             $table->timestamp('created_on');
 
-            $table->foreign('id')->references('id')->on('contents')
+            $table->foreign('id')->references('id')->on('content')
                 ->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('img_set_id')->references('id')->on('img_set')
                 ->onDelete('cascade')->onUpdate('cascade');
         });
 
-        Schema::create('activities', function(Blueprint $table){
+        Schema::create('activity', function(Blueprint $table){
             $table->unsignedInteger('id');
             $table->string('activity_name',200);
             $table->string('activity_description',5000);
             $table->unsignedInteger('img_set_id');
             $table->timestamp('created_on');
 
-            $table->foreign('id')->references('id')->on('contents')
+            $table->foreign('id')->references('id')->on('content')
                 ->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('img_set_id')->references('id')->on('img_set')
                 ->onDelete('cascade')->onUpdate('cascade');
@@ -57,8 +57,8 @@ class Content extends Migration
     public function down()
     {
         //
-        Schema::dropIfExists('contents');
-        Schema::dropIfExists('events');
-        Schema::dropIfExists('activities');
+        Schema::dropIfExists('content');
+        Schema::dropIfExists('event');
+        Schema::dropIfExists('activity');
     }
 }
