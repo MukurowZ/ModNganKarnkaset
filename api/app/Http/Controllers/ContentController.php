@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\Contents;
-use Illuminate\Http\Request;
-use App\Http\Requests\ContentsRequest;
+use App\Model\Content;
+use App\Http\Requests\ContentRequest;
 
-class ContentsController extends Controller
+class ContentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +14,7 @@ class ContentsController extends Controller
      */
     public function index()
     {
-        return Contents::all();
+        return Content::all();
     }
 
     /**
@@ -24,44 +23,44 @@ class ContentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ContentsRequest $request)
+    public function store(ContentRequest $request)
     {
         $validated = $request->validated();
-        return Contents::create($validated);
+        return Content::create($validated);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Model\Contents  $contents
+     * @param  \App\Model\Content  $content
      * @return \Illuminate\Http\Response
      */
-    public function show(Contents $contents)
+    public function show(Content $content)
     {
-        return $contents;
+        return $content;
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Model\Contents  $contents
+     * @param  \App\Model\Content  $content
      * @return \Illuminate\Http\Response
      */
-    public function update(ContentsRequest $request, Contents $contents)
+    public function update(ContentRequest $request, Content $content)
     {
         $validated = $request->validated();
-        $contents->update($validated);
-        return $contents;
+        $content->update($validated);
+        return $content;
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Model\Contents  $contents
+     * @param  \App\Model\Content  $content
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Contents $contents)
+    public function destroy(Content $content)
     {
         $events->delete();
         return response('', 204);//
