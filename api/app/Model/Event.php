@@ -4,14 +4,14 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Events extends Model
+class Event extends Model
 {
     protected $fillable = [
         'id','event_name','event_description',
         'img_set_id','created_on'
     ];
 
-    protected $table = "events";
+    protected $table = "event";
     protected $appends = [
 
     ];

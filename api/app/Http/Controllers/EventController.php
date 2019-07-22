@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\Events;
-use App\Http\Requests\EventsRequest;
+use App\Model\Event;
+use App\Http\Requests\EventRequest;
 
-class EventsController extends Controller
+class EventController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class EventsController extends Controller
      */
     public function index()
     {
-        return Events::all();
+        return Event::all();
     }
 
     /**
@@ -26,48 +26,48 @@ class EventsController extends Controller
     public function store(EventsRequest $request)
     {
         $validated = $request->validated();
-        $x = Contents::created([
+        $x = Content::created([
             'owner_id' => $validated['owner_id'],
             'type' => 'Event'
         ]);
         $validated['id'] = $x['id'];
-        return Activities::create($validated);
+        return Activity::create($validated);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Model\Events  $events
+     * @param  \App\Model\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function show(Events $events)
+    public function show(Event $event)
     {
-        return $events;
+        return $event;
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Model\Events  $events
+     * @param  \App\Model\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function update(EventsRequest $request, Events $events)
+    public function update(EventRequest $request, Event $event)
     {
         $validated = $request->validated();
-        $events->update($validated);
-        return $events;
+        $event->update($validated);
+        return $event;
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Model\Events  $events
+     * @param  \App\Model\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Events $events)
+    public function destroy(Event $event)
     {
-        $events->delete();
+        $event->delete();
         return response('', 204);//
     }
 }
