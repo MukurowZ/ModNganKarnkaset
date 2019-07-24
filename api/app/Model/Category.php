@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     protected $fillable = [
-        'id','set_id','path'
+        'id','name','head'
     ];
 
     protected $table = "category";
@@ -22,8 +22,8 @@ class Category extends Model
 
     ];
 
-    public function categories(){
-        return $this->belongsTo('App\Model\Categories','type','name');
+    public function category(){
+        return $this->belongsTo('App\Model\Category','type','name');
     }
 
 }
