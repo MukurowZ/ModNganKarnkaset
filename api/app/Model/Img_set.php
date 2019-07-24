@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Img_set extends Model
 {
     protected $fillable = [
-        'id','owner_id'
+        'id','name','owner_id'
     ];
 
     protected $table = "img_set";
