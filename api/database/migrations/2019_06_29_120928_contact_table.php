@@ -19,9 +19,21 @@ class ContactTable extends Migration
             $table->string('details');
             $table->string('address',200);
             $table->string('email',80);
+            $table->string('country_id');
             $table->string('tel',14);
-            $table->timestampTz('time');
+            $table->dateTime('updated_at');
+            $table->dateTime('created_at');
+
+            $table->foreign('country_id')->references('id')->on('country')
+                ->onDelete('restrict')->onUpdate('restrict');
         });
+
+        Schema::create('country', function(Blueprint $table){
+            $table->increments('id');
+            $table->string('name');
+            $table->string('prefix',3);
+        });
+
     }
 
     /**
@@ -31,7 +43,7 @@ class ContactTable extends Migration
      */
     public function down()
     {
-        //
         Schema::dropIfExists('contact_log');
+        Schema::dropIfExists('country');
     }
 }
