@@ -13,13 +13,19 @@ class ContactTable extends Migration
      */
     public function up()
     {
+        Schema::create('country', function(Blueprint $table){
+            $table->increments('id');
+            $table->string('name');
+            $table->string('prefix',3);
+        });
+
         Schema::create('contact_log', function(Blueprint $table){
             $table->increments('id');
             $table->string('topic');
             $table->string('details');
             $table->string('address',200);
             $table->string('email',80);
-            $table->string('country_id');
+            $table->unsignedInteger('country_id');
             $table->string('tel',14);
             $table->dateTime('updated_at');
             $table->dateTime('created_at');
@@ -28,11 +34,7 @@ class ContactTable extends Migration
                 ->onDelete('restrict')->onUpdate('restrict');
         });
 
-        Schema::create('country', function(Blueprint $table){
-            $table->increments('id');
-            $table->string('name');
-            $table->string('prefix',3);
-        });
+
 
     }
 
