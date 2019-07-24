@@ -62,7 +62,7 @@ class ContentController extends Controller
      */
     public function destroy(Content $content)
     {
-        $events->delete();
-        return response('', 204);//
+        $content->delete();
+        return response('', 204);
     }
 }
