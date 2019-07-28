@@ -39,14 +39,14 @@ class EventRequest extends FormRequest
                     'event_name' => 'required',
                     'event_description' => 'required',
 	                'img_set_id' => 'required|exists:img_set,id',
-	                'created_on' => ''
+                    'owner_id' => 'required|exists:user,id'
                 ];
             case 'PUT':
                 return [
                     'event_name' => '',
                     'event_description' => '',
 	                'img_set_id' => 'exists:img_set,id',
-	                'created_on' => ''
+                    'owner_id' => 'exists:user,id'
                 ];
             default:
                 return [];

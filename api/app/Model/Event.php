@@ -8,9 +8,8 @@ class Event extends Model
 {
     protected $fillable = [
         'id','event_name','event_description',
-        'img_set_id','created_on'
+        'img_set_id'
     ];
-
     protected $table = "event";
     protected $appends = [
 
