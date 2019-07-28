@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Model\Event;
 use App\Http\Requests\EventRequest;
+use App\Model\Content;
 
 class EventController extends Controller
 {
@@ -23,15 +24,15 @@ class EventController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(EventsRequest $request)
+    public function store(EventRequest $request)
     {
         $validated = $request->validated();
-        $x = Content::created([
+        $x = Content::create([
             'owner_id' => $validated['owner_id'],
             'type' => 'Event'
         ]);
         $validated['id'] = $x['id'];
-        return Activity::create($validated);
+        return Event::create($validated);
     }
 
     /**
