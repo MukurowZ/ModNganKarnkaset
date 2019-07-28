@@ -16,9 +16,9 @@ class ImgTable extends Migration
         Schema::create('img_set', function(Blueprint $table){
             $table->increments('id');
             $table->string('name',300);
-            $table->unsignedInteger('owners_id');
+            $table->unsignedInteger('owner_id');
 
-            $table->foreign('owners_id')->references('id')->on('user')
+            $table->foreign('owner_id')->references('id')->on('user')
                 ->onDelete('cascade')->onUpdate('cascade');
         });
 
