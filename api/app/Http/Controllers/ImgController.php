@@ -65,4 +65,16 @@ class ImgController extends Controller
         $img->delete();
         return response('', 204);
     }
+
+    public function getImgbySet(Img $id)
+    {
+        $search = $id['id'];
+        return Img::all()->where('img_set_id', $search);
+    }
+
+    public function getOneImgSet(Img $id)
+    {
+        $search = $id['id'];
+        return Img::where('img_set_id', $search)->first();
+    }
 }
