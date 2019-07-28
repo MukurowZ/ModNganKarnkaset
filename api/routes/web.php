@@ -14,3 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/event', function () {
+    return view('event');
+});
+
+Route::get('/create-event', function () {
+    return view('create-event');
+});
