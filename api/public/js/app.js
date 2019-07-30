@@ -53848,8 +53848,8 @@ function __guardMethod__(obj, methodName, transform) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! G:\U\Work\ModNganKarnkaset\api\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! G:\U\Work\ModNganKarnkaset\api\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Freelance\modngan\ModNganKarnkaset\api\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Freelance\modngan\ModNganKarnkaset\api\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
