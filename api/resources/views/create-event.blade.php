@@ -20,9 +20,9 @@
     <body>
     <div id="app">
         <create-event-component></create-event-component>
-
     </div>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+
+    <button type="button" class="btn btn-primary" style="margin-left: 10%" data-toggle="modal" data-target="#exampleModal">
         UPLOAD IMAGE
     </button>
 
@@ -37,21 +37,41 @@
             </button>
         </div>
         <div class="modal-body">
-        <form method="post" action="{{ url('api/img/upload')}}" class="dropzone" id="dropzone">
-            <input type="file" name="file" />
+        <form class="form-group" method="post" action="/api/img/upload" id="upload" enctype="multipart/form-data">
+            Owner Id: <br><br> <input type="text" name="owner_id"><br><br>
+            SET NAME <br><br> <input type="text" name="name" placeholder="Please provide album name"><br><br>
+            <input type="file" name="file[]" multiple><br><br>
+            <button type="submit" class="btn btn-primary">Save changes</button>
         </form>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
         </div>
         </div>
     </div>
     </div>
     <!-- End Modal -->
 
-
-
-
     </body>
 </html>
+
+<script>
+var form = document.getElementById("upload");
+var request = new XMLHttpRequest();
+
+form.addEventListener('submit',function(e)){
+    e.preventDefault();
+    var formdata = new FormData(form);
+
+    request.open('post','/api/img/upload');
+    request.addEventListener("load",transferComplete);
+    request.send(formdata);
+}
+
+function transferComplete(data){
+    response = JSON.parse(data.currentTarget.response);
+    if(response.success){
+        console.log("success");
+    }
+}
+</script>
