@@ -3,7 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <!-- <script>window.Laravel = { csrfToken: '{{ csrf_token() }}'}</script> -->
         <title>Laravel</title>
 
         <!-- Fonts -->
@@ -64,6 +65,13 @@
         </style>
     </head>
     <body>
+         <div id="app">
+            <event-component></event-component>
+            <example-component></example-component>
+        </div>
+
+        <script src="{{ asset('js/app.js') }}"></script>
+        <script type="text/javascript" src="js/app.js"></script>
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
