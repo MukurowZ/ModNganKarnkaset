@@ -3,12 +3,22 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+import Vue from 'vue'
+import BootstrapVue from 'bootstrap-vue'
 
 require('./bootstrap');
 
+
+
+
+Vue.use(BootstrapVue);
 window.Vue = require('vue');
 window.axios = require('axios');
 window.dropzone = require('./dropzone.js');
+
+
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 /**
  * The following block of code may be used to automatically register your
