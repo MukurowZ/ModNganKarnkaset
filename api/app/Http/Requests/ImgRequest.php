@@ -39,12 +39,12 @@ class ImgRequest extends FormRequest
                 return;
             case 'POST':
                 return [
-                    'set_id' => 'required|exists:img_set,id',
+                    'img_set_id' => 'required|exists:img_set,id',
                     'path' => 'required'
                 ];
             case 'PUT':
             return [
-                    'set_id' => 'exists:img_set,id',
+                    'img_set_id' => 'exists:img_set,id',
                     'path' => ''
                 ];
         }
