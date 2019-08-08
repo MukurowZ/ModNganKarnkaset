@@ -36,7 +36,7 @@
                 <td>{{set.id}}</td>
                 <td>{{set.owner_id}}</td>
                 <!-- <td>{{set.imgid}}</td> -->
-                <td> <img :src="getImg(set.imgid)"/>  </td>
+                <td> <img width="200px" height="200px" :src="getImg(set.imgid)"/>  </td>
             </tr>
 
             </tbody>
@@ -114,7 +114,7 @@ export default {
         },
         getImg(imgs) {
             if(imgs.length!=0){
-                return imgs[0].path;
+                return '/storage/imgs/'+imgs[0].path;
             }
             return '';
         }

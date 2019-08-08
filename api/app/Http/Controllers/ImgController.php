@@ -111,12 +111,12 @@ class ImgController extends Controller
                 $path = Hash::make($path);
                 $path = str_replace("/","-",$path);
                 $path = str_replace(".","-",$path);
-                $path = "public/imgs/".$path.$cater;
+                $path = "".$path.$cater;
                 Img::create([
                     'img_set_id' => $set['id'],
                     'path' => $path
                 ]);
-                Storage::put($path,file_get_contents($file),'public');
+                Storage::put("public/imgs/".$path,file_get_contents($file),'public');
             }
         endif;
 
