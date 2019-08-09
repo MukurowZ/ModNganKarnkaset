@@ -6,7 +6,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <script src="{{ asset('js/app.js') }}"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <title>Create Event</title>
+        <title>เพิ่มกิจกรรม</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -23,7 +23,7 @@
     </div>
 
     <button type="button" class="btn btn-primary" style="margin-left: 10%" data-toggle="modal" data-target="#exampleModal">
-        UPLOAD IMAGE
+        เพิ่มรูปภาพ
     </button>
 
     <!-- Modal -->
@@ -31,7 +31,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <h5 class="modal-title" id="exampleModalLabel">อัปโหลดรูปด้านล่าง</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -39,13 +39,13 @@
         <div class="modal-body">
         <form class="form-group" method="post" action="/api/img/upload" id="upload" enctype="multipart/form-data">
             Owner Id: <br><br> <input type="text" name="owner_id"><br><br>
-            SET NAME <br><br> <input type="text" name="name" placeholder="Please provide album name"><br><br>
+            ชื่ออัลบั้ม <br><br> <input type="text" name="name" placeholder="Please provide album name"><br><br>
             <input type="file" name="file[]" multiple><br><br>
-            <button type="submit" class="btn btn-primary">Save changes</button>
+            <button type="submit" class="btn btn-primary">อัปโหลด</button>
         </form>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">ปิด</button>
         </div>
         </div>
     </div>
@@ -71,7 +71,7 @@
     function transferComplete(data){
         response = JSON.parse(data.currentTarget.response);
         if(response.success){
-            console.log("success");
+            window.location.href = "/";
         }
     }
 
