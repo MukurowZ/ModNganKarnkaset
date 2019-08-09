@@ -32,7 +32,8 @@ class EventController extends Controller
             'type' => 'Event'
         ]);
         $validated['id'] = $x['id'];
-        return Event::create($validated);
+        Event::create($validated);
+        return view('event');
     }
 
     /**

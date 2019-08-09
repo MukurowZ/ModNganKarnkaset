@@ -74,16 +74,16 @@ class ImgController extends Controller
         return response('', 204);
     }
 
-    public function getImgbySet(Img $id)
+    public function get_Img(int $id)
     {
-        $search = $id['id'];
-        return Img::all()->where('img_set_id', $search);
+        // $search = $id['id'];
+        return Img::all()->where('img_set_id', $id);
     }
 
-    public function getOneImgSet(Img $id)
+    public function get_OneImg(int $id)
     {
-        $search = $id['id'];
-        return Img::where('img_set_id', $search)->first();
+        // $search = $id['id'];
+        return Img::where('img_set_id', $id)->first();
     }
 
 
@@ -120,6 +120,6 @@ class ImgController extends Controller
             }
         endif;
 
-       return response()->json(array('success' => true));
+       return view('/event');
 	}
 }
