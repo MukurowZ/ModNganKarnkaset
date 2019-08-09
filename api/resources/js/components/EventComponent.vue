@@ -20,10 +20,10 @@
                             <td>{{event.event_description}}</td>
                             <td>{{event.created_at}}</td>
                             <td>{{event.updated_at}}</td>
-                            <td>{{event.img_set_id}}</td>
+                            <td> <img height="200px" :src="fullPath(event.img_set_id)" /> </td>
                         </tr>
                      </table>
-                     <button class="btn btn-danger">TEST</button>
+                     <button onclick="window.location.href='/create-event'" class="btn btn-outline-primary">เพิ่มกิจกรรม</button>
                 </div>
             </div>
         </div>
@@ -34,37 +34,26 @@
     export default {
         mounted() {
             this.getEventData();
-            // this.replaceSetToPath();
         },
         methods:{
             getEventData(){
                 axios.get('/api/event').then(response=>this.setEventData(response.data));
             },
             setEventData(e){
+                e.forEach(a => {
+                    axios.get('/api/img/set/'+a.img_set_id).then(response => {a.img_set_id = response.data.path} )
+                });
                 this.events = e;
             },
-            getOneImgBySet(index, e){
-                axios.get('/api/oneimgset/'+e).then(response=>this.setImgData(response.data));
-            },
-            setImgData(index, e){
-                // console.log(index);
-            },
-            // replaceSetToPath(e){
-            //     console.log(e.lenght);
-            //     for(this.i = 0; this.i < this.events.lenght; this.i++){
-            //         console.log("ewewe");
-            //         axios.get('/api/oneimgset/'+this.events[this.i].img_set_id).
-            //             then(setImgData(console.log(this.i,response.data)));
-            //     }
-            // }
+            fullPath(e) {
+                if(e!=null){
+                    return '/storage/imgs/'+e;
+                }
+                return '';
+            }
         },
         computed: {
-            replaceSetToPath(){
-                axios.get('/api/oneimgset/'+this.event.img_set_id).then(response=>this.setImgData(response.data));
-            },
-            reverseMessage: function () {
-                return this.event.event_name.split('').reverse().join('')
-            }
+
         },
         data(){
             return{
@@ -78,6 +67,8 @@
                     update_at:'',
                     img_path:''
                 },
+                path:[],
+                i: 0,
             }
         },
     }

@@ -13,8 +13,9 @@
         </div>
         <div class="form-group">
         <label>EVENT DESCRIPTION:</label>
-        <br />
-        <input type="text" class="form-control" v-model="description" />
+        <textarea id="description" type="text" class="form-control" v-model="description" v-on:keyup="updatedCounter()" size="5000"/>
+        <p style="color: gray" v-if="!isOver()">You have {{charactersRemaining}} / 5,000 characters remaining.</p>
+        <p style="color: red" v-else class="over">You are {{ charactersOver }} characters over the limit.</p>
         </div>
         <div class="form-group">
         <label>SELECT IMG SET:</label>
@@ -31,19 +32,18 @@
 
             <tr v-for="set in sets" v-bind:key="set.id">
                 <b-form-group>
-                <td><b-form-radio v-model="selected" name="img-radios" v-bind:value="set.id">{{set.name}}</b-form-radio></td>
+                <td><b-form-radio v-model="img_set" name="img-set" v-bind:value="set.id">{{set.name}}</b-form-radio></td>
                 </b-form-group>
                 <td>{{set.id}}</td>
                 <td>{{set.owner_id}}</td>
-                <!-- <td>{{set.imgid}}</td> -->
-                <td> <img width="200px" height="200px" :src="getImg(set.imgid)"/>  </td>
+                <td> <img height="200px" :src="getImg(set.imgid)"/>  </td>
             </tr>
 
             </tbody>
         </table>
         </div>
         <div class="form-group">
-        <label>EVENT DESCRIPTION:</label>
+        <label>EVENT OWNER:</label>
         <br />
         <input type="text" class="form-control" v-model="owner_id" />
         </div>
@@ -62,10 +62,15 @@ export default {
         // this.getImgBySet();
     },
     mounted() {
-
+        this.maxCharacters = this.limit;
     },
     computed: {
-
+        charactersRemaining() {
+            return this.maxCharacters - this.description.length;
+      },
+      charactersOver() {
+        return this.isOver() ? this.description.length - this.maxCharacters : 0;
+      }
     },
     data() {
         return {
@@ -84,7 +89,9 @@ export default {
             img_set_id: "",
             path: ""
             }
-        }
+        },
+        maxCharacters: 5000,
+        limit: 5000
         };
     },
     methods: {
@@ -97,28 +104,20 @@ export default {
             });
         },
         getAllSet() {
-            axios
-                .get("/api/img_set")
-                .then(response => this.setSetData(response.data));
+            axios.get("/api/img_set").then(response => this.setSetData(response.data));
         },
         setSetData(e) {
             this.sets = e;
-        },
-        setImgData(e) {
-            this.imgids = e;
-        },
-        getImgBySet() {
-            // axios
-            //     .get("/api/img_set/", 1)
-            //     .then(response => console.log(response.data));
         },
         getImg(imgs) {
             if(imgs.length!=0){
                 return '/storage/imgs/'+imgs[0].path;
             }
             return '';
+        },
+        isOver() {
+            return this.charactersRemaining < 0;
         }
-
     }
 };
 </script>
