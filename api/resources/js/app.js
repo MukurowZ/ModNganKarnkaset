@@ -5,13 +5,17 @@
  */
 import Vue from 'vue'
 import BootstrapVue from 'bootstrap-vue'
+// import VueSelectImage from 'vue-select-image'
 
 require('./bootstrap');
+// require('vue-select-image/dist/vue-select-image.css')
+
 
 
 
 
 Vue.use(BootstrapVue);
+// Vue.use(VueSelectImage);
 window.Vue = require('vue');
 window.axios = require('axios');
 window.dropzone = require('./dropzone.js');
@@ -35,6 +39,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('event-component',require('./components/EventComponent.vue').default);
 Vue.component('img-upload-component',require('./components/ImgUploadComponent.vue').default);
 Vue.component('create-event-component',require('./components/CreateEventComponent.vue').default);
+Vue.component('edit-event-component',require('./components/EditEventComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
