@@ -13,6 +13,8 @@
                             <th>CREATED</th>
                             <th>UPDATED</th>
                             <th>IMG_SET_ID</th>
+                            <th>EDIT</th>
+                            <th>REMOVE</th>
                         </tr>
                         <tr v-for="event in events" v-bind:key="event.id">
                             <td>{{event.id}}</td>
@@ -21,9 +23,11 @@
                             <td>{{event.created_at}}</td>
                             <td>{{event.updated_at}}</td>
                             <td> <img height="200px" :src="fullPath(event.img_set_id)" /> </td>
+                            <td><button class="btn btn-warning" style="margin-left: 5px" v-on:click="getEditUrl(event.id)">แก้ไขกิจกรรม</button></td>
+                            <td><button class="btn btn-outline-danger" style="margin-left: 5px" v-on:click="getDeleteUrl(event.id)">ลบกิจกรรม</button></td>
                         </tr>
                      </table>
-                     <button onclick="window.location.href='/create-event'" class="btn btn-outline-primary">เพิ่มกิจกรรม</button>
+                     <button onclick="window.location.href='/event/create'" class="btn btn-outline-primary">เพิ่มกิจกรรม</button>
                 </div>
             </div>
         </div>
@@ -37,7 +41,7 @@
         },
         methods:{
             getEventData(){
-                axios.get('/api/event').then(response=>this.setEventData(response.data));
+                axios.get('/api/event/').then(response=>this.setEventData(response.data));
             },
             setEventData(e){
                 e.forEach(a => {
@@ -50,7 +54,19 @@
                     return '/storage/imgs/'+e;
                 }
                 return '';
-            }
+            },
+            getEditUrl(e){
+                if(e!=null){
+                    window.location.href='/event/'+e+'/edit';
+                }
+                return '';
+            },
+            getDeleteUrl(e){
+                if(e!=null){
+                    window.location.href='/event/'+e+'/remove';
+                }
+                return '';
+            },
         },
         computed: {
 
