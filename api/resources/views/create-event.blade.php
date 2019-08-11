@@ -41,7 +41,7 @@
             Owner Id: <br><br> <input type="text" name="owner_id"><br><br>
             ชื่ออัลบั้ม <br><br> <input type="text" name="name" placeholder="Please provide album name"><br><br>
             <input type="file" name="file[]" multiple><br><br>
-            <button type="submit" class="btn btn-primary">อัปโหลด</button>
+            <button type="submit" class="btn btn-primary" >อัปโหลด</button>
         </form>
         </div>
         <div class="modal-footer">
@@ -59,10 +59,10 @@
     var form = document.getElementById("upload");
     var request = new XMLHttpRequest();
 
+
     function form.addEventListener('submit',function(e)){
         e.preventDefault();
         var formdata = new FormData(form);
-
         request.open('post','/api/img/upload');
         request.addEventListener("load",transferComplete);
         request.send(formdata);
@@ -71,7 +71,7 @@
     function transferComplete(data){
         response = JSON.parse(data.currentTarget.response);
         if(response.success){
-            window.location.href = "/";
+
         }
     }
 

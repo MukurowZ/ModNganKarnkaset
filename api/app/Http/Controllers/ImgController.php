@@ -120,6 +120,6 @@ class ImgController extends Controller
             }
         endif;
 
-       return view('/event');
+       return back();
 	}
 }
