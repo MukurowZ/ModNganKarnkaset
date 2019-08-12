@@ -1,8 +1,5 @@
 @section('core_upload')
 <body>
-<div id="app" class="d-inline-flex">
-    <create-event-component></create-event-component>
-</div>
 <div class="d-flex align-items-start">
     <button type="button" class="btn btn-primary" style="margin-left: 1%;"  data-toggle="modal" data-target="#uploadModal">
         เพิ่มรูปภาพ
