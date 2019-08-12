@@ -1,3 +1,7 @@
+@extends('core/core')
+@section('title','Laravel')
+
+@section('content')
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -5,7 +9,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <!-- <script>window.Laravel = { csrfToken: '{{ csrf_token() }}'}</script> -->
-        <title>Laravel</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -65,9 +68,8 @@
         </style>
     </head>
     <body>
-         <div id="app">
-            <event-component></event-component>
-            <example-component></example-component>
+        <div id="app">
+            <show-event-component></show-event-component>
         </div>
 
         <script src="{{ asset('js/app.js') }}"></script>
@@ -105,3 +107,4 @@
         </div>
     </body>
 </html>
+@endsection

@@ -10,10 +10,6 @@ import BootstrapVue from 'bootstrap-vue'
 require('./bootstrap');
 // require('vue-select-image/dist/vue-select-image.css')
 
-
-
-
-
 Vue.use(BootstrapVue);
 // Vue.use(VueSelectImage);
 window.Vue = require('vue');
@@ -39,7 +35,12 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 Vue.component('event-component',require('./components/Event/EventComponent.vue').default);
 Vue.component('create-event-component',require('./components/Event/CreateEventComponent.vue').default);
 Vue.component('edit-event-component',require('./components/Event/EditEventComponent.vue').default);
-Vue.component('edit-event-component',require('./components/Event/ShowEventComponent.vue').default);
+Vue.component('show-event-component',require('./components/Event/ShowEventComponent.vue').default);
+
+Vue.component('navbar-component',require('./components/NavbarComponent.vue').default);
+
+// Category
+// Vue.component('category-component',require('./components/CategoryComponent.vue').default);
 
 
 /**
@@ -51,4 +52,7 @@ window.onload = function (){
     const app = new Vue({
         el: '#app',
     });
+    const nav = new Vue({
+        el: '#nav',
+    })
 }
