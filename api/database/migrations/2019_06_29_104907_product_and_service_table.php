@@ -19,7 +19,7 @@ class ProductAndServiceTable extends Migration
             $table->unsignedInteger('head')->nullable();;
 
             $table->foreign('head')->references('id')->on('category')
-                ->onDelete('cascade')->onUpdate('cascade');
+                ->onDelete('restrict')->onUpdate('cascade');
         });
 
         Schema::create('product', function(Blueprint $table){
