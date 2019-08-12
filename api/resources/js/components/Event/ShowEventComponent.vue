@@ -40,36 +40,6 @@
                 if(e!=null){ return '/storage/imgs/'+e }
                 return '';
             },
-            getEditUrl(e){
-                if(e!=null){ window.location.href='/event/'+e+'/edit' }
-                return '';
-            },
-            getRemove(id,name){
-                this.confirmBox = '';
-                this.$bvModal.msgBoxConfirm('Please confirm that you want to delete event '+ name + ' from event?', {
-                    title: 'Please Confirm',
-                    size: 'sm',
-                    buttonSize: 'sm',
-                    okVariant: 'outline-secondary',
-                    okTitle: 'YES',
-                    cancelTitle: 'NO',
-                    cancelVariant: 'danger',
-                    footerClass: 'p-2',
-                    hideHeaderClose: false,
-                    centered: false
-                }).then(value => {
-                    this.confirmBox = value
-                    if(value){
-                        return fetch('/api/event/' + id, {
-                            method: 'DELETE'
-                        }).then(window.location.href='/event');
-                    }else{
-                        return '';
-                    }
-                }).catch(err => {
-                    // An error occurred
-                })
-            },
         },
         data(){
             return{
@@ -84,8 +54,6 @@
                     img_path:''
                 },
                 path:[],
-                i: 0,
-                confirmBox: '',
             }
         },
     }
