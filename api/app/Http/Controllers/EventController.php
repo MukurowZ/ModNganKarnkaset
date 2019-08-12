@@ -69,7 +69,9 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
-        $event->delete();
-        return response('', 204);//
+        if($event->delete()){
+            Content::find($event['id'])->delete();
+        }
+        return back(response('', 204));
     }
 }
