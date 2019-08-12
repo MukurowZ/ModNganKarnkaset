@@ -1,4 +1,4 @@
-@extends('core')
+@extends('../core/core')
 @section('title','กิจกรรมทั้งหมด')
 @section('navbar')
 @parent

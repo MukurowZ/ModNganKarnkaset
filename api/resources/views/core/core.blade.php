@@ -8,7 +8,7 @@
         <script type="text/javascript" src="js/app.js"></script>
         <title>@yield('title')</title>
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Kanit:400,700|Open+Sans&display=swap&subset=thai" rel="stylesheet">
 
         <!-- Styles -->
         <link rel="stylesheet" href="/css/app.css">
@@ -18,12 +18,11 @@
 </head>
 <body>
 @section('navbar')
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color:#c4e6d2">
-<a class="navbar-brand" href="#">Navbar</a>
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #c4e6d2; font-family: 'Kanit', sans-serif;">
+<a style="font-weight: bold;" class="navbar-brand" href="#">มดงานการเกษตร</a>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 <span class="navbar-toggler-icon"></span>
 </button>
-
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
 <ul class="navbar-nav mr-auto">
     <li class="nav-item active">
@@ -34,7 +33,7 @@
     </li>
     <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Dropdown
+        ประชาสัมพันธ์
     </a>
     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
         <a class="dropdown-item" href="#">Action</a>

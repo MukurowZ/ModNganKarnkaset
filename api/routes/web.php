@@ -17,14 +17,14 @@ Route::get('/', function () {
 
 
 Route::get('/event', function () {
-    return view('event');
+    return view('event/event');
 });
 
 Route::get('/event/create', function () {
-    return view('create-event');
+    return view('event/create-event');
 });
 
 Route::get('/event/{id}/edit', function ($id) {
-    return view('edit-event',compact('id'));
+    return view('event/edit-event',compact('id'));
 });
 

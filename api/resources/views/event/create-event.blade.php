@@ -1,4 +1,4 @@
-@extends('core')
+@extends('../core/core')
 @section('title','เพิ่มกิจกรรม')
 @section('navbar')
 @parent
@@ -11,7 +11,7 @@
     <create-event-component></create-event-component>
 </div>
 
-@include('core_upload')
+@include('../core/core_upload')
 
 </body>
 </html>
