@@ -40,13 +40,13 @@ class CategoryRequest extends FormRequest
                 return;
             case 'POST':
                 return [
-                    'name' => 'required|unique:user,id',
-                    'head' => 'exists:category,name'
+                    'name' => 'required|unique:category,name',
+                    'head' => 'nullable|exists:category,id'
                 ];
             case 'PUT':
                 return [
-                    'name' => 'unique:user,id',
-                    'head' => 'exists:category,name'
+                    'name' => 'unique:category,name',
+                    'head' => 'exists:category,id'
                 ];
         }
     }

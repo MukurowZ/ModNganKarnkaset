@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Model\Category;
 use App\Http\Requests\CategoryRequest;
 
-class CategoryRquest extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
