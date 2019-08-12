@@ -24,7 +24,9 @@
                             <td>{{event.updated_at}}</td>
                             <td> <img height="200px" :src="fullPath(event.img_set_id)" /> </td>
                             <td><button class="btn btn-warning" style="margin-left: 5px" v-on:click="getEditUrl(event.id)">แก้ไขกิจกรรม</button></td>
-                            <td><button class="btn btn-outline-danger" style="margin-left: 5px" v-on:click="getDeleteUrl(event.id)">ลบกิจกรรม</button></td>
+                            <td>
+                                <b-button v-b-modal.confirmDel class="btn btn-danger" style="margin-left: 5px;" v-on:click="getRemove(event.id,event.event_name)">ลบกิจกรรม</b-button>
+                            </td>
                         </tr>
                      </table>
                      <button onclick="window.location.href='/event/create'" class="btn btn-outline-primary">เพิ่มกิจกรรม</button>
@@ -40,36 +42,45 @@
             this.getEventData();
         },
         methods:{
-            getEventData(){
-                axios.get('/api/event/').then(response=>this.setEventData(response.data));
-            },
+            getEventData(){ axios.get('/api/event/').then(response=>this.setEventData(response.data)); },
             setEventData(e){
-                e.forEach(a => {
-                    axios.get('/api/img/set/'+a.img_set_id).then(response => {a.img_set_id = response.data.path} )
-                });
+                e.forEach(a => {axios.get('/api/img/set/'+a.img_set_id).then(response => {a.img_set_id = response.data.path} )});
                 this.events = e;
             },
             fullPath(e) {
-                if(e!=null){
-                    return '/storage/imgs/'+e;
-                }
+                if(e!=null){ return '/storage/imgs/'+e }
                 return '';
             },
             getEditUrl(e){
-                if(e!=null){
-                    window.location.href='/event/'+e+'/edit';
-                }
+                if(e!=null){ window.location.href='/event/'+e+'/edit' }
                 return '';
             },
-            getDeleteUrl(e){
-                if(e!=null){
-                    window.location.href='/event/'+e+'/remove';
-                }
-                return '';
+            getRemove(id,name){
+                this.confirmBox = '';
+                this.$bvModal.msgBoxConfirm('Please confirm that you want to delete event '+ name + ' from event?', {
+                    title: 'Please Confirm',
+                    size: 'sm',
+                    buttonSize: 'sm',
+                    okVariant: 'outline-secondary',
+                    okTitle: 'YES',
+                    cancelTitle: 'NO',
+                    cancelVariant: 'danger',
+                    footerClass: 'p-2',
+                    hideHeaderClose: false,
+                    centered: false
+                }).then(value => {
+                    this.confirmBox = value
+                    if(value){
+                        return fetch('/api/event/' + id, {
+                            method: 'DELETE'
+                        }).then(window.location.href='/event');
+                    }else{
+                        return '';
+                    }
+                }).catch(err => {
+                    // An error occurred
+                })
             },
-        },
-        computed: {
-
         },
         data(){
             return{
@@ -85,9 +96,8 @@
                 },
                 path:[],
                 i: 0,
+                confirmBox: '',
             }
         },
     }
 </script>
-
-

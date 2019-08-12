@@ -2,7 +2,7 @@
 <div class="container font-weight-bold">
     <div>
     <br />
-    <h2>Edit Event</h2>
+    <h2>CREATE NEW EVENT REPORT</h2>
     <br />
     <br />
     <form action="/event">
@@ -19,7 +19,7 @@
         </div>
         <div class="form-group">
         <label>EVENT DESCRIPTION:</label>
-        <textarea :placeholder="getPlaceHolder()" id="description" type="text" class="form-control" v-model="description" v-on:keyup="updatedCounter()" size="5000"/>
+        <textarea :placeholder="getPlaceHolder()" id="description" type="text" class="form-control" v-model="description" size="5000"/>
         <p style="color: gray" v-if="!isOver()">You have {{charactersRemaining}} / 5,000 characters remaining.</p>
         <p style="color: red" v-else class="over">You are {{ charactersOver }} characters over the limit.</p>
         </div>
@@ -38,7 +38,7 @@
             </div>
         </div>
         <div class="form-group d-flex">
-        <button class="btn btn-success" v-on:click="editEvent">แก้ไขกิจกรรม</button>
+        <button class="btn btn-success"  v-on:click="addNewEvent()">เพิ่มกิจกรรม</button>
         <button class="btn btn-outline-secondary" style="margin-left:5px" onclick="/event">ยกเลิก</button>
         </div>
 
@@ -49,21 +49,23 @@
 
 <script>
 export default {
-    props:['id'],
     beforeMount() {
         this.getAllSet();
     },
     mounted() {
+        // for count character remain
         this.maxCharacters = this.limit;
-        this.getEventData(this.id);
+        // ---------------------------
     },
     computed: {
+        // for count character remain
         charactersRemaining() {
             return this.maxCharacters - this.description.length;
-      },
-      charactersOver() {
+        },
+        charactersOver() {
             return this.isOver() ? this.description.length - this.maxCharacters : 0;
-      },
+        },
+        // ---------------------------
     },
     data() {
         return {
@@ -83,26 +85,15 @@ export default {
                 path: ""
                 }
             },
+            // for count character remain
             maxCharacters: 5000,
             limit: 5000,
+            // ---------------------------
         }
     },
     methods: {
-        getEventData(id){
-            id = id.replace("'","");
-            id = id.replace("\'\'","");
-            axios.get('/api/event/'+id).then(response=> this.setEventData(response.data));
-        },
-        setEventData(e){
-            this.name = e.event_name
-            this.description = e.event_description
-            this.img_set = e.img_set_id
-            this.owner_id = e.owner_id
-        },
-        editEvent() {
-            this.id = this.id.replace("'","");
-            this.id = this.id.replace("\'\'","");
-            axios.put("/api/event/"+this.id,{
+        addNewEvent() {
+            axios.post("/api/event", {
                 event_name: this.name,
                 event_description: this.description,
                 img_set_id: this.img_set,

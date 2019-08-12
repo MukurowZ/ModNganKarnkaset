@@ -35,11 +35,12 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-Vue.component('event-component',require('./components/EventComponent.vue').default);
-Vue.component('img-upload-component',require('./components/ImgUploadComponent.vue').default);
-Vue.component('create-event-component',require('./components/CreateEventComponent.vue').default);
-Vue.component('edit-event-component',require('./components/EditEventComponent.vue').default);
+// Event component
+Vue.component('event-component',require('./components/Event/EventComponent.vue').default);
+Vue.component('create-event-component',require('./components/Event/CreateEventComponent.vue').default);
+Vue.component('edit-event-component',require('./components/Event/EditEventComponent.vue').default);
+Vue.component('edit-event-component',require('./components/Event/ShowEventComponent.vue').default);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

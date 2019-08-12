@@ -2,7 +2,7 @@
 <div class="container font-weight-bold">
     <div>
     <br />
-    <h2>CREATE NEW EVENT REPORT</h2>
+    <h2>Edit Event</h2>
     <br />
     <br />
     <form action="/event">
@@ -19,7 +19,7 @@
         </div>
         <div class="form-group">
         <label>EVENT DESCRIPTION:</label>
-        <textarea :placeholder="getPlaceHolder()" id="description" type="text" class="form-control" v-model="description" v-on:keyup="updatedCounter()" size="5000"/>
+        <textarea :placeholder="getPlaceHolder()" id="description" type="text" class="form-control" v-model="description" size="5000"/>
         <p style="color: gray" v-if="!isOver()">You have {{charactersRemaining}} / 5,000 characters remaining.</p>
         <p style="color: red" v-else class="over">You are {{ charactersOver }} characters over the limit.</p>
         </div>
@@ -30,7 +30,7 @@
                 <b-form-group>
                     <label> </label>
                     <div class="border border-success rounded col-xl-12 col-xl-12" >
-                        <b-form-radio v-model="img_set" name="img-set" v-bind:value="set.id">{{set.name}}</b-form-radio>
+                        <b-form-radio v-model="img_set" name="" v-bind:value="set.id">{{set.name}}</b-form-radio>
                         <img height="200px" :src="getImg(set.imgid)"/>
                         <br> <p> </p>
                     </div>
@@ -38,7 +38,7 @@
             </div>
         </div>
         <div class="form-group d-flex">
-        <button class="btn btn-success"  v-on:click="addNewEvent">เพิ่มกิจกรรม</button>
+        <button class="btn btn-success" v-on:click="editEvent">แก้ไขกิจกรรม</button>
         <button class="btn btn-outline-secondary" style="margin-left:5px" onclick="/event">ยกเลิก</button>
         </div>
 
@@ -49,11 +49,13 @@
 
 <script>
 export default {
+    props:['id'],
     beforeMount() {
         this.getAllSet();
     },
     mounted() {
         this.maxCharacters = this.limit;
+        this.getEventData(this.id);
     },
     computed: {
         charactersRemaining() {
@@ -65,29 +67,42 @@ export default {
     },
     data() {
         return {
-        name: "",
-        description: "",
-        img_set: "",
-        owner_id: "",
-        sets: [],
-        set: {
-            id: "",
             name: "",
+            description: "",
+            img_set: "",
             owner_id: "",
-            imgids: [],
-            imgid: {
-            id: "",
-            img_set_id: "",
-            path: ""
-            }
-        },
-        maxCharacters: 5000,
-        limit: 5000,
+            sets: [],
+            set: {
+                id: "",
+                name: "",
+                owner_id: "",
+                imgids: [],
+                imgid: {
+                id: "",
+                img_set_id: "",
+                path: ""
+                }
+            },
+            maxCharacters: 5000,
+            limit: 5000,
         }
     },
     methods: {
-        addNewEvent() {
-            axios.post("api/event", {
+        getEventData(id){
+            id = id.replace("'","");
+            id = id.replace("\'\'","");
+            axios.get('/api/event/'+id).then(response=> this.setEventData(response.data));
+        },
+        setEventData(e){
+            this.name = e.event_name
+            this.description = e.event_description
+            this.img_set = e.img_set_id
+            this.owner_id = e.owner_id
+        },
+        editEvent() {
+            this.id = this.id.replace("'","");
+            this.id = this.id.replace("\'\'","");
+            axios.put("/api/event/"+this.id,{
                 event_name: this.name,
                 event_description: this.description,
                 img_set_id: this.img_set,
