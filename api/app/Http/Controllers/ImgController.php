@@ -3,10 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Model\Img;
+use App\Model\Img_set;
+use Illuminate\Http\Request;
 use App\Http\Requests\ImgRequest;
-use Illuminate\Support\Facades\Input;
-use Symfony\Component\HttpFoundation\Response;
-use Illuminate\Http\Testing\File;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Hash;
+
+// use Illuminate\Support\Facades\Input;
+// use Symfony\Component\HttpFoundation\Response;
+// use Illuminate\Http\Testing\File;
 
 class ImgController extends Controller
 {
@@ -69,45 +74,52 @@ class ImgController extends Controller
         return response('', 204);
     }
 
-    public function getImgbySet(Img $id)
+    public function get_Img(int $id)
     {
-        $search = $id['id'];
-        return Img::all()->where('img_set_id', $search);
+        // $search = $id['id'];
+        return Img::all()->where('img_set_id', $id);
     }
 
-    public function getOneImgSet(Img $id)
+    public function get_OneImg(int $id)
     {
-        $search = $id['id'];
-        return Img::where('img_set_id', $search)->first();
+        // $search = $id['id'];
+        return Img::where('img_set_id', $id)->first();
     }
 
 
-    public function post_upload()
+    public function post_upload(Request $request)
     {
-		$input = Input::all();
-		$rules = array(
-		    'file' => 'image|max:3000',
-		);
-        dd('dsadas');
-		$validation = Validator::make($input, $rules);
+        $files = $request->file('file');
+        if(!empty($files)):
+            $set = Img_set::create([
+                'name' => $request['name'],
+                'owner_id' => $request['owner_id']
+            ]);
+            foreach ($files as $file) {
+                $path = '';
+                $cater = '';
+                $path = $file->getClientOriginalName();
+                if (strpos($path, '.jpg') !== false) {
+                    $cater = '.jpg';
+                } elseif (strpos($path, '.png') !== false ){
+                    $cater = '.png';
+                } elseif (strpos($path, '.jpeg') !== false ){
+                    $cater = '.jpeg';
+                } elseif (strpos($path, '.gif') !== false ){
+                    $cater = '.gif';
+                };
+                $path = Hash::make($path);
+                $path = str_replace("/","-",$path);
+                $path = str_replace(".","-",$path);
+                $path = "".$path.$cater;
+                Img::create([
+                    'img_set_id' => $set['id'],
+                    'path' => $path
+                ]);
+                Storage::put("public/imgs/".$path,file_get_contents($file),'public');
+            }
+        endif;
 
-		if ($validation->fails())
-		{
-			return Response::make($validation->errors->first(), 400);
-		}
-
-		$file = Input::file('file');
-
-        $extension = File::extension($file['name']);
-        $directory = path('public').'uploads/'.sha1(time());
-        $filename = sha1(time().time()).".{$extension}";
-
-        $upload_success = Input::upload('file', $directory, $filename);
-
-        if( $upload_success ) {
-        	return Response::json('success', 200);
-        } else {
-        	return Response::json('error', 400);
-        }
+       return back();
 	}
 }

@@ -27,8 +27,8 @@ class Content extends Migration
             $table->string('event_name',200);
             $table->string('event_description',5000);
             $table->unsignedInteger('img_set_id');
-            $table->timestamp('created_at');
-            $table->timestamp('updated_at');
+            $table->dateTime('created_at');
+            $table->dateTime('updated_at');
 
             $table->foreign('id')->references('id')->on('content')
                 ->onDelete('cascade')->onUpdate('cascade');
@@ -41,8 +41,8 @@ class Content extends Migration
             $table->string('activity_name',200);
             $table->string('activity_description',5000);
             $table->unsignedInteger('img_set_id');
-            $table->timestamp('created_at');
-            $table->timestamp('updated_at');
+            $table->dateTime('created_at');
+            $table->dateTime('updated_at');
 
             $table->foreign('id')->references('id')->on('content')
                 ->onDelete('cascade')->onUpdate('cascade');

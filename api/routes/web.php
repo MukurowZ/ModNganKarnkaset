@@ -17,9 +17,14 @@ Route::get('/', function () {
 
 
 Route::get('/event', function () {
-    return view('event');
+    return view('event/event');
 });
 
-Route::get('/create-event', function () {
-    return view('create-event');
+Route::get('/event/create', function () {
+    return view('event/create-event');
 });
+
+Route::get('/event/{id}/edit', function ($id) {
+    return view('event/edit-event',compact('id'));
+});
+

@@ -24,7 +24,7 @@ class ImgTable extends Migration
 
         Schema::create('img', function(Blueprint $table){
             $table->increments('id');
-            $table->unsignedInteger('set_id');
+            $table->unsignedInteger('img_set_id');
             $table->string('path',300);
 
             $table->foreign('set_id')->references('id')->on('img_set')

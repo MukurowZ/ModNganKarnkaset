@@ -6,25 +6,21 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <script src="{{ asset('js/app.js') }}"></script>
         <script type="text/javascript" src="js/app.js"></script>
-        <title>Laravel</title>
-
+        <title>@yield('title')</title>
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-        <link rel="stylesheet" href="/css/app.css">
+        <link href="https://fonts.googleapis.com/css?family=Kanit:400,700|Open+Sans&display=swap&subset=thai" rel="stylesheet">
+
         <!-- Styles -->
+        <link rel="stylesheet" href="/css/app.css">
         <style>
 
         </style>
-    </head>
-    <body>
-        <div id="app">
-            <event-component></event-component>
-        </div>
-
-
-
-
-
-        </div>
-    </body>
-</html>
+</head>
+<body>
+<div id="nav">
+    <navbar-component></navbar-component>
+</div>
+<div class="container">
+    @yield('content')
+</div>
+</body>

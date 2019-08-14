@@ -29,5 +29,4 @@ class Img_set extends Model
     public function getImgIdAttribute() {
         return $this->img()->attributes['imgid'] = $this->img;
     }
-
 }

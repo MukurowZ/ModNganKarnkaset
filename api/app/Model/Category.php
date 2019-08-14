@@ -12,18 +12,22 @@ class Category extends Model
 
     protected $table = "category";
     protected $appends = [
-
+        'subCategory'
     ];
 
     public $incrementing = true;
     public $timestamps = false;
 
     protected $hidden = [
-
+        'head'
     ];
 
-    public function category(){
-        return $this->belongsTo('App\Model\Category','type','name');
+    public function subCategory(){
+        return $this->hasMany('App\Model\Category','id','head');
+    }
+
+    public function getSubCategoryAttribute(){
+        return $this->attributes['subCategory'] = Category::where('category.head',$this->attributes['id'])->get();
     }
 
 }
