@@ -14,8 +14,14 @@ Vue.use(BootstrapVue);
 // Vue.use(VueSelectImage);
 window.Vue = require('vue');
 window.axios = require('axios');
-window.dropzone = require('./dropzone.js');
 
+import { library }  from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+
+library.add(fas,fab);
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -30,6 +36,8 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
+
+Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 // Event component
 Vue.component('event-component',require('./components/Event/EventComponent.vue').default);
