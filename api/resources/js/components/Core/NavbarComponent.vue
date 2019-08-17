@@ -1,5 +1,5 @@
 <template>
-    <div style="font-family: Kanit; ">
+<div style="font-family: Kanit; ">
   <b-navbar toggleable="lg" type="light" style="background-color: #c4e6d2">
     <b-navbar-brand href="/" style="font-weight: 450;">มดงานการเกษตร</b-navbar-brand>
 
@@ -7,22 +7,9 @@
 
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav>
-        <b-nav-item href="/">หน้าหลัก</b-nav-item>
-        <b-nav-item-dropdown text="สินค้า" left>
-          <b-dropdown-item href="#">--</b-dropdown-item>
-          <b-dropdown-item href="#">ES</b-dropdown-item>
-          <b-dropdown-item href="#">RU</b-dropdown-item>
-          <b-dropdown-item href="#">FA</b-dropdown-item>
-        </b-nav-item-dropdown>
-        <b-nav-item-dropdown text="บริการ" left>
-          <b-dropdown-item href="#">--</b-dropdown-item>
-          <b-dropdown-item href="#">ES</b-dropdown-item>
-          <b-dropdown-item href="#">RU</b-dropdown-item>
-          <b-dropdown-item href="#">FA</b-dropdown-item>
-        </b-nav-item-dropdown>
-        <b-nav-item href="/">ติดต่อเรา</b-nav-item>
-
-
+        <b-nav-item href="/">หน้าหลัก <font-awesome-icon :icon="['fas', 'home']" /></b-nav-item>
+        <b-nav-item  href="/product">สินค้า/บริการ <font-awesome-icon :icon="['fas', 'store']" /></b-nav-item>
+        <b-nav-item href="/contact">ติดต่อเรา <font-awesome-icon :icon="['fas', 'phone']" /> </b-nav-item>
       </b-navbar-nav>
 
       <!-- Right aligned nav items -->
@@ -53,20 +40,6 @@
 
 <script>
 export default {
-    data() {
-        return {
-            categories: [],
-            category:{
-                id: '',
-                name: '',
-                head: '',
-            }
-        }
-    },
-    methods: {
-        getAllSet() {
-            // axios.get("").then(response => this.setSetData(response.data));
-        },
-    },
+
 }
 </script>

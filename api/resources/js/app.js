@@ -45,10 +45,11 @@ Vue.component('create-event-component',require('./components/Event/CreateEventCo
 Vue.component('edit-event-component',require('./components/Event/EditEventComponent.vue').default);
 Vue.component('show-event-component',require('./components/Event/ShowEventComponent.vue').default);
 
-Vue.component('navbar-component',require('./components/NavbarComponent.vue').default);
+// Core
+Vue.component('navbar-component',require('./components/Core/NavbarComponent.vue').default);
 
 // Category
-// Vue.component('category-component',require('./components/CategoryComponent.vue').default);
+Vue.component('category-component',require('./components/ServiceAndProduct/CategoryComponent.vue').default);
 
 
 /**
