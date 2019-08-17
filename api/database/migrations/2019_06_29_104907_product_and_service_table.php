@@ -16,7 +16,10 @@ class ProductAndServiceTable extends Migration
         Schema::create('category', function(Blueprint $table){
             $table->increments('id');
             $table->string('name',200);
-            $table->unsignedInteger('head')->nullable();;
+            $table->string('THname',200);
+            $table->unsignedInteger('head')->nullable();
+            $table->tinyInteger('isHead')->default('0');
+
 
             $table->foreign('head')->references('id')->on('category')
                 ->onDelete('restrict')->onUpdate('cascade');

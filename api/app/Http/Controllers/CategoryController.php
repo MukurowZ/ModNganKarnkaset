@@ -17,6 +17,11 @@ class CategoryController extends Controller
         return Category::all();
     }
 
+    public function headIndex()
+    {
+        return Category::get()->where('isHead',1);
+    }
+
     /**
      * Store a newly created resource in storage.
      *

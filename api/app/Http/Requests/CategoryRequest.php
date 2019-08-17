@@ -41,12 +41,16 @@ class CategoryRequest extends FormRequest
             case 'POST':
                 return [
                     'name' => 'required|unique:category,name',
-                    'head' => 'nullable|exists:category,id'
+                    'head' => 'nullable|exists:category,id',
+                    'isHead' => 'nullable',
+                    'THname' => 'required|unique:category,THname'
                 ];
             case 'PUT':
                 return [
                     'name' => 'unique:category,name',
-                    'head' => 'exists:category,id'
+                    'head' => 'exists:category,id',
+                    'isHead' => 'nullable',
+                    'THname' => 'unique:category,THname'
                 ];
         }
     }
