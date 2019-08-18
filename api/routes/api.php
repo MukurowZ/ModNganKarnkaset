@@ -24,6 +24,7 @@ Route::apiResource('activity','ActivityController');
 Route::apiResource('user','UserController');
 Route::apiResource('department','DepartmentController');
 Route::apiResource('category','CategoryController');
+Route::get('/categorhy','CategoryController@headIndex');
 Route::apiResource('contact','Contact_logController');
 Route::apiResource('img_set','Img_setController');
 Route::get('/img/set/{id}','ImgController@get_OneImg');

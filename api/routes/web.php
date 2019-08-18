@@ -28,3 +28,15 @@ Route::get('/event/{id}/edit', function ($id) {
     return view('event/edit-event',compact('id'));
 });
 
+Route::get('/product', function () {
+    return view('product_service/product');
+});
+
+Route::get('/service', function () {
+    return view('product_service/service');
+});
+
+Route::get('/product_service/create', function () {
+    return view('product_service/create-product');
+});
+
