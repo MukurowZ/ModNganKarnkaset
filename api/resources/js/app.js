@@ -5,12 +5,22 @@
  */
 import Vue from 'vue'
 import BootstrapVue from 'bootstrap-vue'
+import VueLazyload from 'vue-lazyload'
+import Multiselect from 'vue-multiselect'
 // import VueSelectImage from 'vue-select-image'
 
 require('./bootstrap');
 // require('vue-select-image/dist/vue-select-image.css')
 
 Vue.use(BootstrapVue);
+Vue.use(VueLazyload, {
+    preLoad: 1.3,
+    error: '../storage/main/warning.svg',
+    loading: '../storage/main/loading.svg',
+    attempt: 1
+  });
+Vue.component('multiselect', Multiselect);
+
 // Vue.use(VueSelectImage);
 window.Vue = require('vue');
 window.axios = require('axios');
@@ -48,8 +58,12 @@ Vue.component('show-event-component',require('./components/Event/ShowEventCompon
 // Core
 Vue.component('navbar-component',require('./components/Core/NavbarComponent.vue').default);
 
-// Category
-Vue.component('category-component',require('./components/ServiceAndProduct/CategoryComponent.vue').default);
+// Img
+Vue.component('img-select-component',require('./components/Img/ImgSelectComponent.vue').default);
+
+// Product & Service
+Vue.component('category-component',require('./components/ServiceAndProduct/ProductComponent.vue').default);
+Vue.component('create-pands-component',require('./components/ServiceAndProduct/CreatePandSComponent.vue').default);
 
 
 /**
