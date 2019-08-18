@@ -3,7 +3,7 @@
 
 @section('content')
 <body>
-<div id="app" class="d-inline-flex">
+<div id="app">
     <create-event-component></create-event-component>
 </div>
 
