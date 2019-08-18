@@ -28,10 +28,10 @@ class ProductAndServiceTable extends Migration
         Schema::create('product', function(Blueprint $table){
             $table->increments('id');
             $table->string('name',200);
-            $table->string('story',2000);
+            $table->string('story',5000);
             $table->decimal('price',8,2);
             $table->unsignedInteger('img_set_id');
-            $table->unsignedInteger('description');
+            $table->string('description',5000);
             $table->string('video',200)->nullable();
             $table->unsignedInteger('type');
             $table->unsignedInteger('owner_id');
@@ -48,10 +48,10 @@ class ProductAndServiceTable extends Migration
         Schema::create('service', function(Blueprint $table){
             $table->increments('id');
             $table->string('name',200);
-            $table->string('story',2000);
+            $table->string('story',5000);
             $table->decimal('price',8,2);
             $table->unsignedInteger('img_set_id');
-            $table->unsignedInteger('description');
+            $table->string('description',5000);
             $table->string('video',200)->nullable();
             $table->unsignedInteger('type');
             $table->unsignedInteger('owner_id');
