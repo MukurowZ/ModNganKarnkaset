@@ -62,18 +62,6 @@ export default {
             description: "",
             img_set: "",
             owner_id: "",
-            sets: [],
-            set: {
-                id: "",
-                name: "",
-                owner_id: "",
-                imgids: [],
-                imgid: {
-                id: "",
-                img_set_id: "",
-                path: ""
-                },
-            },
             // for count character remain
             maxCharacters: 5000,
             limit: 5000,
@@ -92,24 +80,6 @@ export default {
                 owner_id: this.owner_id
             });
         },
-        // getAllSet() {
-        //     axios.get("/api/img_set").then(response => this.setSetData(response.data));
-        // },
-        // setSetData(e) {
-        //     this.sets = e;
-        //     var i = 0;
-        //     var element = '';
-        //     for(element in this.sets){
-        //         this.sets[i].img = '/storage/imgs/' + this.sets[i].imgid[0].path;
-        //         i++;
-        //     }
-        // },
-        // getImg(imgs) {
-        //     if(imgs.length!=0){
-        //         return '/storage/imgs/'+imgs[0].path;
-        //     }
-        //     return '';
-        // },
         customLabel ({ id, name }) {
             return `${id} – ${name}`
         },

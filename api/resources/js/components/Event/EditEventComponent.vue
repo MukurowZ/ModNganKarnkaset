@@ -24,7 +24,7 @@
         <p style="color: red" v-else class="over">You are {{ charactersOver }} characters over the limit.</p>
         </div>
 
-        <img-select-component :img_set="img_set" @clicked="onSelectedImage"></img-select-component>
+        <img-select-component :editId="editId" @clicked="onSelectedImage"></img-select-component>
 
         <div class="form-group d-flex">
         <button class="btn btn-success" v-on:click="editEvent">แก้ไขกิจกรรม</button>
@@ -40,11 +40,12 @@
 export default {
     props:['id'],
     beforeMount() {
-        this.getAllSet();
+
     },
     mounted() {
         this.maxCharacters = this.limit;
         this.getEventData(this.id);
+        // console.log(this.img_set);
     },
     computed: {
         charactersRemaining() {
@@ -74,6 +75,7 @@ export default {
             },
             maxCharacters: 5000,
             limit: 5000,
+            editId: this.id,
         }
     },
     methods: {

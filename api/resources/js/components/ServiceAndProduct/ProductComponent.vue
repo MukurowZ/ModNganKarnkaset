@@ -77,7 +77,6 @@ export default {
         },
         setData(e) {
             this.categorys = e;
-            // console.log(this.categorys);
         },
         getSubCategory(e){
 

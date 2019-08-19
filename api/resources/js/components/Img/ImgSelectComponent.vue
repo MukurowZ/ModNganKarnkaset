@@ -17,13 +17,12 @@
 <script>
 export default {
     props: {
-        img_set: String,
+        editId: String,
     },
-    beforeMount() {
-        this.getAllSet();
-    },
+    beforeMount() {},
     mounted() {
-
+        this.getAllSet();
+        this.removePrime();
     },
     computed: {},
     data() {
@@ -40,7 +39,7 @@ export default {
                     path: ""
                 }
             },
-            img_set: { img: '/storage/main/warning.svg' },
+            img_set: { },
             checker: '',
         }
     },
@@ -72,7 +71,22 @@ export default {
                 this.$emit('clicked', this.img_set.id);
                 this.checker = this.img_set.id;
             }
-        }
+        },
+        removePrime() {
+            var b = this.editId;
+            if(b != null){
+                b = b.replace("'","");
+                b = b.replace("\'\'","");
+                axios.get("/api/img_set/"+b).then(response => this.setImg_setData(response.data));
+            }else return null;
+        },
+        setImg_setData(e){
+            this.img_set = {
+                id: e.id,
+                name: e.name,
+                img: '/storage/imgs/'+e.imgid[0].path
+            }
+        },
     }
 };
 </script>
