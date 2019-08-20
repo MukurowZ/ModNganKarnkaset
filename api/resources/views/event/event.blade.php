@@ -6,13 +6,11 @@
 
 @endsection
 @section('content')
-<html>
 <body>
     <div id="app">
         <event-component></event-component>
     </div>
 </body>
-</html>
 
 <script>
 

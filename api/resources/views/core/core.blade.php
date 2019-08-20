@@ -12,6 +12,7 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="/css/app.css">
+        <link rel="stylesheet" href="/css/component-style.css">
         <style>
 
         </style>
@@ -22,5 +23,8 @@
 </div>
 <div class="container">
     @yield('content')
+</div>
+<div id="foot">
+    <footer-component></footer-component>
 </div>
 </body>
