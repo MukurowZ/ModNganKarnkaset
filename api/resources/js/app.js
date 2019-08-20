@@ -78,5 +78,8 @@ window.onload = function (){
     });
     const nav = new Vue({
         el: '#nav',
-    })
+    });
+    const foot = new Vue({
+        el: '#foot',
+    });
 }
