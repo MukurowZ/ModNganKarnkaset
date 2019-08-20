@@ -1,0 +1,38 @@
+.forum-post:hover {
+  transform: scale(1.025);
+  cursor: pointer;
+}
+
+.event-post {
+  margin-top: 4rem;
+  min-height: 14rem;
+  padding: 1em;
+}
+
+.event-comment {
+  margin: 1rem 0px;
+  /* padding-bottom: 3em; */
+}
+
+.event-comment .card-text {
+  padding-bottom: 3em;
+}
+
+.info-box {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 0.5em;
+  color: rgb(158, 158, 158);
+}
+
+.company-info {
+  text-align: left;
+  color: whitesmoke;
+
+}
+
+.company-contact{
+  color: whitesmoke;
+  text-align: right
+}
