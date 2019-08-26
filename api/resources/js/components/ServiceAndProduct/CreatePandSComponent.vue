@@ -45,14 +45,7 @@
         <br>
         <label>Type</label>
         <br />
-        <label class="typo__label">Type</label>
-        <multiselect v-model="type" :options="options" :custom-label="typeSelectLabel" placeholder="Select one" label="name" track-by="name"></multiselect>
-
-        <input type="text" class="form-control" v-model="type" placeholder="เลือกประเภท"/>
-        <br>
-        <label>Sub type</label>
-        <br />
-        <input type="text" class="form-control" v-model="subType" placeholder="เลือกของสินค้า/บริการ"/>
+        <input type="text" class="form-control" v-model="type" placeholder="ชนิดของสินค้า/บริการ"/>
             <!-- Img_set_id -->
         <br>
         <img-select-component @clicked="onSelectedImage"></img-select-component>
@@ -101,56 +94,45 @@ export default {
             img_set_id: "",
             description: "",
             video: "",
-            subType: "",
+            type: "",
             owner_id: "",
+            sets: [],
+            set: {
+                id: "",
+                name: "",
+                owner_id: "",
+                imgids: [],
+                imgid: {
+                id: "",
+                img_set_id: "",
+                path: ""
+                }
+            },
             // for count character remain
             maxCharacters: 5000,
             limit: 5000,
             maxCharacters2: 5000,
             limit2: 5000,
             // ---------------------------
-            type: '',
-            allCategorys: [],
-            allCategory:{
-                id: '',
-                name: '',
-                head: '',
-                THname: '',
-                isHead: '',
-                subCategorys: [],
-            },
-            subCategory: {
-                id: '',
-                name: '',
-                head: '',
-                THname: '',
-                isHead: '',
-            },
-            allType: [],
-            subType: [],
         }
     },
     methods: {
-        typeSelectLabel({ id, name }) {
-
-        },
-        subTypeSelectLabel() {
-
-        },
         onSelectedImage (value) {
             this.img_set = value
         },
         addNewEvent() {
-            axios.post("/api/product", {
+            axios.post("/api/event", {
                 event_name: this.name,
-                story: this.story,
-                price: this.price,
-                description: this.description,
+                event_description: this.description,
                 img_set_id: this.img_set,
-                video: this.video,
-                owner_id: this.owner_id,
-                type: this.subType
+                owner_id: this.owner_id
             });
+        },
+        getAllSet() {
+            axios.get("/api/img_set").then(response => this.setSetData(response.data));
+        },
+        customLabel ({ id, name }) {
+            return `${id} – ${name}`
         },
         isOver(e) {
             if(e=='story') return this.charactersRemaining < 0;
@@ -160,12 +142,6 @@ export default {
         getPlaceHolder(e){
             if(e=='story') return 'ความเป็นมาของสินค้า';
             else if(e=='description') return 'คำอธิบายสินค้า';
-        },
-        getAllType() {
-            axios.get("/api/hcategory").then(response => this.setAllType(response.data));
-        },
-        setAllType(e){
-            this.allCategorys = e;
         },
     }
 };
