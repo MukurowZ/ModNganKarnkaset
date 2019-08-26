@@ -1,6 +1,15 @@
+.forum-post{
+  min-height: 230px;
+} 
+
 .forum-post:hover {
   transform: scale(1.025);
   cursor: pointer;
+}
+
+.forum-post img{
+  position: absolute;
+  padding: 0.5em;
 }
 
 .event-post {

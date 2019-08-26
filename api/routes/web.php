@@ -20,6 +20,10 @@ Route::get('/event', function () {
     return view('event/event');
 });
 
+Route::get('/view_event', function () {
+    return view('event/show-event');
+});
+
 Route::get('/event/create', function () {
     return view('event/create-event');
 });
