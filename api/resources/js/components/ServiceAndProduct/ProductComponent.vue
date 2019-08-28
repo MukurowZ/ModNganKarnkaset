@@ -30,9 +30,14 @@
                 </div>
             </div>
             <div class="col mx-md-12 mx-auto">
-            <div class="align-self-start p-2  bd-highlight rounded-bottom border border-success">
-                <div></div>
-            </div>
+                <div class="align-self-start p-2  bd-highlight rounded-bottom border border-success">
+                    <div v-for="product in products" v-bind:key="product.id" class="d-flex flex-wrap">
+                        <img height="100px" v-lazy="fullPath(product.img_set_id)" />
+                        {{ product.name }}
+                        {{ product.price }}
+                        {{ product.type }}
+                    </div>
+                </div>
             </div>
         </div>
         </div>
@@ -42,6 +47,7 @@
 <script>
 export default {
     mounted() {
+        this.getCategory();
         this.getProduct();
     },
     data() {
@@ -63,20 +69,51 @@ export default {
             },
             products: [],
             product:{
-
+                id: '',
+                name: '',
+                story: '',
+                price: '',
+                img_set_id: '',
+                description: '',
+                video: '',
+                type: '',
+                owner_id: '',
             },
             services: [],
             service: {
-
+                id: '',
+                name: '',
+                stroy: '',
+                price: '',
+                img_set_id: '',
+                description: '',
+                video: '',
+                type: '',
+                owner_id: '',
             },
         }
     },
     methods: {
-        getProduct() {
-            axios.get("/api/hcategory").then(response => this.setData(response.data));
+        getCategory() {
+            axios.get("/api/hcategory").then(response => this.setData(response.data,'category'));
         },
-        setData(e) {
-            this.categorys = e;
+        getProduct(){
+            axios.get("/api/product").then(response => this.setData(response.data,'product'));
+        },
+        setData(e,f) {
+            switch(f){
+                case 'category':
+                    this.categorys = e;
+                    break;
+                case 'product':
+                    e.forEach(a => {
+                        axios.get("/api/img/set/" + a.img_set_id).then(response => {
+                            a.img_set_id = response.data.path;
+                        });
+                    });
+                    this.products = e;
+                    break;
+            }
         },
         getSubCategory(e){
 
@@ -86,6 +123,12 @@ export default {
         },
         getLink2(e){
             return '/product/' + e.toLowerCase();
+        },
+        fullPath(e) {
+            if (e != null) {
+                return "/storage/imgs/" + e;
+            }
+            return "";
         },
 
     },

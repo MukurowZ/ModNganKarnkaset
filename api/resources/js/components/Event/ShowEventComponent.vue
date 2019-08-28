@@ -10,7 +10,7 @@
                 <div class="column" >
                   <div class="row">
                     <div class="col-md-3">
-                      <img height="200px" :src="fullPath(event.img_set_id)" />
+                      <img v-lazy="fullPath(event.img_set_id)" height="200px" />
                     </div>
                     <div class="col-md-9">
                       <h4 class="card-title mb-2">Card title{{event.event_name}}</h4>
