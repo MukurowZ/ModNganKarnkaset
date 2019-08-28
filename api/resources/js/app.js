@@ -19,7 +19,7 @@ Vue.use(VueLazyload, {
     loading: '../storage/main/loading.svg',
     attempt: 1
   });
-Vue.component('multiselect', Multiselect);
+
 
 // Vue.use(VueSelectImage);
 window.Vue = require('vue');
@@ -48,6 +48,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);
+Vue.component('multiselect', Multiselect);
 
 // Event component
 Vue.component('event-component',require('./components/Event/EventComponent.vue').default);
@@ -65,6 +66,7 @@ Vue.component('img-select-component',require('./components/Img/ImgSelectComponen
 // Product & Service
 Vue.component('category-component',require('./components/ServiceAndProduct/ProductComponent.vue').default);
 Vue.component('create-pands-component',require('./components/ServiceAndProduct/CreatePandSComponent.vue').default);
+Vue.component('view-pands-component',require('./components/ServiceAndProduct/ViewComponent.vue').default);
 
 
 /**

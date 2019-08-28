@@ -10,5 +10,4 @@
 @include('../core/core_upload')
 
 </body>
-</html>
 @endsection

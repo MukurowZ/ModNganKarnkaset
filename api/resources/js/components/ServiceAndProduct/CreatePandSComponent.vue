@@ -43,16 +43,32 @@
         <input type="text" class="form-control" v-model="video" placeholder="วิดิโอ"/>
             <!-- Type -->
         <br>
-        <label>Type</label>
+        <label>Category</label>
+        <div v-on:click="getSubCategory()">
+        <select class="form-control" id="categorySelecter" v-model="type">
+            <option value="" disabled selected>{{ getPlaceHolder("category") }}</option>
+            <option v-for="category in allCategorys" v-bind:key="category.id" :value="getObject(category.name,category.id)">
+                {{ category.name }}
+            </option>
+        </select>
+        </div>
+        <br>
+        <label>Sub Category</label>
+        <select class="form-control" id="subCategorySelect" v-model="subType" >
+            <option value="" disabled selected>{{ getPlaceHolder("subCategory") }}</option>
+            <option v-for="category in subCategorys" v-bind:key="category.id" :value="category.id">
+                {{ category.name }}
+            </option>
+        </select>
         <br />
-        <input type="text" class="form-control" v-model="type" placeholder="ชนิดของสินค้า/บริการ"/>
             <!-- Img_set_id -->
         <br>
+
         <img-select-component @clicked="onSelectedImage"></img-select-component>
 
         <div class="form-group d-flex">
-        <button class="btn btn-success"  v-on:click="addNewEvent()">เพิ่มสินค้า / บริการ</button>
-        <button class="btn btn-outline-secondary" style="margin-left:5px" onclick="/event">ยกเลิก</button>
+        <button class="btn btn-success" v-on:click="addNewProduct_Service()">เพิ่มสินค้า / บริการ</button>
+        <button class="btn btn-outline-secondary" style="margin-left:5px" onclick="/product">ยกเลิก</button>
         </div>
     </form>
     </div>
@@ -62,9 +78,10 @@
 <script>
 export default {
     beforeMount() {
-        this.getAllSet();
+
     },
     mounted() {
+        this.getAllCategory();
         // for count character remain
         this.maxCharacters = this.limit;
         this.maxCharacters2 - this.limit2;
@@ -91,7 +108,7 @@ export default {
             name: "",
             story: "",
             price: "",
-            img_set_id: "",
+            img_set: "",
             description: "",
             video: "",
             type: "",
@@ -114,16 +131,36 @@ export default {
             maxCharacters2: 5000,
             limit2: 5000,
             // ---------------------------
+            type: '',
+            allCategorys: [],
+            allCategory:{
+                id: '',
+                name: '',
+                head: '',
+                THname: '',
+                isHead: '',
+            },
+            subCategorys: [],
+            subCategory: {
+                id: '',
+                name: '',
+                head: '',
+                THname: '',
+                isHead: '',
+            },
+            oldType: '',
         }
     },
     methods: {
         onSelectedImage (value) {
             this.img_set = value
         },
-        addNewEvent() {
-            axios.post("/api/event", {
-                event_name: this.name,
-                event_description: this.description,
+        addNewProduct_Service() {
+            axios.post("/api/"+this.type.name.toLowerCase(), {
+                name: this.name,
+                story: this.story,
+                price: this.price,
+                description: this.description,
                 img_set_id: this.img_set,
                 owner_id: this.owner_id
             });
@@ -140,9 +177,41 @@ export default {
             else return '';
         },
         getPlaceHolder(e){
-            if(e=='story') return 'ความเป็นมาของสินค้า';
-            else if(e=='description') return 'คำอธิบายสินค้า';
+            switch(e){
+                case 'story':
+                    return 'ความเป็นมาของสินค้า';
+                case 'description':
+                    return 'คำอธิบายสินค้า';
+                case 'subCategory':
+                    return 'โปรดเลือก Category ใหญ่ก่อน';
+                case 'category':
+                    return 'โปรดเลือก Category';
+            }
         },
+        getAllCategory() {
+            axios.get("/api/hcategory").then(response => this.setAllCategory(response.data));
+        },
+        setAllCategory(e){
+            this.allCategorys = e;
+        },
+        getSubCategory() {
+            if(this.type.id == null) {}
+            else if (this.type.id == this.oldType) {}
+            else {
+                this.oldType = this.type.id;
+                axios.get("/api/category/"+this.type.id).then(response => this.setSubCategory(response.data));
+            }
+        },
+        setSubCategory(e){
+            if(this.subCategorys == e) {}
+            else this.subCategorys = e.subCategory;
+        },
+        getObject(e, f){
+            return {
+                name: e,
+                id: f
+            };
+        }
     }
 };
 </script>

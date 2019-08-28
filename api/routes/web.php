@@ -36,8 +36,8 @@ Route::get('/product', function () {
     return view('product_service/product');
 });
 
-Route::get('/service', function () {
-    return view('product_service/service');
+Route::get('/product/{id}', function () {
+    return view('product_service/view-product',compact('id'));
 });
 
 Route::get('/product_service/create', function () {

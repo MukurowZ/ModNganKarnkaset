@@ -14,7 +14,7 @@
           <h3>Contact Us</h3>
           <p>
             Something about company. Something about comp omething about company. Something about company.
-            Something about company. Something about company. Something about company. Something about company.
+            Something about company. Something about company. Something about company. Something about Company.
           </p>
         </div>
       </div>

@@ -73,7 +73,7 @@ export default {
     },
     methods: {
         getProduct() {
-            axios.get("/api/categorhy").then(response => this.setData(response.data));
+            axios.get("/api/hcategory").then(response => this.setData(response.data));
         },
         setData(e) {
             this.categorys = e;

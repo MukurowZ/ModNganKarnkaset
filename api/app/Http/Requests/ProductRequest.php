@@ -46,7 +46,7 @@ class ProductRequest extends FormRequest
                     'img_set_id' => 'required|exists:img_set,id',
                     'description' => 'required',
                     'video' => 'required',
-                    'type' => 'required',
+                    'type' => 'required|exists:category,id',
                     'owner_id' => 'required|exists:user,id'
                 ];
             case 'PUT':
@@ -57,7 +57,7 @@ class ProductRequest extends FormRequest
                     'img_set_id' => 'exists:img_set,id',
                     'description' => '',
                     'video' => '',
-                    'type' => '',
+                    'type' => 'exists:category,id',
                     'owner_id' => 'exists:user,id'
                 ];
         }

@@ -6,7 +6,8 @@
 <div id="app">
     <create-pands-component></create-pands-component>
 </div>
-
+@include('../core/core_upload')
 </body>
 </html>
+
 @endsection
