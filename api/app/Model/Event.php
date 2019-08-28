@@ -12,7 +12,7 @@ class Event extends Model
     ];
     protected $table = "event";
     protected $appends = [
-
+        'contentDetail'
     ];
 
     public $incrementing = false;
@@ -24,5 +24,13 @@ class Event extends Model
 
     public function contents(){
         return $this->belongsTo('App\Model\Content','id','id');
+    }
+
+    public function contentDetail(){
+        return $this->hasOne('App\Model\Content','id','id');
+    }
+
+    public function getContentDetailAttribute(){
+        return $this->attributes['contentDetail'] = Content::where('content.id',$this->attributes['id'])->get();
     }
 }

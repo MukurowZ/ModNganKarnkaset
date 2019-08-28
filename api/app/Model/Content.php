@@ -12,7 +12,7 @@ class Content extends Model
 
     protected $table = "content";
     protected $appends = [
-
+        'ownerName'
     ];
 
     public $incrementing = true;
@@ -21,4 +21,12 @@ class Content extends Model
     protected $hidden = [
 
     ];
+
+    public function ownerName(){
+        return $this->hasOne('App\Model\User','id','id');
+    }
+
+    public function getOwnerNameAttribute(){
+        return $this->attributes['ownerName'] = User::where('user.id',$this->attributes['owner_id'])->get('user.name');
+    }
 }

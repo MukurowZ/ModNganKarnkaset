@@ -5,7 +5,7 @@
         <div class="card">
           <div class="card-header">Event Component</div>
 
-          <!-- <table>
+          <table>
             <tr v-for="event in events" v-bind:key="event.id">
               <td>{{event.id}}</td>
               <td>{{event.event_name}}</td>
@@ -31,9 +31,9 @@
                 >ลบกิจกรรม</b-button>
               </td>
             </tr>
-          </table>-->
+          </table>
 
-          <div class="card" style="width: 100%;">
+          <!-- <div class="card" style="width: 100%;">
             <ul class="list-group list-group-flush">
               <li class="list-group-item forum-post">
                 <div class="column">
@@ -61,7 +61,7 @@
                 </div>
               </li>
             </ul>
-          </div>
+          </div> -->
 
           <button
             onclick="window.location.href='/event/create'"
