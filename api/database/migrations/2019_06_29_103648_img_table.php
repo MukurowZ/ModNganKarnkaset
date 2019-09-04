@@ -27,7 +27,7 @@ class ImgTable extends Migration
             $table->unsignedInteger('img_set_id');
             $table->string('path',300);
 
-            $table->foreign('set_id')->references('id')->on('img_set')
+            $table->foreign('img_set_id')->references('id')->on('img_set')
                 ->onDelete('cascade')->onUpdate('cascade');
         });
     }
@@ -40,6 +40,6 @@ class ImgTable extends Migration
     public function down()
     {
         Schema::dropIfExists('img_set');
-        Schema::dropIfExists('set');
+        Schema::dropIfExists('img');
     }
 }
