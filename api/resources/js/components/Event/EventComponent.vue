@@ -32,37 +32,6 @@
               </td>
             </tr>
           </table>
-
-          <!-- <div class="card" style="width: 100%;">
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item forum-post">
-                <div class="column">
-                  <div class="row">
-                    <div class="col-md-3">
-                      <img height="200px" :src="fullPath(event.img_set_id)" />
-                    </div>
-                    <div class="col-md-9">
-                      <h4 class="card-title mb-2">Card title{{event.event_name}}</h4>
-                      <p class="card-text">
-                        Some quick example text to build on the card title and make up the bulk of the card's
-                        content.{{event.event_description}}
-                      </p>
-                    </div>
-                    <div class="info-box">
-                        <h6>
-                          User_Name
-                          <br />
-                          <small>Created on {{event.created_at}}</small>
-                          <br />
-                          <small>Last Updated {{event.updated_at}}</small>
-                        </h6>
-                      </div>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div> -->
-
           <button
             onclick="window.location.href='/event/create'"
             class="btn btn-outline-primary"

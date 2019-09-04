@@ -66,7 +66,7 @@ Vue.component('img-select-component',require('./components/Img/ImgSelectComponen
 // Product & Service
 Vue.component('category-component',require('./components/ServiceAndProduct/ProductComponent.vue').default);
 Vue.component('create-pands-component',require('./components/ServiceAndProduct/CreatePandSComponent.vue').default);
-Vue.component('view-pands-component',require('./components/ServiceAndProduct/ViewComponent.vue').default);
+Vue.component('view-p-component',require('./components/ServiceAndProduct/ViewPComponent.vue').default);
 
 
 /**

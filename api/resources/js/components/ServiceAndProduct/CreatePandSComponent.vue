@@ -112,6 +112,7 @@ export default {
             description: "",
             video: "",
             type: "",
+            subType: "",
             owner_id: "",
             sets: [],
             set: {
@@ -161,9 +162,12 @@ export default {
                 story: this.story,
                 price: this.price,
                 description: this.description,
+                type: this.subType,
+                video: this.video,
                 img_set_id: this.img_set,
                 owner_id: this.owner_id
             });
+            console.log("/api/"+this.type.name.toLowerCase());
         },
         getAllSet() {
             axios.get("/api/img_set").then(response => this.setSetData(response.data));

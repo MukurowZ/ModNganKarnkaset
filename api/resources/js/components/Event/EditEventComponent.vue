@@ -7,15 +7,15 @@
     <br />
     <form action="/event">
         <div class="form-group">
-        <div class="form-group">
-        <label>EVENT OWNER:</label>
-        <br />
-        <input type="text" class="form-control" v-model="owner_id" />
-        </div>
+            <div class="form-group">
+            <label>EVENT OWNER:</label>
+            <br />
+            <input type="text" class="form-control" v-model="owner_id" />
+            </div>
 
-        <label>EVENT NAME:</label>
-        <br />
-        <input type="text" class="form-control" v-model="name" placeholder="โปรดระบุชื่อกิจกรรม"/>
+            <label>EVENT NAME:</label>
+            <br />
+            <input type="text" class="form-control" v-model="name" placeholder="โปรดระบุชื่อกิจกรรม"/>
         </div>
         <div class="form-group">
         <label>EVENT DESCRIPTION:</label>
