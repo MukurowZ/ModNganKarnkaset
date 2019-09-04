@@ -1,47 +1,62 @@
-.forum-post{
-  min-height: 230px;
-} 
-
-.forum-post:hover {
-  transform: scale(1.025);
-  cursor: pointer;
+.forum-post {
+    min-height: 230px;
 }
 
-.forum-post img{
-  position: absolute;
-  padding: 0.5em;
+.forum-post:hover {
+    transform: scale(1.025);
+    cursor: pointer;
+}
+
+.forum-post img {
+    position: absolute;
+    padding: 0.5em;
 }
 
 .event-post {
-  margin-top: 4rem;
-  min-height: 14rem;
-  padding: 1em;
+    margin-top: 4rem;
+    min-height: 14rem;
+    padding: 1em;
 }
 
 .event-comment {
-  margin: 1rem 0px;
-  /* padding-bottom: 3em; */
+    margin: 1rem 0px;
+    /* padding-bottom: 3em; */
 }
 
 .event-comment .card-text {
-  padding-bottom: 3em;
+    padding-bottom: 3em;
 }
 
 .info-box {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  padding: 0.5em;
-  color: rgb(158, 158, 158);
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 0.5em;
+    color: rgb(158, 158, 158);
 }
 
 .company-info {
-  text-align: left;
-  color: whitesmoke;
+    text-align: left;
+    color: whitesmoke;
 
 }
 
-.company-contact{
-  color: whitesmoke;
-  text-align: right
+.company-contact {
+    color: whitesmoke;
+    text-align: right
+}
+
+.product-card {
+    width: 18rem;
+}
+
+.product-card img {
+    width: 15rem;
+    height: 10rem;
+}
+
+.price{
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: end;
 }
