@@ -31,10 +31,12 @@
                 <div class="align-self-start p-2 bd-highlight rounded-bottom border border-primary">
                     <div class="list-group">
                         <div v-for="category in categorys" v-bind:key="category.id">
-                        <a :href="getLink(category.name)" class="list-group-item list-group-item-action active">
-                            {{category.name}}
-                            <a :href="getLink2(category.name)" class="list-group-item list-group-item-action active">
-                        </a>
+                            <a :href="getLink(category.name)" class="list-group-item list-group-item-action">
+                                {{category.name}}
+                            </a>
+                            <div v-for="subCategory in category" v-bind:key="subCategory.id">
+                                {{subCategory.name}}
+                            </div>
                         </div>
                     </div>
                 </div>
