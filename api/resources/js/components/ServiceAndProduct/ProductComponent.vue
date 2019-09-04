@@ -33,6 +33,7 @@
                         <div v-for="category in categorys" v-bind:key="category.id">
                         <a :href="getLink(category.name)" class="list-group-item list-group-item-action active">
                             {{category.name}}
+                            <a :href="getLink2(category.name)" class="list-group-item list-group-item-action active">
                         </a>
                         </div>
                     </div>
