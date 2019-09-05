@@ -13,10 +13,9 @@
                       <img v-lazy="fullPath(event.img_set_id)" height="200px" />
                     </div>
                     <div class="col-md-9">
-                      <h4 class="card-title mb-2">Card title{{event.event_name}}</h4>
+                      <h4 class="card-title mb-2">{{event.event_name}}</h4>
                       <p class="card-text">
-                        Some quick example text to build on the card title and make up the bulk of the card's
-                        content.{{event.event_description}}
+                        {{event.event_description}}
                         <a style="color: gray" :href="getEventUrl(event.id)">อ่านต่อ</a>
                       </p>
                     </div>
@@ -68,7 +67,7 @@ export default {
         axios.get("/api/img/set/" + a.img_set_id).then(response => {
           a.img_set_id = response.data.path;
         });
-        a.event_description = a.event_description.substring(0,500)+"...";
+        a.event_description = a.event_description.substring(0,300)+"...";
         a.owner_name = a.contentDetail[0].ownerName[0].name;
       });
       this.events = e;

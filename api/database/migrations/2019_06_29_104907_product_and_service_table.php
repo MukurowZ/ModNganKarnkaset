@@ -32,7 +32,7 @@ class ProductAndServiceTable extends Migration
             $table->decimal('price',8,2);
             $table->unsignedInteger('img_set_id');
             $table->string('description',5000);
-            $table->string('video',200)->nullable();
+            $table->string('video',500)->nullable();
             $table->unsignedInteger('type');
             $table->unsignedInteger('owner_id');
 
@@ -52,7 +52,7 @@ class ProductAndServiceTable extends Migration
             $table->decimal('price',8,2);
             $table->unsignedInteger('img_set_id');
             $table->string('description',5000);
-            $table->string('video',200)->nullable();
+            $table->string('video',500)->nullable();
             $table->unsignedInteger('type');
             $table->unsignedInteger('owner_id');
 

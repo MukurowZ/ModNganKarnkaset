@@ -27,6 +27,7 @@ class ServiceController extends Controller
     {
         $validated = $request->validated();
         return Service::create($validated);
+        return view('service');
     }
 
     /**

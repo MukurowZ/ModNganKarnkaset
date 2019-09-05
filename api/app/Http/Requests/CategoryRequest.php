@@ -48,7 +48,7 @@ class CategoryRequest extends FormRequest
             case 'PUT':
                 return [
                     'name' => 'unique:category,name',
-                    'head' => 'exists:category,id',
+                    'head' => 'nullable',
                     'isHead' => 'nullable',
                     'THname' => 'unique:category,THname'
                 ];
