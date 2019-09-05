@@ -27,25 +27,65 @@
       </b-navbar>
 
       <!-- PRODUCT CARD -->
-      <div class="card my-4 col-md-3 product-card">
-        <img src class="card-img-top mx-auto mt-2" alt="product img" />
-        <div class="card-body">
-          <h5 class="card-title">
-            Product Name{{ product.name }}
-            <br />
-            <small style="color: rgb(158, 158, 158)">Catagory{{ category.name }}</small>
-            <br>
-            <small style="color: rgb(158, 158, 158)">Type{{ category.type }}</small>
-          </h5>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of
-            the card's content.
-          </p>
-          <div class="price">
-              19.99${{ product.price }}
+      <div class="container">
+        <div class="row">
+          <div class="card my-4 col-md-3 product-card">
+            <img src class="card-img-top mx-auto mt-2" alt="product img" />
+            <div class="card-body">
+              <h5 class="card-title">
+                Product Name{{ product.name }}
+                <br />
+                <small style="color: rgb(158, 158, 158)">Catagory{{ category.name }}</small>
+                <br />
+                <small style="color: rgb(158, 158, 158)">Type{{ category.type }}</small>
+              </h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up the
+                bulk of
+                the card's content.
+              </p>
+              <div class="price">19.99${{ product.price }}</div>
+              <a href="#" class="btn btn-primary">Put in cart</a>
+            </div>
           </div>
-          <a href="#" class="btn btn-primary">Put in cart</a>
+          <div class="card my-4 col-md-3 product-card">
+            <img src class="card-img-top mx-auto mt-2" alt="product img" />
+            <div class="card-body">
+              <h5 class="card-title">
+                Product Name{{ product.name }}
+                <br />
+                <small style="color: rgb(158, 158, 158)">Catagory{{ category.name }}</small>
+                <br />
+                <small style="color: rgb(158, 158, 158)">Type{{ category.type }}</small>
+              </h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up the
+                bulk of
+                the card's content.
+              </p>
+              <div class="price">19.99${{ product.price }}</div>
+              <a href="#" class="btn btn-primary">Put in cart</a>
+            </div>
+          </div>
+          <div class="card my-4 col-md-3 product-card">
+            <img src class="card-img-top mx-auto mt-2" alt="product img" />
+            <div class="card-body">
+              <h5 class="card-title">
+                Product Name{{ product.name }}
+                <br />
+                <small style="color: rgb(158, 158, 158)">Catagory{{ category.name }}</small>
+                <br />
+                <small style="color: rgb(158, 158, 158)">Type{{ category.type }}</small>
+              </h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up the
+                bulk of
+                the card's content.
+              </p>
+              <div class="price">19.99${{ product.price }}</div>
+              <a href="#" class="btn btn-primary">Put in cart</a>
+            </div>
+          </div>
         </div>
       </div>
       <!-- PRODUCT CARD -->
