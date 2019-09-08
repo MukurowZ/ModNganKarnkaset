@@ -38,7 +38,7 @@ Route::get('/product', function () {
 
 // FOR TESTING PURPOSE
 Route::get('/product/test', function () {
-    return view('product_service/view-p-img');
+    return view('product_service/test');
 });
 
 Route::get('/product/{id}', function ($id) {

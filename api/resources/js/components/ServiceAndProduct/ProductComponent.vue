@@ -88,7 +88,7 @@
           </div>
         </div>
       </div>
-      <!-- PRODUCT CARD -->
+      <!-- END PRODUCT CARD -->
       <div>
         <div class="col mx-md-4 mx-auto">
           <div class="align-self-start p-2 bd-highlight rounded-bottom border border-primary">
