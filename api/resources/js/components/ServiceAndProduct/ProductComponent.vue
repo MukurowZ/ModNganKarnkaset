@@ -1,30 +1,30 @@
 <template>
   <div style="font-family: Kanit;">
-    <br/>
+    <br />
     <div class="mx-auto">
-        <b-navbar
-            toggleable="lg"
-            type="light"
-            style="background-color: white"
-            class="rounded-top border border-danger"
-        >
+      <b-navbar
+        toggleable="lg"
+        type="light"
+        style="background-color: white"
+        class="rounded-top border border-danger"
+      >
         <b-navbar-brand style="font-weight: 450;">สินค้า</b-navbar-brand>
 
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
         <b-collapse id="nav-collapse" is-nav>
           <!-- Right aligned nav items -->
-            <b-navbar-nav class="ml-auto">
+          <b-navbar-nav class="ml-auto">
             <b-nav-form>
-                <b-form-input size="sm" class="mr-sm-2" placeholder="ค้นหาสินค้า"></b-form-input>
-                <b-button size="sm" class="my-2 my-sm-0" type="submit">
-                    ค้นหา
+              <b-form-input size="sm" class="mr-sm-2" placeholder="ค้นหาสินค้า"></b-form-input>
+              <b-button size="sm" class="my-2 my-sm-0" type="submit">
+                ค้นหา
                 <font-awesome-icon :icon="['fas', 'search']" />
-                </b-button>
+              </b-button>
             </b-nav-form>
-            </b-navbar-nav>
+          </b-navbar-nav>
         </b-collapse>
-        </b-navbar>
+      </b-navbar>
 
       <!-- PRODUCT CARD -->
       <div class="container">
@@ -89,50 +89,47 @@
         </div>
       </div>
       <!-- PRODUCT CARD -->
-        <div>
-            <div class="col mx-md-4 mx-auto">
-                <div class="align-self-start p-2 bd-highlight rounded-bottom border border-primary">
-                    <div class="list-group">
-                        <div v-for="category in categorys" v-bind:key="category.id">
-                            <a :href="getLink(category.name)" class="list-group-item list-group-item-action">
-                                {{category.name}}
-                            </a>
-                            <div v-for="subCategory in category" v-bind:key="subCategory.id">
-                                {{subCategory.name}}
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      <div>
+        <div class="col mx-md-4 mx-auto">
+          <div class="align-self-start p-2 bd-highlight rounded-bottom border border-primary">
+            <div class="list-group">
+              <div v-for="category in categorys" v-bind:key="category.id">
+                <a
+                  :href="getLink(category.name)"
+                  class="list-group-item list-group-item-action"
+                >{{category.name}}</a>
+                <div
+                  v-for="subCategory in category"
+                  v-bind:key="subCategory.id"
+                >{{subCategory.name}}</div>
+              </div>
             </div>
-
-            </div>
-            <div class="col mx-md-12 mx-auto">
-                <div class="align-self-start p-2 bd-highlight rounded-bottom border border-success">
-                    <div v-for="product in products" v-bind:key="product.id" class="d-flex flex-wrap">
-                        <div class="card my-4 col-md-3 product-card">
-                        <img v-lazy="fullPath(product.img_set_id)" class="card-img-top mx-auto mt-2" alt="product img" />
-                        <div class="card-body">
-                        <h5 class="card-title">
-                            Product Name{{ product.name }}
-                            <br />
-                            <small style="color: rgb(158, 158, 158)">Catagory: {{ category.name }}</small>
-                            <br>
-                            <small style="color: rgb(158, 158, 158)">Type: {{ category.type }}</small>
-                        </h5>
-                        <p class="card-text">
-                            {{ product.description }}
-                        </p>
-                        <div class="price">
-                            {{ product.price }}
-                        </div>
-                        <a v-on:click="getUrl(product.id)" class="btn btn-primary">More detail</a>
-                        </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
+      </div>
+      <div class="col mx-md-12 mx-auto">
+        <div class="align-self-start p-2 bd-highlight rounded-bottom border border-success">
+          <div v-for="product in products" v-bind:key="product.id" class="d-flex flex-wrap">
+            <div class="card my-4 col-md-3 product-card">
+              <img v-lazy="fullPath(product.img_set_id)" class="card-img-top mx-auto mt-2" alt="product img"/>
+              <div class="card-body">
+                <h5 class="card-title">
+                  Product Name{{ product.name }}
+                  <br />
+                  <small style="color: rgb(158, 158, 158)">Catagory: {{ category.name }}</small>
+                  <br />
+                  <small style="color: rgb(158, 158, 158)">Type: {{ category.type }}</small>
+                </h5>
+                <p class="card-text">{{ product.description }}</p>
+                <div class="price">{{ product.price }}</div>
+                <a v-on:click="getUrl(product.id)" class="btn btn-primary">More detail</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
@@ -210,11 +207,11 @@ export default {
           break;
       }
     },
-    getUrl(e){
-        if (e!=null){
-            window.location.href = "/product/"+e;
-        }
-        return "";
+    getUrl(e) {
+      if (e != null) {
+        window.location.href = "/product/" + e;
+      }
+      return "";
     },
     getSubCategory(e) {},
     getLink(e) {

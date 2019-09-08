@@ -29,18 +29,22 @@ Route::get('/event/create', function () {
 });
 
 Route::get('/event/{id}/edit', function ($id) {
-    return view('event/edit-event',compact('id'));
+    return view('event/edit-event', compact('id'));
 });
 
 Route::get('/product', function () {
     return view('product_service/product');
 });
 
+// FOR TESTING PURPOSE
+Route::get('/product/test', function () {
+    return view('product_service/view-p-img');
+});
+
 Route::get('/product/{id}', function ($id) {
-    return view('product_service/view-product',compact('id'));
+    return view('product_service/view-product', compact('id'));
 });
 
 Route::get('/product_service/create', function () {
     return view('product_service/create-product');
 });
-

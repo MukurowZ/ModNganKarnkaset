@@ -7,6 +7,7 @@ import Vue from 'vue'
 import BootstrapVue from 'bootstrap-vue'
 import VueLazyload from 'vue-lazyload'
 import Multiselect from 'vue-multiselect'
+import ProductCarousel from 'vue-product-carousel'
 // import VueSelectImage from 'vue-select-image'
 
 require('./bootstrap');
@@ -67,6 +68,7 @@ Vue.component('img-select-component',require('./components/Img/ImgSelectComponen
 Vue.component('category-component',require('./components/ServiceAndProduct/ProductComponent.vue').default);
 Vue.component('create-pands-component',require('./components/ServiceAndProduct/CreatePandSComponent.vue').default);
 Vue.component('view-p-component',require('./components/ServiceAndProduct/ViewPComponent.vue').default);
+Vue.component('view-p-img',require('./components/ServiceAndProduct/ProductImageComponent.vue').default);
 
 
 /**
