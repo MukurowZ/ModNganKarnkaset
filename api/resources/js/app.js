@@ -50,6 +50,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.component('multiselect', Multiselect);
+Vue.component('ProductCarousel', ProductCarousel);
 
 // Event component
 Vue.component('event-component',require('./components/Event/EventComponent.vue').default);
