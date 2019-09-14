@@ -48,3 +48,7 @@ Route::get('/product/{id}', function ($id) {
 Route::get('/product_service/create', function () {
     return view('product_service/create-product');
 });
+
+Route::get('/contact', function () {
+    return view('contact/contact_form');
+});

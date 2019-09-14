@@ -5,7 +5,7 @@
     <h2>Edit Event</h2>
     <br />
     <br />
-    <form action="/event">
+    <form action="/event" method="post">
         <div class="form-group">
             <div class="form-group">
             <label>EVENT OWNER:</label>

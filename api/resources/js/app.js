@@ -8,10 +8,8 @@ import BootstrapVue from 'bootstrap-vue'
 import VueLazyload from 'vue-lazyload'
 import Multiselect from 'vue-multiselect'
 import ProductCarousel from 'vue-product-carousel'
-// import VueSelectImage from 'vue-select-image'
 
 require('./bootstrap');
-// require('vue-select-image/dist/vue-select-image.css')
 
 Vue.use(BootstrapVue);
 Vue.use(VueLazyload, {
@@ -19,20 +17,19 @@ Vue.use(VueLazyload, {
     error: '../storage/main/warning.svg',
     loading: '../storage/main/loading.svg',
     attempt: 1
-  });
+});
 
-
-// Vue.use(VueSelectImage);
 window.Vue = require('vue');
 window.axios = require('axios');
 
 import { library }  from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
-
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 library.add(fas,fab);
+
+import { VueTelInput } from 'vue-tel-input'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -51,6 +48,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.component('multiselect', Multiselect);
 Vue.component('ProductCarousel', ProductCarousel);
+Vue.component('VueTelInput', VueTelInput);
 
 // Event component
 Vue.component('event-component',require('./components/Event/EventComponent.vue').default);
@@ -64,6 +62,9 @@ Vue.component('footer-component',require('./components/Core/FooterComponent.vue'
 
 // Img
 Vue.component('img-select-component',require('./components/Img/ImgSelectComponent.vue').default);
+
+// Contact
+Vue.component('contact-form-component',require('./components/contact/contactformComponent.vue').default);
 
 // Product & Service
 Vue.component('category-component',require('./components/ServiceAndProduct/ProductComponent.vue').default);
