@@ -81,7 +81,7 @@
 </head>
 
 <body>
-    <div id="app" style="margin-left: 0px; margin-right: 0px">
+    <div id="app">
         <home-component></home-component>
     </div>
 
@@ -98,7 +98,7 @@
     <script src="/assets/theme/js/script.js"></script>
     <script src="{{ asset('js/app.js') }}"></script>
     <script type="text/javascript" src="js/app.js"></script>
-    <div class="flex-center position-ref full-height">
+    <!-- <div class="flex-center position-ref full-height">
         @if (Route::has('login'))
         <div class="top-right links">
             @auth
@@ -112,7 +112,7 @@
             @endauth
         </div>
         @endif
-    </div>
+    </div> -->
 </body>
 
 </html>

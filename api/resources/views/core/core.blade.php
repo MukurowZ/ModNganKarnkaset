@@ -9,7 +9,7 @@
         <title>@yield('title')</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Kanit:400,700|Open+Sans&display=swap&subset=thai" rel="stylesheet">
-
+        
         <!-- Styles -->
         <link rel="stylesheet" href="/css/app.css">
         <link rel="stylesheet" href="/css/component-style.css">
@@ -21,7 +21,7 @@
 <div id="nav">
     <navbar-component></navbar-component>
 </div>
-<div class="container">
+<div>
     @yield('content')
 </div>
 <div id="foot">

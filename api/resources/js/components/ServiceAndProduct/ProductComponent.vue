@@ -1,5 +1,5 @@
 <template>
-  <div style="font-family: Kanit;">
+  <div style="font-family: Kanit;"  class="container">
     <br />
     <div class="mx-auto">
       <b-navbar
