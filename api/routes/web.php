@@ -52,3 +52,7 @@ Route::get('/product_service/create', function () {
 Route::get('/contact', function () {
     return view('contact/contact_form');
 });
+
+Route::get('/admin/contact', function () {
+    return view('contact/contact_report');
+});

@@ -66,6 +66,7 @@ Vue.component('img-select-component',require('./components/Img/ImgSelectComponen
 
 // Contact
 Vue.component('contact-form-component',require('./components/contact/contactformComponent.vue').default);
+Vue.component('contact-report-component',require('./components/contact/contactreportComponent.vue').default);
 
 // Product & Service
 Vue.component('category-component',require('./components/ServiceAndProduct/ProductComponent.vue').default);
