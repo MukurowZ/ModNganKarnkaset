@@ -12,31 +12,28 @@
                 <br>
                 <label>Detail</label>
                 <br>
-                <textarea :placeholder="getPlaceHolder('detail')" id="detail" type="text" class="form-control" v-model="detail" size="5000"/>
+                <textarea :placeholder="getPlaceHolder('detail')" id="detail" type="text" class="form-control" @input="detailChange" size="5000"/>
                 <p style="color: gray" v-if="!isOver('detail')">You have {{charactersRemaining}} / 5,000 characters remaining.</p>
                 <p style="color: red" v-else class="over">You are {{ charactersOver }} characters over the limit.</p>
-
                 <br>
                 <label>Address</label>
                 <br />
                 <textarea :placeholder="getPlaceHolder('address')" id="address" type="text" class="form-control" v-model="address" size="5000"/>
                 <p style="color: gray" v-if="!isOver('address')">You have {{charactersRemaining2}} / 5,000 characters remaining.</p>
                 <p style="color: red" v-else class="over">You are {{ charactersOver2 }} characters over the limit.</p>
-
                 <br>
-                <label  v-on:click="submitContact()">Telephone </label>
-                <vue-tel-input id="tel" v-model="tel" v-bind="bindProps" ></vue-tel-input>
-
+                    <label>Telephone</label>
+                    <vue-tel-input id="tel" @input="telChange" @country-changed="getCountry" v-bind="bindProps"></vue-tel-input>
                 <br>
                 <label>Email</label>
                 <br />
-                <input type="text" class="form-control" v-model="email" placeholder="โปรดระบุอีเมลล์"/>
+                <input type="text" class="form-control" v-model="email" placeholder="โปรดระบุอีเมลล์ (ex. modNganKarnkaset@gmail.com)"/>
                 <br>
 
             </div>
             <div class="form-group d-flex">
                 <button type="submit" class="btn btn-success">Submit</button>
-                <button class="btn btn-outline-secondary" style="margin-left:5px" onclick="/">Cancel</button>
+                <button class="btn btn-outline-secondary" style="margin-left:5px" onclick="window.history.go(-1); return false;">Cancel</button>
             </div>
 
         </form>
@@ -69,12 +66,12 @@ export default {
     },
     data() {
         return {
-            detail: '',
-            address: '',
-            topic: '',
-            email: '',
-            country_id: '',
-            tel: '',
+            detail: "",
+            address: "",
+            topic: "",
+            email: "",
+            country: "",
+            tel: "",
             // for count character remain
             maxCharacters: 5000,
             limit: 5000,
@@ -91,17 +88,17 @@ export default {
                 enabledCountryCode: true,
                 enabledFlags: true,
                 preferredCountries: ["TH", "CN"],
-                autocomplete: "off",
+                autocomplete: "true",
                 name: "tel",
                 maxLen: 25,
-                wrapperClasses: "",
+                wrapperClasses: "form-control",
                 inputClasses: "",
                 inputId: 'tel',
                 dropdownOptions: {
                     disabledDialCode: false
                 },
                 inputOptions: {
-                    showDialCode: false,
+                    showDialCode: true,
                 },
                 mode: 'international',
                 dynamicPlaceholder: true
@@ -119,10 +116,35 @@ export default {
             switch(e){
                 case 'detail':
                     return 'โปรดกรอกรายละเอียดของการติดต่อ'
+                case 'address':
+                    return 'โปรดระบุที่อยู่ในการติดต่อกลับ'
             }
         },
         submitContact(){
-            console.log(this.tel);
+            axios.post("/api/contact", {
+                details: this.detail,
+                address: this.address,
+                topic: this.topic,
+                email: this.email,
+                country_id: this.country,
+                tel: this.tel,
+            });
+        },
+        detailChange(e){
+            console.log(e)
+            var x = document.getElementById("detail").value
+            this.setDetail(x)
+        },
+        setDetail(e){
+            this.detail = e;
+        },
+        telChange(tel){
+            this.tel = tel.replace(/ /g,"-");
+            this.tel = this.tel.replace("-","");
+            console.log(this.tel.replace(/ /g,"-"));
+        },
+        getCountry(country){
+            this.country = country.dialCode
         }
     },
 

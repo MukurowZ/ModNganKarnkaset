@@ -26,7 +26,7 @@ class ContactTable extends Migration
             $table->string('address',200);
             $table->string('email',80);
             $table->unsignedInteger('country_id');
-            $table->string('tel',14);
+            $table->string('tel',25);
             $table->dateTime('updated_at');
             $table->dateTime('created_at');
 

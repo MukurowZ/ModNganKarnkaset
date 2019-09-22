@@ -43,6 +43,7 @@ class Contact_logRequest extends FormRequest
                     'details' => 'required',
                     'address' => 'required',
                     'email' => 'required|email',
+                    'country_id' => 'required',
                     'tel' => 'required',
                     'updated_at' => '',
                     'created_at' => ''
@@ -54,6 +55,7 @@ class Contact_logRequest extends FormRequest
                     'address' => '',
                     'email' => 'email',
                     'tel' => '',
+                    'country_id' => '',
                     'updated_at' => '',
                     'created_at' => ''
                 ];

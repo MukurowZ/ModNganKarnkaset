@@ -44,7 +44,7 @@
             <!-- Type -->
         <br>
         <label>Category</label>
-        <div v-on:click="getSubCategory()">
+        <div @change="getSubCategory()">
         <select class="form-control" id="categorySelecter" v-model="type">
             <option value="" disabled selected>{{ getPlaceHolder("category") }}</option>
             <option v-for="category in allCategorys" v-bind:key="category.id" :value="getObject(category.name,category.id)">
@@ -167,7 +167,6 @@ export default {
                 img_set_id: this.img_set,
                 owner_id: this.owner_id
             });
-            console.log("/api/"+this.type.name.toLowerCase());
         },
         getAllSet() {
             axios.get("/api/img_set").then(response => this.setSetData(response.data));
