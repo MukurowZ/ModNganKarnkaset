@@ -26,7 +26,8 @@ class Contact_logController extends Controller
     public function store(Contact_logRequest $request)
     {
         $validated = $request->validated();
-        return Contact_log::create($validated);
+        Contact_log::create($validated);
+        return view('contact/contact_form');
     }
 
     /**

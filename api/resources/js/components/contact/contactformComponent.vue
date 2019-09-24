@@ -32,10 +32,9 @@
 
             </div>
             <div class="form-group d-flex">
-                <button type="submit" class="btn btn-success">Submit</button>
-                <button class="btn btn-outline-secondary" style="margin-left:5px" onclick="window.history.go(-1); return false;">Cancel</button>
+                <button class="btn btn-success" v-on:click="submitContact">Submit</button>
+                <button class="btn btn-outline-secondary" style="margin-left:5px" href="../product">Cancel</button>
             </div>
-
         </form>
     </div>
 </template>
@@ -121,6 +120,7 @@ export default {
             }
         },
         submitContact(){
+            alert("Confirm to submit information ?")
             axios.post("/api/contact", {
                 details: this.detail,
                 address: this.address,
@@ -131,7 +131,6 @@ export default {
             });
         },
         detailChange(e){
-            console.log(e)
             var x = document.getElementById("detail").value
             this.setDetail(x)
         },
@@ -145,6 +144,9 @@ export default {
         },
         getCountry(country){
             this.country = country.dialCode
+        },
+        returnToMain(){
+            window.location.href = "https://twitter.com/home"
         }
     },
 

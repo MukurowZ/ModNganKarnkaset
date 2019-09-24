@@ -16,11 +16,11 @@
             <tr v-for="contact in contacts" v-bind:key="contact.id">
               <td>{{contact.id}}</td>
               <td>{{contact.topic}}</td>
-              <td>{{contact.detail}}</td>
+              <td>{{contact.details}}</td>
               <td>{{contact.address}}</td>
               <td>{{contact.email}}</td>
-              <td>{{contact.country}}</td>
-              <td>{{contact.tel}}</td>
+              <td>{{contact.country_id}}</td>
+              <td><a :href="getTel(contact.tel)">{{contact.tel}}</a></td>
               <td>{{contact.created_at}}</td>
               <td>{{contact.updated_at}}</td>
             </tr>
@@ -41,6 +41,9 @@ export default {
         },
         setContactData(e) {
             this.contacts = e;
+        },
+        getTel(e){
+            return 'tel:'+e;
         }
     },
     data() {
