@@ -4,6 +4,7 @@ namespace App\Model;
 
 use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Product extends Model
 {
@@ -15,7 +16,7 @@ class Product extends Model
 
     protected $table = "product";
     protected $appends = [
-
+        'img'
     ];
 
     public $incrementing = true;
@@ -25,5 +26,11 @@ class Product extends Model
 
     ];
 
+    public function img(){
+        return $this->hasOne('App\Model\Img_set','id','img_set_id');
+    }
 
+    public function getImgAttribute(){
+        return $this->attributes['img'] = Img::where('img_set_id',$this->attributes['img_set_id'])->get()->first();
+    }
 }

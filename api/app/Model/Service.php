@@ -15,7 +15,7 @@ class Service extends Model
 
     protected $table = "service";
     protected $appends = [
-
+        'img'
     ];
 
     public $incrementing = true;
@@ -24,4 +24,12 @@ class Service extends Model
     protected $hidden = [
 
     ];
+
+    public function img(){
+        return $this->hasOne('App\Model\Img_set','id','img_set_id');
+    }
+
+    public function getImgAttribute(){
+        return $this->attributes['img'] = Img::where('img_set_id',$this->attributes['img_set_id'])->get()->first();
+    }
 }
