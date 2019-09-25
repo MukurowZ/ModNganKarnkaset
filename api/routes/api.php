@@ -34,3 +34,4 @@ Route::apiResource('img','ImgController');
 Route::apiResource('partner','PartnerController');
 Route::apiResource('product','ProductController');
 Route::apiResource('service','ServiceController');
+Route::get('/search','SearchController@search');
