@@ -74,4 +74,5 @@ class EventController extends Controller
         }
         return back(response('', 204));
     }
+
 }
