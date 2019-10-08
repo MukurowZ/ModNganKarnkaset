@@ -96,22 +96,12 @@ class ImgController extends Controller
                 'owner_id' => $request['owner_id']
             ]);
             foreach ($files as $file) {
-                $path = '';
-                $cater = '';
                 $path = $file->getClientOriginalName();
-                if (strpos($path, '.jpg') !== false) {
-                    $cater = '.jpg';
-                } elseif (strpos($path, '.png') !== false ){
-                    $cater = '.png';
-                } elseif (strpos($path, '.jpeg') !== false ){
-                    $cater = '.jpeg';
-                } elseif (strpos($path, '.gif') !== false ){
-                    $cater = '.gif';
-                };
+                $ext = $file->getClientOriginalExtension();
                 $path = Hash::make($path);
                 $path = str_replace("/","-",$path);
                 $path = str_replace(".","-",$path);
-                $path = "".$path.$cater;
+                $path = time()."".$path.$ext;
                 Img::create([
                     'img_set_id' => $set['id'],
                     'path' => $path
