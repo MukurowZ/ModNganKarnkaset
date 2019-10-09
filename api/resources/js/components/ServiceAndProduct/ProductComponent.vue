@@ -3,12 +3,16 @@
     <br />
     <div class="mx-auto">
         <div class="d-flex bd-highlight mb-3 rounded-top border border-danger align-content-end flex-wrap">
-            <div class="mr-auto p-2 bd-highlight"><h5>สินค้า</h5></div>
-            <b-form-input size="sm" style="text-align:right;" align="right" class="p-2 bd-highlight" placeholder="ค้นหาสินค้า" v-model="search"></b-form-input>
-            <b-button @click.prevent="searchProduct()" size="sm" class="my-2 my-sm-0 p-2 bd-highlight" type="submit">
+            <label class="mr-auto p-2 bd-highlight col-1"  align="center">
+                <h5 style="margin:0px 0px 0px 0px">สินค้า</h5>
+            </label>
+
+            <b-form-input size="sm" align="right" style="margin:0px 0px 0px 0px" class="p-2 bd-highlight" placeholder="ค้นหาสินค้า" v-model="search"></b-form-input>
+            <b-button @click.prevent="searchProduct()" size="sm" class="my-2 my-sm-0 p-2 bd-highlight col-1" type="submit">
                     ค้นหา<font-awesome-icon :icon="['fas', 'search']" />
             </b-button>
         </div>
+
         <b-navbar
             toggleable="lg"
             type="light"
@@ -39,8 +43,8 @@
                 <div class="list-group">
                 <div v-for="category in categorys" v-bind:key="category.id">
                     <a :href="getLink(category.name)" class="list-group-item list-group-item-action"><b>{{category.name}}</b></a>
-                    <div v-for="category in category.subCategory" v-bind:key="category.id">
-                        <a :href="getLink(category.name)" class="list-group-item list-group-item-action">{{category.name}}</a>
+                    <div v-for="category in category.subCategory" v-bind:key="category.id" @click.prevent="searchProductByType(category.name)">
+                        <a class="list-group-item list-group-item-action">{{category.name}}</a>
                     </div>
                     <br>
                 </div>
@@ -161,7 +165,16 @@ export default {
     },
     methods: {
         searchProduct(){
-            fetch('/api/search?q='+this.search)
+            this.showSearch = false;
+            fetch('/api/search/product?q='+this.search)
+            .then(res => res.json())
+            .then(res => this.setData(res,"s_product"))
+            .catch(err => this.setData(err,"break"));
+        },
+        searchProductByType(e){
+            this.showSearch = false;
+            e = e.toLowerCase();
+            fetch('/api/search/productType?q='+e)
             .then(res => res.json())
             .then(res => this.setData(res,"s_product"))
             .catch(err => this.setData(err,"break"));

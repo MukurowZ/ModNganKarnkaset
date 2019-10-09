@@ -4,7 +4,7 @@
 @section('content')
 <body>
 <div id="app">
-    <view-p-component id="'{{ $id }}''"></view-p-component>
+    <view-product-component id='{{ $id }}'></view-product-component>
 </div>
 </body>
 
