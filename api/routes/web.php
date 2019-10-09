@@ -15,13 +15,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/admin/login', function () {
+    return view('login/login');
+});
+
+
 Route::get('/index', function () {
     return view('welcome');
 });
 
-Route::get('/event', function () {
-    return view('event/event');
+Route::group(['prefix'=>'/event'], function(){
+    Route::get('/','View\EventController@index');
 });
+
+// Route::get('/event', function () {
+//     return view('event/event');
+// });
 
 Route::get('/view_event', function () {
     return view('event/show-event');
@@ -58,4 +67,9 @@ Route::get('/contact', function () {
 
 Route::get('/admin/contact', function () {
     return view('contact/contact_report');
+});
+
+
+Route::get('/admin/login', function () {
+    return view('login/login');
 });
