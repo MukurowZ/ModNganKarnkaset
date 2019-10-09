@@ -69,10 +69,13 @@ Vue.component('contact-form-component',require('./components/contact/contactform
 Vue.component('contact-report-component',require('./components/contact/contactreportComponent.vue').default);
 
 // Product & Service
-Vue.component('category-component',require('./components/ServiceAndProduct/ProductComponent.vue').default);
-Vue.component('create-pands-component',require('./components/ServiceAndProduct/CreatePandSComponent.vue').default);
-Vue.component('view-p-component',require('./components/ServiceAndProduct/ViewPComponent.vue').default);
-Vue.component('view-p-img',require('./components/ServiceAndProduct/ProductImageComponent.vue').default);
+Vue.component('category-component',require('./components/ServiceAndProduct/ProductComponent.vue').default);   // For search product
+Vue.component('create-pands-component',require('./components/ServiceAndProduct/CreatePandSComponent.vue').default); // For create
+Vue.component('view-product-component',require('./components/ServiceAndProduct/ViewProductComponent.vue').default);     //  For view overall product
+Vue.component('view-p-img',require('./components/ServiceAndProduct/ProductImageComponent.vue').default);    // For show product image
+
+// Log in
+Vue.component('login-component',require('./components/Login/LoginComponent.vue').default);
 
 
 /**
