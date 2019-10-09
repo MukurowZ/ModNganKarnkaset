@@ -1,5 +1,5 @@
 <template>
-<div class="container font-weight-bold">
+<div class="container font-weight-bold" style="font-family: Kanit;">
     <div>
     <br />
     <h2>Edit Event</h2>
@@ -24,16 +24,16 @@
         <p style="color: red" v-else class="over">You are {{ charactersOver }} characters over the limit.</p>
         </div>
 
-        <img-select-component :editId="editId" @clicked="onSelectedImage"></img-select-component>
+        <img-select-component v-if="editId!=null" :editId="editId" @clicked="onSelectedImage"></img-select-component>
 
         <div class="form-group d-flex">
         <button class="btn btn-success" v-on:click="editEvent">แก้ไขกิจกรรม</button>
         <button class="btn btn-outline-secondary" style="margin-left:5px" onclick="/event">ยกเลิก</button>
         </div>
-
     </form>
     </div>
 </div>
+
 </template>
 
 <script>
@@ -68,14 +68,14 @@ export default {
                 owner_id: "",
                 imgids: [],
                 imgid: {
-                id: "",
-                img_set_id: "",
-                path: ""
+                    id: "",
+                    img_set_id: "",
+                    path: ""
                 }
             },
             maxCharacters: 5000,
             limit: 5000,
-            editId: this.id,
+            editId: this.img_set,
         }
     },
     methods: {
@@ -83,8 +83,6 @@ export default {
             this.img_set = value
         },
         getEventData(id){
-            id = id.replace("'","");
-            id = id.replace("\'\'","");
             axios.get('/api/event/'+id).then(response=> this.setEventData(response.data));
         },
         setEventData(e){
@@ -92,15 +90,14 @@ export default {
             this.description = e.event_description
             this.img_set = e.img_set_id
             this.owner_id = e.owner_id
+            this.editId = e.img_set_id
         },
         editEvent() {
-            this.id = this.id.replace("'","");
-            this.id = this.id.replace("\'\'","");
             axios.put("/api/event/"+this.id,{
                 event_name: this.name,
                 event_description: this.description,
                 img_set_id: this.img_set,
-                owner_id: this.owner_id
+                owner_id: this.owner_id,
             });
         },
         isOver() {
