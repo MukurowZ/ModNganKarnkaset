@@ -86,7 +86,6 @@ export default {
             for(var i=0; i<this.img.imgid.length; ++i) {
                 this.image[i] = '/storage/imgs/' + this.img.imgid[i].path;
             }
-            console.log(this.image)
             this.checker = true;
         },
     },
