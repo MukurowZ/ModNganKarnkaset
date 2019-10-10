@@ -6,6 +6,7 @@
 
 @endsection
 @section('content')
+<script src="{{ asset('js/script.js') }}"></script>
 <body>
     <div id="app">
         <event-component></event-component>
