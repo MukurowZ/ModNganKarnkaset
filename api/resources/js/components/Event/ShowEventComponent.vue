@@ -1,13 +1,13 @@
 <template>
   <div class="container" style="font-family: Kanit;">
     <div>
-      <div >
-        <div >
+      <div>
+        <div>
           <div class>กิจกรรม</div>
-            <div class="card" style="width: 100%;">
+          <div class="card" style="width: 100%;">
             <ul class="list-group list-group-flush">
               <li v-for="event in events" v-bind:key="event.id" class="list-group-item forum-post">
-                <div class="column" >
+                <div class="column">
                   <div class="row">
                     <div class="col-md-3">
                       <img v-lazy="fullPath(event.img_set_id)" height="200px" />
@@ -16,35 +16,26 @@
                       <h4 class="card-title mb-2">{{event.event_name}}</h4>
                       <p class="card-text">
                         {{event.event_description}}
-                        <a style="color: gray" :href="getEventUrl(event.id)">อ่านต่อ</a>
+                        <a
+                          style="color: gray"
+                          :href="getEventUrl(event.id)"
+                        >อ่านต่อ</a>
                       </p>
                     </div>
                     <div class="info-box">
-                        <h6>
-                          {{event.owner_name}}
-                          <br />
-                          <small>Created on {{event.created_at}}</small>
-                          <br />
-                          <small>Last Updated {{event.updated_at}}</small>
-                        </h6>
-                      </div>
+                      <h6>
+                        {{event.owner_name}}
+                        <br />
+                        <small>Created on {{event.created_at}}</small>
+                        <br />
+                        <small>Last Updated {{event.updated_at}}</small>
+                      </h6>
+                    </div>
                   </div>
                 </div>
               </li>
             </ul>
           </div>
-          <!-- <div class="card event-post" style="width: 100%;">
-            <h1 class="card-title mb-2">name{{event.event_name}}</h1>
-            <p class="card-text">{{event.event_description}}desc</p>
-            <div class="info-box">
-              <h6>
-                User_Name
-                <br />
-                <small>{{event.created_at}}time</small>
-              </h6>
-            </div>
-          </div> -->
-
         </div>
       </div>
     </div>
@@ -67,7 +58,7 @@ export default {
         axios.get("/api/img/set/" + a.img_set_id).then(response => {
           a.img_set_id = response.data.path;
         });
-        a.event_description = a.event_description.substring(0,300)+"...";
+        a.event_description = a.event_description.substring(0, 300) + "...";
         a.owner_name = a.contentDetail[0].ownerName[0].name;
       });
       this.events = e;
@@ -78,12 +69,12 @@ export default {
       }
       return "";
     },
-    getEventUrl(e){
-       if (e != null) {
+    getEventUrl(e) {
+      if (e != null) {
         return "/event/" + e;
       }
       return "";
-    },
+    }
   },
   data() {
     return {
@@ -96,7 +87,7 @@ export default {
         created_at: "",
         update_at: "",
         img_path: "",
-        owner_name: "",
+        owner_name: ""
       },
       path: []
     };
