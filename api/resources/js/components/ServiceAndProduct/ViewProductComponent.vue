@@ -1,59 +1,36 @@
 <template>
-  <div style="font-family: Kanit;">
-    <br />
-
-    <div style="text-align: center;" class="container">
-      <div class="row">
-        <br />
-        <div class="d-flex flex-row bd-highlight mb-3"></div>
-      </div>
-      <div class="row">
-        <h1>
-          <div style="text-align: left;">{{ product.name }}</div>
-        </h1>
-      </div>
-    </div>
-    <div v-html="product.video"></div>
-
-    {{ product.id }}
-    {{ product.story }}
-    {{ product.price }}
-    {{ product.description }}
-    {{ product.type }}
-    {{ product.owner_id }}
-    <ProductCarousel v-if="checker" :images="image">
-      <!-- Sidebar content -->
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12" style="min-height: 50rem">
-            <div class="container">
-              <div class="row">
-                <div class="col-md-8"></div>
-                <div class="col-md-4" style="background-color: white; height: 50em;">
-                  <h1 style="font-weight: bold">
-                    Product name
-                    <h5 style="color: rgb(158, 158, 158)">Catagory</h5>
-                    <h5 style="color: rgb(158, 158, 158)">Type</h5>
-                  </h1>
-                  <h3 style="font-weight: bolder">19.99$</h3>
-                  <p style="color: rgb(43, 43, 43)">
-                    Somthing about product.Somthing about product.Somthing about
-                    product.Somthing about product.Somthing about
-                    product.Somthing about product.Somthing about product.
-                  </p>
-                  <a
-                    href="#"
-                    class="btn btn-primary"
-                    style="position: absolute; right :2em; bottom: 3em"
-                  >Put in cart</a>
-                </div>
+  <div style="font-family: Kanit;" class="row">
+      <div class="col"></div>
+      <div class="col-8">
+      <ProductCarousel v-if="checker" :images="image" style="position: relative;">
+        <!-- Sidebar content -->
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12" style="min-height: 100%">
+              <div style="background-color: white; height: 50em;">
+                <h1 style="font-weight: bold">
+                  {{product.name}}
+                  <h5 style="color: rgb(158, 158, 158)">{{product.type}}</h5>
+                  <h5 style="color: rgb(158, 158, 158)">{{product.type}}</h5>
+                </h1>
+                <h3 style="font-weight: bolder">{{product.price}} Baht</h3>
+                <p style="color: rgb(43, 43, 43)">
+                  {{product.story}}
+                  <br />
+                  {{product.description}}
+                </p>
+                <a
+                  href="#"
+                  class="btn btn-primary"
+                  style="position: absolute; right :2em; bottom: 3em"
+                >Put in cart</a>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <!-- End sidebar content -->
-    </ProductCarousel>
+        <!-- End sidebar content -->
+      </ProductCarousel></div>
+      <div class="col"></div>
   </div>
 </template>
 <script>

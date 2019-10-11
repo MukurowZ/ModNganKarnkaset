@@ -2,19 +2,7 @@
   <div style="font-family: Kanit;"  class="container">
     <br />
     <div class="mx-auto">
-        <div class="d-flex bd-highlight mb-3 rounded-top border border-danger align-content-end flex-wrap">
-            <label class="mr-auto p-2 bd-highlight col-1"  align="center">
-                <h5 style="margin:0px 0px 0px 0px">สินค้า</h5>
-            </label>
-
-            <b-form-input size="sm" align="right" style="margin:0px 0px 0px 0px" class="p-2 bd-highlight" placeholder="ค้นหาสินค้า" v-model="search"></b-form-input>
-            <b-button @click.prevent="searchProduct()" size="sm" class="my-2 my-sm-0 p-2 bd-highlight col-1" type="submit">
-                    ค้นหา<font-awesome-icon :icon="['fas', 'search']" />
-            </b-button>
-        </div>
-
         <b-navbar
-            toggleable="lg"
             type="light"
             style="background-color: white"
             class="rounded-top border border-danger"
