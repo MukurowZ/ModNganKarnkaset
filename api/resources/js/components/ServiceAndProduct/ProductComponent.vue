@@ -103,10 +103,12 @@
 export default {
     mounted() {
         this.getCategory();
+        this.getBackCategory();
         this.getProduct();
     },
     data() {
         return {
+            backCategorys: [],
             categorys: [],
             category: {
                 id: "",
@@ -182,6 +184,11 @@ export default {
         getCategory() {
             axios
                 .get("/api/hcategory")
+                .then(response => this.setData(response.data, "hcategory")).catch(err => this.setData(err,"break"));;
+        },
+        getBackCategory() {
+            axios
+                .get("/api/category")
                 .then(response => this.setData(response.data, "category")).catch(err => this.setData(err,"break"));;
         },
         getProduct() {
@@ -191,13 +198,18 @@ export default {
         },
         setData(e, f) {
             switch (f) {
-                case "category":
+                case "hcategory":
                     this.categorys = e;
                     break;
+                case "category":
+                    this.backCategorys = e;
+                    break;
                 case "product":
+                    e = this.renameCategory(e);
                     this.products = e;
                     break;
                 case "service":
+                    e = this.renameCategory(e);
                     this.services = e;
                     break;
                 case "s_product":
@@ -228,6 +240,23 @@ export default {
                 return "/storage/imgs/" + e;
             }
             return "";
+        },
+        renameCategory(e){
+            var i = 0;
+            var j = 0;
+            var c = JSON.parse(JSON.stringify(this.getBackCategorys()))
+            c = Object.entries(c)
+            for(i = 0; i<e.length; i++){
+                c.forEach(b => {
+                    if(b[1].id==e[i].type){
+                        e[i].type = b[1].name + " " + b[1].THname;
+                    }
+                })
+            }
+            return e;
+        },
+        getBackCategorys(){
+            return this.backCategorys
         }
     }
 };
