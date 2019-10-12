@@ -46,15 +46,6 @@
     text-align: right
 }
 
-.product-card {
-    width: 18rem;
-}
-
-.product-card img {
-    width: 15rem;
-    height: 10rem;
-}
-
 .price {
     font-size: 1.5em;
     font-weight: bold;

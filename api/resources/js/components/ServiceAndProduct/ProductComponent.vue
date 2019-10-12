@@ -1,101 +1,124 @@
 <template>
-  <div style="font-family: Kanit;"  class="container">
+  <div style="font-family: Kanit;" class="container">
     <br />
     <div class="mx-auto">
-        <div class="d-flex bd-highlight mb-3 rounded-top border border-danger align-content-end flex-wrap">
-            <label class="mr-auto p-2 bd-highlight col-1"  align="center">
-                <h5 style="margin:0px 0px 0px 0px">สินค้า</h5>
-            </label>
+      <b-navbar
+        type="light"
+        style="background-color: white"
+        class="rounded-top border border-danger"
+      >
+        <b-navbar-brand style="font-weight: 450;">สินค้า</b-navbar-brand>
 
-            <b-form-input size="sm" align="right" style="margin:0px 0px 0px 0px" class="p-2 bd-highlight" placeholder="ค้นหาสินค้า" v-model="search"></b-form-input>
-            <b-button @click.prevent="searchProduct()" size="sm" class="my-2 my-sm-0 p-2 bd-highlight col-1" type="submit">
-                    ค้นหา<font-awesome-icon :icon="['fas', 'search']" />
-            </b-button>
-        </div>
+        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
-        <b-navbar
-            toggleable="lg"
-            type="light"
-            style="background-color: white"
-            class="rounded-top border border-danger"
-        >
-            <b-navbar-brand style="font-weight: 450;">สินค้า</b-navbar-brand>
-
-            <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-
-            <b-collapse id="nav-collapse" is-nav>
-            <!-- Right aligned nav items -->
-            <b-navbar-nav class="ml-auto">
-                <b-nav-form>
-                <b-form-input size="sm" class="mr-sm-2" placeholder="ค้นหาสินค้า" v-model="search"></b-form-input>
-                <b-button @click.prevent="searchProduct()" size="sm" class="my-2 my-sm-0" type="submit">
-                    ค้นหา
-                    <font-awesome-icon :icon="['fas', 'search']" />
-                </b-button>
-                </b-nav-form>
-            </b-navbar-nav>
-            </b-collapse>
-        </b-navbar>
-        <br>
+        <b-collapse id="nav-collapse" is-nav>
+          <!-- Right aligned nav items -->
+          <b-navbar-nav class="ml-auto">
+            <b-nav-form>
+              <b-form-input size="sm" class="mr-sm-2" placeholder="ค้นหาสินค้า" v-model="search"></b-form-input>
+              <b-button
+                @click.prevent="searchProduct()"
+                size="sm"
+                class="my-2 my-sm-0"
+                type="submit"
+              >
+                ค้นหา
+                <font-awesome-icon :icon="['fas', 'search']" />
+              </b-button>
+            </b-nav-form>
+          </b-navbar-nav>
+        </b-collapse>
+      </b-navbar>
+      <br />
+      <div class="container">
         <div class="row">
-        <div class="col-2">
+          <div class="col-2">
             <div class="align-self-start p-2 bd-highlight rounded-bottom border border-primary">
-                <div class="list-group">
+              <div class="list-group">
                 <div v-for="category in categorys" v-bind:key="category.id">
-                    <a :href="getLink(category.name)" class="list-group-item list-group-item-action"><b>{{category.name}}</b></a>
-                    <div v-for="category in category.subCategory" v-bind:key="category.id" @click.prevent="searchProductByType(category.name)">
-                        <a class="list-group-item list-group-item-action">{{category.name}}</a>
-                    </div>
-                    <br>
+                  <a :href="getLink(category.name)" class="list-group-item list-group-item-action">
+                    <b>{{category.name}}</b>
+                  </a>
+                  <div
+                    v-for="category in category.subCategory"
+                    v-bind:key="category.id"
+                    @click.prevent="searchProductByType(category.name)"
+                  >
+                    <a class="list-group-item list-group-item-action">{{category.name}}</a>
+                  </div>
+                  <br />
                 </div>
-                </div>
+              </div>
             </div>
-        </div>
+          </div>
 
-        <div class="col-10">
-        <div class="align-self-start p-2 bd-highlight rounded-bottom border border-success">
+          <div class="col-10 p-2 bd-highlight rounded-bottom border border-success">
             <div v-if="showSearch==true">
-            <div v-for="s_product in s_products" v-bind:key="s_product.id" class="d-flex flex-wrap">
-                <div class="card my-4 col-md-3 product-card">
-                    <img v-lazy="fullPath(s_product.img.path)" class="card-img-top mx-auto mt-2" alt="product img"/>
+              <div class="container">
+                <div class="row">
+                  <div
+                    v-for="s_product in s_products"
+                    v-bind:key="s_product.id"
+                    class="card my-2 col-md-3"
+                    style="height: 28rem"
+                  >
+                    <img
+                      v-lazy="fullPath(s_product.img.path)"
+                      class="card-img-top mx-auto mt-2"
+                      alt="product img"
+                    />
                     <div class="card-body">
-                        <h5 class="card-title">
+                      <h5 class="card-title">
                         {{ s_product.name }}
                         <br />
                         <small style="color: rgb(158, 158, 158)">Catagory: {{ category.name }}</small>
                         <br />
                         <small style="color: rgb(158, 158, 158)">Type: {{ s_product.type }}</small>
-                        </h5>
-                        <p class="card-text">{{ s_product.description }}</p>
-                        <div class="price">{{ s_product.price }}</div>
-                        <a v-on:click="getUrl(s_product.id)" class="btn btn-primary">More detail</a>
+                      </h5>
+                      <p class="card-text" style="height: 7rem; text-overflow: ellipsis; overflow: hidden;">{{ s_product.description }}</p>
+                      <div class="price">{{ s_product.price }}&#3647; </div>
+                      <a v-on:click="getUrl(s_product.id)" class="btn btn-primary">More detail</a>
                     </div>
+                  </div>
                 </div>
+              </div>
             </div>
-            </div>
+
             <div v-if="showSearch==false">
-            <div v-for="product in products" v-bind:key="product.id" class="d-flex flex-wrap">
-                <div class="card my-4 col-md-3 product-card">
-                    <img v-lazy="fullPath(product.img.path)" class="card-img-top mx-auto mt-2" alt="product img"/>
+              <div class="container">
+                <div class="row">
+                  <div
+                    v-for="product in products"
+                    v-bind:key="product.id"
+                    class="card my-2 col-md-6 col-lg-3"
+                    style="height: 28rem"
+                  >
+                    <img
+                      v-lazy="fullPath(product.img.path)"
+                      class="card-img-top mx-auto mt-2"
+                      alt="product img"
+                    />
                     <div class="card-body">
-                        <h5 class="card-title">
+                      <h5 class="card-title">
                         {{ product.name }}
                         <br />
                         <small style="color: rgb(158, 158, 158)">Catagory: {{ category.name }}</small>
                         <br />
                         <small style="color: rgb(158, 158, 158)">Type: {{ product.type }}</small>
-                        </h5>
-                        <p class="card-text">{{ product.description }}</p>
-                        <div class="price">{{ product.price }}</div>
-                        <a v-on:click="getUrl(product.id)" class="btn btn-primary">More detail</a>
+                      </h5>
+                      <p class="card-text"  style="height: 7rem; text-overflow: ellipsis; overflow: hidden;">{{ product.description }}</p>
+                      <div class="price">{{ product.price }}&#3647; </div>
+                      <a v-on:click="getUrl(product.id)" class="btn btn-primary">More detail</a>
                     </div>
+                  </div>
                 </div>
+              </div>
             </div>
-            </div>
+          </div>
         </div>
-        </div>
+      </div>
     </div>
-    </div>
+    <br />
   </div>
 </template>
 
@@ -259,5 +282,6 @@ export default {
             return this.backCategorys
         }
     }
+  }
 };
 </script>

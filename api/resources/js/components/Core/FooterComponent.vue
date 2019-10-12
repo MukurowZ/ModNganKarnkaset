@@ -1,5 +1,7 @@
 <template>
-  <footer class="py-5" style="color: #000000; font-family: Kanit; background-color: #c4e6d2; background-image: url(./Image/footer.jpg); height: 15rem;">
+  <footer
+    class="py-5"
+    style="color: #000000; font-family: Kanit; background-color: #c4e6d2; background-image: url(./Image/footer.jpg); height: 15rem;">
     <div class="container">
       <div class="row">
         <div class="company-info col-sm" style="color: #000000;">
@@ -23,7 +25,5 @@
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
