@@ -76,7 +76,7 @@
                         <small style="color: rgb(158, 158, 158)">Type: {{ s_product.type }}</small>
                       </h5>
                       <p class="card-text" style="height: 7rem; text-overflow: ellipsis; overflow: hidden;">{{ s_product.description }}</p>
-                      <div class="price">{{ s_product.price }} Baht</div>
+                      <div class="price">{{ s_product.price }}฿</div>
                       <a v-on:click="getUrl(s_product.id)" class="btn btn-primary">More detail</a>
                     </div>
                   </div>
@@ -107,7 +107,7 @@
                         <small style="color: rgb(158, 158, 158)">Type: {{ product.type }}</small>
                       </h5>
                       <p class="card-text"  style="height: 7rem; text-overflow: ellipsis; overflow: hidden;">{{ product.description }}</p>
-                      <div class="price">{{ product.price }} Baht</div>
+                      <div class="price">{{ product.price }}฿</div>
                       <a v-on:click="getUrl(product.id)" class="btn btn-primary">More detail</a>
                     </div>
                   </div>
