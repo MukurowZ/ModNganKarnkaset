@@ -68,8 +68,5 @@ class ServiceController extends Controller
     }
 
     // GET 3
-    public function getThree()
-    {
-        return Service::orderBy('id', 'desc')->take(3)->get();
-    }
+    public function getThree(){ return Service::orderBy('id', 'desc')->take(3)->get();}
 }
