@@ -6,36 +6,36 @@
           <div class="card-header">{{ upperType }} Component</div>
 
           <table>
-            <tr v-for="event in events" v-bind:key="event.id">
-              <td>{{event.id}}</td>
-              <td>{{event.event_name}}</td>
-              <td>{{event.event_description}} <span style="color:red" v-if="event.longDescription">...มีต่อ</span> </td>
-              <td>{{event.created_at}}</td>
-              <td>{{event.updated_at}}</td>
+            <tr v-for="item in items" v-bind:key="item.id">
+              <td>{{item.id}}</td>
+              <td>{{item.name}}</td>
+              <td>{{item.story}} <span style="color:red" v-if="item.longDescription">...มีต่อ</span> </td>
+              <td>{{item.price}}</td>
+              <td>{{item.type}}</td>
               <td>
-                <img height="200px" :src="fullPath(event.img.path)" />
+                <img height="200px" :src="fullPath(item.img.path)" />
               </td>
               <td>
                 <button
                   class="btn btn-warning"
                   style="margin-left: 5px"
-                  v-on:click="getEditUrl(event.id)"
-                >แก้ไขกิจกรรม</button>
+                  v-on:click="getEditUrl(item.id)"
+                >แก้ไขสินค้า/บริการ</button>
               </td>
               <td>
                 <b-button
                   v-b-modal.confirmDel
                   class="btn btn-danger"
                   style="margin-left: 5px;"
-                  v-on:click="getRemove(event.id,event.event_name)"
-                >ลบกิจกรรม</b-button>
+                  v-on:click="getRemove(item.id,item.name)"
+                >ลบสินค้า/บริการ</b-button>
               </td>
             </tr>
           </table>
           <button
             v-on:click="addPage"
             class="btn btn-outline-primary"
-          >เพิ่มกิจกรรม</button>
+          >เพิ่มสินค้าหรือบริการ</button>
         </div>
       </div>
     </div>
@@ -48,34 +48,32 @@ import { itemTypeMixin } from '../mixins/itemType.js'
 export default {
     mixins: [adminMixin,itemTypeMixin],
     mounted() {
-        this.getEventData();
+        this.getCategory();
+        this.getProduct();
     },
     methods: {
-        getEventData() {
+        getCategory() {
+            axios
+                .get("/api/category")
+                .then(response => this.setData(response.data, "category"))
+                .catch(err => this.setData(err, "break"));
+        },
+        getProduct() {
             axios
                 .get("/api/"+this.itemType)
-                .then(response => this.setEventData(response.data));
+                .then(response => this.setData(response.data, "product"))
+                .catch(err => this.setData(err, "break"));
         },
-        setEventData(e) {
-            var i = 0;
-            if(this.itemType=="event")
-                for(i=0; i<e.length; i++){
-                    if(e[i].event_description.length>200){
-                        e[i].event_description = e[i].event_description.substring(0,201);
-                        e[i].longDescription = true;
-                    }else e[i].longDescription = false;
-                }
-            else
-                for(i=0; i<e.length; i++){
-                    if(e[i].activity_description.length>200){
-                        e[i].event_description = e[i].activity_description.substring(0,201);
-                        e[i].event_name = e[i].activity_name;
-                        e[i].activity_description = null;
-                        e[i].activity_name = null;
-                        e[i].longDescription = true;
-                    }else e[i].longDescription = false;
-                }
-            this.events = e;
+        setData(e, f) {
+            switch (f) {
+                case "category":
+                    this.categorys = e;
+                    break;
+                case "product":
+                    e = this.renameCategory(e);
+                    this.items = e;
+                    break;
+            }
         },
         fullPath(e) {
             if (e != null) {
@@ -128,30 +126,31 @@ export default {
         addPage(){
             window.location.href='/admin/'+this.itemType+'/create'+'?token='+this.token
         },
+        renameCategory(e) {
+            var i = 0;
+            var c = JSON.parse(JSON.stringify(this.getCategorys()));
+            c = Object.entries(c);
+            for (i = 0; i < e.length; i++) {
+                c.forEach(b => {
+                    if (b[1].id == e[i].type) {
+                        e[i].type = b[1].name + " " + b[1].THname;
+                    }
+                });
+                if(e[i].description.length>=201)
+                    e[i].description = e[i].description.substring(0,201);
+                if(e[i].story.length>=201)
+                    e[i].story = e[i].story.substring(0,201);
+            }
+            return e;
+        },
+        getCategorys() {
+            return this.categorys;
+        }
     },
     data() {
         return {
-            events: [],
-            event: {
-                id: "0",
-                event_name: "",
-                event_description: "",
-                img_set_id: "",
-                created_at: "",
-                update_at: "",
-                img_path: "",
-                contentDetail: {
-                    id: '',
-                    owner_id: '',
-                    type: '',
-                    owner_name: '',
-                },
-                img: {
-                    id: "",
-                    img_set_id: "",
-                    path: "",
-                }
-            },
+            categorys: [],
+            items: [],
             path: [],
             i: 0,
             confirmBox: ""

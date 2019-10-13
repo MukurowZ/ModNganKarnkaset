@@ -75,9 +75,16 @@ Vue.component('category-component',require('./components/ServiceAndProduct/Produ
 Vue.component('create-pands-component',require('./components/ServiceAndProduct/CreatePandSComponent.vue').default); // For create
 Vue.component('view-product-component',require('./components/ServiceAndProduct/ViewProductComponent.vue').default);     //  For view overall product
 Vue.component('three-product-component',require('./components/ServiceAndProduct/ShowProductListComponent.vue').default);     //  For view overall product
+Vue.component('all-product-component',require('./components/ServiceAndProduct/AllProductComponent.vue').default);     //  For view overall product
+Vue.component('edit-product-component',require('./components/ServiceAndProduct/EditProductComponent.vue').default);     //  For view overall product
 
 // Log in
 Vue.component('login-component',require('./components/Login/LoginComponent.vue').default);
+
+// User system
+Vue.component('manager-component',require('./components/user/managerMenu.vue').default);
+Vue.component('create-user-component',require('./components/user/createUser.vue').default);
+Vue.component('create-department-component',require('./components/user/createDepartment.vue').default);
 
 
 /**
