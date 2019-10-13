@@ -20,10 +20,10 @@
                   {{product.description}}
                 </p>
                 <a
-                  href="#"
+                  href="../contact"
                   class="btn btn-primary"
                   style="position: absolute; right :2em; bottom: 3em"
-                >Put in cart</a>
+                >Order</a>
               </div>
             </div>
           </div>

@@ -121,12 +121,11 @@
         </div>
       </div>
     </section>
-    <section>
         <div class="row justify-content-center">
             <table>
             <tr>
-                <td style="width: 50%">New event from us</td>
-                <td style="width: 50%">New activity from us</td>
+                <td style="width: 50%"><h1>New event from us</h1></td>
+                <td style="width: 50%"><h1>New activity from us</h1></td>
             </tr>
             <tr>
                 <td>
@@ -139,7 +138,6 @@
             </table>
         </div>
 
-    </section>
 
 
 

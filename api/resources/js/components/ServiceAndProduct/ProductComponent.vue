@@ -111,8 +111,8 @@
                         class="card-text py-0"
                         style="height: 6rem; text-overflow: ellipsis; overflow: hidden;"
                       >{{ product.description }}</p>
-                      <div class="price">{{ product.price }}&#3647;</div>
-                      <a v-on:click="getUrl(product.id)" class="btn btn-primary">More detail</a>
+                      <div class="price">Price: {{ product.price }}&#3647;</div>
+                      <a v-on:click="getUrl(product.id)" align="center" style="color: white; width: 100%" class="btn btn-primary">More detail</a>
                     </div>
                   </div>
                 </div>

@@ -1,5 +1,5 @@
 @extends('core/core')
-@section('title','Laravel')
+@section('title','มดงานการเกษตร - หน้าหลัก')
 
 @section('content')
 <!DOCTYPE html>
@@ -14,6 +14,9 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
+    <!-- For Facebook -->
+    <div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v4.0"></script>
     <!-- Mobirise code -->
     <link rel="stylesheet" href="/assets/web/assets/mobirise-icons/mobirise-icons.css">
     <link rel="stylesheet" href="/assets/tether/tether.min.css">
@@ -84,6 +87,25 @@
     <div id="app">
         <home-component></home-component>
     </div>
+    <center>
+    <div>
+        <div class="fb-page" data-href="https://www.facebook.com/modngankarnkasetthai"
+        data-tabs="timeline" data-width="300" data-height="70"
+        data-small-header="false" data-adapt-container-width="true"
+        data-hide-cover="false" data-show-facepile="true">
+            <blockquote cite="https://www.facebook.com/modngankarnkasetthai"
+            class="fb-xfbml-parse-ignore">
+                <a href="https://www.facebook.com/modngankarnkasetthai">
+                    Mod Ngan Karnkaset Thai
+                </a>
+            </blockquote>
+        </div>
+        <img src="https://qr-official.line.me/sid/M/156xgami.png">
+        <a href="http://nav.cx/ipTIanR">
+            <img style="margin-bottom: 70px"  src="https://scdn.line-apps.com/n/line_add_friends/btn/th.png" alt="เพิ่มเพื่อน" height="36" border="0">
+        </a>
+    </div>
+    </center>
 
     <!-- Mobirise code -->
     <script src="/assets/web/assets/jquery/jquery.min.js"></script>
@@ -94,7 +116,7 @@
     <script src="/assets/parallax/jarallax.min.js"></script>
     <script src="/assets/viewportchecker/jquery.viewportchecker.js"></script>
     <!--  -->
-    
+
     <script src="/assets/theme/js/script.js"></script>
     <script src="{{ asset('js/app.js') }}"></script>
     <script type="text/javascript" src="js/app.js"></script>

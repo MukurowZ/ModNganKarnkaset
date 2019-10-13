@@ -77,12 +77,14 @@ export default {
             axios.get('/api/'+this.itemType+'/'+id).then(response=> this.setEventData(response.data));
         },
         setEventData(e){
-            this.name = e.event_name
             this.img_set = e.img_set_id
             this.owner_id = e.contentDetail[0].owner_id
             this.editId = e.img_set_id
             if(this.itemType=="event") this.description = e.event_description
-            else this.description = e.activity_description
+            else {
+                this.description = e.activity_description
+                this.name = e.activity_name
+            }
             axios.get("/api/img_set/" + e.img_set_id).then(response => {
                 this.setImgData(response.data);
             });
@@ -103,7 +105,6 @@ export default {
                 this.slides = [...document.getElementsByClassName("mySlides")]
             }
             var i;
-            var c = JSON.parse(JSON.stringify(this.slides));
             var dots = document.getElementsByClassName("demo");
             if (n > this.slides.length) {
                 this.slideIndex = 1;

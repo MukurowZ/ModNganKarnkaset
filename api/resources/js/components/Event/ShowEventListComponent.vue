@@ -102,7 +102,10 @@ export default {
         else {
           a.event_description =
             a.activity_description.substring(0, 300) + "...";
+          a.event_name =
+            a.activity_name;
           a.activity_description = null;
+          a.activity_name = null;
         }
         a.owner_name = a.contentDetail[0].ownerName[0].name;
       });
