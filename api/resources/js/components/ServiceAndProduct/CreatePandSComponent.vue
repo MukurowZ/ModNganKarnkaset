@@ -7,12 +7,6 @@
     <br />
     <form action="/product">
         <div class="form-group">
-        <div class="form-group">
-            <!-- Owner -->
-        <label>Owner:</label>
-        <br />
-        <input type="text" class="form-control" v-model="owner_id" />
-        </div>
             <!-- Name -->
         <label>Name</label>
         <br />
@@ -76,7 +70,9 @@
 </template>
 
 <script>
+import { adminMixin } from '../mixins/adminMixin.js'
 export default {
+    mixins: [adminMixin],
     beforeMount() {
 
     },
@@ -113,7 +109,6 @@ export default {
             video: "",
             type: "",
             subType: "",
-            owner_id: "",
             sets: [],
             set: {
                 id: "",
@@ -157,7 +152,8 @@ export default {
             this.img_set = value
         },
         addNewProduct_Service() {
-            axios.post("/api/"+this.type.name.toLowerCase(), {
+            const token = localStorage.getItem('token')
+            axios.post("/api/"+this.type.name.toLowerCase()+"?token="+token, {
                 name: this.name,
                 story: this.story,
                 price: this.price,

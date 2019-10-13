@@ -66,4 +66,10 @@ class ServiceController extends Controller
         $service->delete();
         return response('', 204);
     }
+
+    // GET 3
+    public function getThree()
+    {
+        return Service::orderBy('id', 'desc')->take(3)->get();
+    }
 }

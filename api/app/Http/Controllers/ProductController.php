@@ -66,4 +66,10 @@ class ProductController extends Controller
         $product->delete();
         return response('', 204);
     }
+
+    // GET FIRST 3
+    public function getThree()
+    {
+        return Product::orderBy('id', 'desc')->take(3)->get();
+    }
 }

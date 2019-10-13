@@ -34,51 +34,54 @@
   </div>
 </template>
 <script>
+import { itemTypeMixin } from '../mixins/itemType.js'
 export default {
-  mounted() {
-    this.getProduct(this.id);
-  },
-  props: {
-    id: String
-  },
-  data() {
-    return {
-      product: {
-        id: "",
-        name: "",
-        story: "",
-        price: "",
-        img_set_id: "",
-        description: "",
-        video: "",
-        type: "",
-        owner_id: "",
-        img: {
-          id: "",
-          img_set_id: "",
-          path: ""
-        }
-      },
-      img: {
-        id: "",
-        name: "",
-        owner_id: "",
-        imgid: [
-          {
-            id: "",
-            img_set_id: "",
-            path: ""
-          }
-        ]
-      },
-      image: [],
-      checker: false
-    };
-  },
+    mixins: [itemTypeMixin],
+    mounted() {
+        this.getProduct(this.id);
+    },
+    props: {
+        id: String
+    },
+    data() {
+        return {
+            itemType: '',
+            product: {
+                id: "",
+                name: "",
+                story: "",
+                price: "",
+                img_set_id: "",
+                description: "",
+                video: "",
+                type: "",
+                owner_id: "",
+                img: {
+                id: "",
+                img_set_id: "",
+                path: ""
+                }
+            },
+            img: {
+                id: "",
+                name: "",
+                owner_id: "",
+                imgid: [
+                {
+                    id: "",
+                    img_set_id: "",
+                    path: ""
+                }
+                ]
+            },
+            image: [],
+            checker: false
+            };
+    },
   methods: {
     getProduct(id) {
       axios
-        .get("/api/product/" + id)
+        .get("/api/"+this.itemType+"/" + id)
         .then(response => this.setData(response.data));
     },
     setData(e) {
@@ -94,7 +97,7 @@ export default {
         this.image[i] = "/storage/imgs/" + this.img.imgid[i].path;
       }
       this.checker = true;
-    }
+    },
   }
 };
 </script>

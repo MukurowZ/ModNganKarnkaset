@@ -7,7 +7,7 @@
         style="background-color: white"
         class="rounded-top border border-danger"
       >
-        <b-navbar-brand style="font-weight: 450;">สินค้า</b-navbar-brand>
+        <b-navbar-brand style="font-weight: 450;">สินค้าและบริการ</b-navbar-brand>
 
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
@@ -66,12 +66,11 @@
                       v-lazy="fullPath(s_product.img.path)"
                       class="card-img-top mx-auto mt-2"
                       alt="product img"
+                      style="height: 146.05px"
                     />
                     <div class="card-body">
                       <h5 class="card-title">
                         {{ s_product.name }}
-                        <br />
-                        <small style="color: rgb(158, 158, 158)">Catagory: {{ category.name }}</small>
                         <br />
                         <small style="color: rgb(158, 158, 158)">Type: {{ s_product.type }}</small>
                       </h5>
@@ -97,12 +96,11 @@
                       v-lazy="fullPath(product.img.path)"
                       class="card-img-top mx-auto mt-2"
                       alt="product img"
+                      style="height: 146.05px"
                     />
                     <div class="card-body">
                       <h5 class="card-title">
                         {{ product.name }}
-                        <br />
-                        <small style="color: rgb(158, 158, 158)">Catagory: {{ category.name }}</small>
                         <br />
                         <small style="color: rgb(158, 158, 158)">Type: {{ product.type }}</small>
                       </h5>
@@ -123,11 +121,11 @@
 </template>
 
 <script>
+import { itemTypeMixin } from '../mixins/itemType.js'
 export default {
+    mixins: [itemTypeMixin],
     mounted() {
-        this.getCategory();
-        this.getBackCategory();
-        this.getProduct();
+        this.getAllData();
     },
     data() {
         return {
@@ -204,6 +202,11 @@ export default {
             .then(res => this.setData(res,"s_product"))
             .catch(err => this.setData(err,"break"));
         },
+        getAllData(){
+            this.getCategory();
+            this.getBackCategory();
+            this.getProduct();
+        },
         getCategory() {
             axios
                 .get("/api/hcategory")
@@ -216,8 +219,11 @@ export default {
         },
         getProduct() {
             axios
-                .get("/api/product")
+                .get("/api/"+this.itemType)
                 .then(response => this.setData(response.data, "product")).catch(err => this.setData(err,"break"));;
+        },
+        getBackCategorys(){
+            return this.backCategorys
         },
         setData(e, f) {
             switch (f) {
@@ -236,6 +242,7 @@ export default {
                     this.services = e;
                     break;
                 case "s_product":
+                    e = this.renameCategory(e);
                     this.s_products = e;
                     this.showSearch = true;
                     this.search = '';
@@ -248,7 +255,7 @@ export default {
         },
         getUrl(e) {
             if (e != null) {
-                window.location.href = "/product/" + e;
+                window.location.href = this.itemType + "/" + e;
             }
             return "";
         },
@@ -256,7 +263,7 @@ export default {
             return "/" + e.toLowerCase();
         },
         getLink2(e) {
-            return "/product/" + e.toLowerCase();
+            return this.getType + "/" + e.toLowerCase();
         },
         fullPath(e) {
             if (e != null) {
@@ -266,7 +273,6 @@ export default {
         },
         renameCategory(e){
             var i = 0;
-            var j = 0;
             var c = JSON.parse(JSON.stringify(this.getBackCategorys()))
             c = Object.entries(c)
             for(i = 0; i<e.length; i++){
@@ -278,10 +284,6 @@ export default {
             }
             return e;
         },
-        getBackCategorys(){
-            return this.backCategorys
-        }
     }
-  }
 };
 </script>
