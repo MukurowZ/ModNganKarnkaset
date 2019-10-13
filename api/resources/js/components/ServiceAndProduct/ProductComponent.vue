@@ -77,7 +77,7 @@
                       </h5>
                       <p
                         class="card-text"
-                        style="height: 7rem; text-overflow: ellipsis; overflow: hidden;"
+                        style="height: 35%; text-overflow: ellipsis; overflow: hidden;"
                       >{{ s_product.description }}</p>
                       <div class="price">{{ s_product.price }}&#3647;</div>
                       <a v-on:click="getUrl(s_product.id)" class="btn btn-primary">More detail</a>
@@ -111,7 +111,7 @@
                       </h5>
                       <p
                         class="card-text"
-                        style="height: 7rem; text-overflow: ellipsis; overflow: hidden;"
+                        style="height: 35%; text-overflow: ellipsis; overflow: hidden;"
                       >{{ product.description }}</p>
                       <div class="price">{{ product.price }}&#3647;</div>
                       <a v-on:click="getUrl(product.id)" class="btn btn-primary">More detail</a>
