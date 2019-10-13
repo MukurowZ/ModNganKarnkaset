@@ -14,8 +14,8 @@ require('./bootstrap');
 Vue.use(BootstrapVue);
 Vue.use(VueLazyload, {
     preLoad: 1.3,
-    error: '../storage/main/warning.svg',
-    loading: '../storage/main/loading.svg',
+    error: '/storage/main/warning.svg',
+    loading: '/storage/main/loading.svg',
     attempt: 1
 });
 
@@ -51,10 +51,11 @@ Vue.component('ProductCarousel', ProductCarousel);
 Vue.component('VueTelInput', VueTelInput);
 
 // Event component
-Vue.component('event-component',require('./components/Event/EventComponent.vue').default);
+Vue.component('all-event-component',require('./components/Event/AllEventComponent.vue').default);
 Vue.component('create-event-component',require('./components/Event/CreateEventComponent.vue').default);
 Vue.component('edit-event-component',require('./components/Event/EditEventComponent.vue').default);
 Vue.component('show-event-component',require('./components/Event/ShowEventComponent.vue').default);
+Vue.component('single-event-component',require('./components/Event/ViewEventComponent.vue').default);
 
 // Core
 Vue.component('navbar-component',require('./components/Core/NavbarComponent.vue').default);
