@@ -40,14 +40,14 @@ class ActivityRequest extends FormRequest
                     'activity_name' => 'required',
                     'activity_description' => 'required',
 	                'img_set_id' => 'required|exists:img_set,id',
-	                'created_on' => ''
+                    'owner_id' => 'required|exists:user,id',
                 ];
             case 'PUT':
                 return [
                     'activity_name' => '',
                     'activity_description' => '',
 	                'img_set_id' => 'exists:img_set,id',
-	                'created_on' => ''
+                    'owner_id' => 'required|exists:user,id',
                 ];
             default:
                 return [];

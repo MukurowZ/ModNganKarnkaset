@@ -3,13 +3,13 @@
     <div class="row justify-content-center">
       <div class="col-md-12">
         <div class="card">
-          <div class="card-header">Event Component</div>
+          <div class="card-header">{{ upperType }} Component</div>
 
           <table>
             <tr v-for="event in events" v-bind:key="event.id">
               <td>{{event.id}}</td>
               <td>{{event.event_name}}</td>
-              <td>{{event.event_description}}</td>
+              <td>{{event.event_description}} <span style="color:red" v-if="event.longDescription">...มีต่อ</span> </td>
               <td>{{event.created_at}}</td>
               <td>{{event.updated_at}}</td>
               <td>
@@ -33,7 +33,7 @@
             </tr>
           </table>
           <button
-            onclick="window.location.href='/event/create'"
+            v-on:click="addPage"
             class="btn btn-outline-primary"
           >เพิ่มกิจกรรม</button>
         </div>
@@ -43,17 +43,36 @@
 </template>
 
 <script>
+import { adminMixin } from '../mixins/adminMixin.js'
+import { itemTypeMixin } from '../mixins/itemType.js'
 export default {
+    mixins: [adminMixin,itemTypeMixin],
     mounted() {
         this.getEventData();
     },
     methods: {
         getEventData() {
             axios
-                .get("/api/event/")
+                .get("/api/"+this.itemType)
                 .then(response => this.setEventData(response.data));
         },
         setEventData(e) {
+            var i = 0;
+            if(this.itemType=="event")
+                for(i=0; i<e.length; i++){
+                    if(e[i].event_description.length>200){
+                        e[i].event_description = e[i].event_description.substring(0,201);
+                        e[i].longDescription = true;
+                    }else e[i].longDescription = false;
+                }
+            else
+                for(i=0; i<e.length; i++){
+                    if(e[i].activity_description.length>200){
+                        e[i].event_description = e[i].activity_description.substring(0,201);
+                        e[i].activity_description = null;
+                        e[i].longDescription = true;
+                    }else e[i].longDescription = false;
+                }
             this.events = e;
         },
         fullPath(e) {
@@ -64,17 +83,18 @@ export default {
         },
         getEditUrl(e) {
             if (e != null) {
-                window.location.href = "/event/" + e + "/edit";
+                const token = localStorage.getItem('token')
+                window.location.href = "/admin/"+ this.itemType +"/" + e + "/edit"+"?token="+token;
             }
             return "";
         },
         getRemove(id, name) {
-        this.confirmBox = "";
-        this.$bvModal
-            .msgBoxConfirm(
-            "Please confirm that you want to delete event " +
-                name +
-                " from event?",
+            this.confirmBox = "";
+            this.$bvModal
+                .msgBoxConfirm(
+                "Please confirm that you want to delete event " +
+                    name +
+                    " from event?",
             {
                 title: "Please Confirm",
                 size: "sm",
@@ -91,9 +111,10 @@ export default {
             .then(value => {
             this.confirmBox = value;
             if (value) {
-                return fetch("/api/event/" + id, {
+                const token = localStorage.getItem('token');
+                return fetch("/api/"+ this.itemType +"/" + id+this.id+"?token="+token, {
                 method: "DELETE"
-                }).then((window.location.href = "/event"));
+                }).then((window.location.href = "../"+ this.itemType));
             } else {
                 return "";
             }
@@ -101,7 +122,10 @@ export default {
             .catch(err => {
             // An error occurred
             });
-        }
+        },
+        addPage(){
+            window.location.href='/admin/'+this.itemType+'/create'+'?token='+this.token
+        },
     },
     data() {
         return {
@@ -114,7 +138,12 @@ export default {
                 created_at: "",
                 update_at: "",
                 img_path: "",
-                contentDetail: [],
+                contentDetail: {
+                    id: '',
+                    owner_id: '',
+                    type: '',
+                    owner_name: '',
+                },
                 img: {
                     id: "",
                     img_set_id: "",

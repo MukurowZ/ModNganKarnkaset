@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Model\Activity;
 use App\Http\Requests\ActivityRequest;
-use App\Model\Contents;
+use App\Model\Content;
 
 class ActivityController extends Controller
 {
@@ -27,12 +27,13 @@ class ActivityController extends Controller
     public function store(ActivityRequest $request)
     {
         $validated = $request->validated();
-        $x = Content::created([
+        $x = Content::create([
             'owner_id' => $validated['owner_id'],
-            'type' => 'Activity'
+            'type' => 'activity'
         ]);
         $validated['id'] = $x['id'];
-        return Activity::create($validated);
+        Activity::create($validated);
+        return redirect()->view('../event');
     }
 
     /**
@@ -68,7 +69,9 @@ class ActivityController extends Controller
      */
     public function destroy(Activity $activity)
     {
-        $activity->delete();
-        return response('', 204);
+        if($activity->delete()){
+            Content::find($activity['id'])->delete();
+        }
+        return back(response('', 204));
     }
 }

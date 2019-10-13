@@ -3,7 +3,7 @@
     <div>
       <div>
         <div>
-          <div class>กิจกรรม</div>
+          <div class>{{thname}}</div>
           <div class="card" style="width: 100%;">
             <ul class="list-group list-group-flush">
               <li v-for="event in events" v-bind:key="event.id" class="list-group-item forum-post">
@@ -43,14 +43,17 @@
 </template>
 
 <script>
+import { itemTypeMixin } from '../mixins/itemType.js'
 export default {
+    mixins: [itemTypeMixin],
   mounted() {
     this.getEventData();
+    this.getTHname();
   },
   methods: {
     getEventData() {
       axios
-        .get("/api/event/")
+        .get("/api/"+this.itemType+"/")
         .then(response => this.setEventData(response.data));
     },
     setEventData(e) {
@@ -58,7 +61,12 @@ export default {
         axios.get("/api/img/set/" + a.img_set_id).then(response => {
           a.img_set_id = response.data.path;
         });
-        a.event_description = a.event_description.substring(0, 300) + "...";
+        if(this.itemType=="event")
+            a.event_description = a.event_description.substring(0, 300) + "...";
+        else{
+            a.event_description = a.activity_description.substring(0, 300) + "...";
+            a.activity_description=null;
+        }
         a.owner_name = a.contentDetail[0].ownerName[0].name;
       });
       this.events = e;
@@ -71,25 +79,31 @@ export default {
     },
     getEventUrl(e) {
       if (e != null) {
-        return "/event/" + e;
+        return "/"+this.itemType+"/" + e;
       }
       return "";
+    },
+    getTHname(){
+        if(this.itemType=="event"){
+            this.thname = "กิจกรรม"
+        }else this.thname = "ผลงาน"
     }
   },
   data() {
     return {
-      events: [],
-      event: {
-        id: "0",
-        event_name: "",
-        event_description: "",
-        img_set_id: "",
-        created_at: "",
-        update_at: "",
-        img_path: "",
-        owner_name: ""
-      },
-      path: []
+        thname: '',
+        events: [],
+        event: {
+            id: "0",
+            event_name: "",
+            event_description: "",
+            img_set_id: "",
+            created_at: "",
+            update_at: "",
+            img_path: "",
+            owner_name: ""
+        },
+        path: []
     };
   }
 };

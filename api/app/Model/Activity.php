@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Activity extends Model
 {
     protected $fillable = [
-        'id','owner_id','activity_name','activity_description',
-        'img_set_id','created_on'
+        'id','activity_name','activity_description',
+        'img_set_id'
     ];
 
     protected $table = "activity";

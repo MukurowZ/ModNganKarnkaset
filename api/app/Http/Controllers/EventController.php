@@ -29,11 +29,11 @@ class EventController extends Controller
         $validated = $request->validated();
         $x = Content::create([
             'owner_id' => $validated['owner_id'],
-            'type' => 'Event'
+            'type' => 'event'
         ]);
         $validated['id'] = $x['id'];
         Event::create($validated);
-        return view('event');
+        return redirect()->view('../admin/event');
     }
 
     /**

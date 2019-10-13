@@ -9,7 +9,7 @@
 <script src="{{ asset('js/script.js') }}"></script>
 <body>
     <div id="app">
-        <event-component></event-component>
+        <show-event-component></show-event-component>
     </div>
 </body>
 

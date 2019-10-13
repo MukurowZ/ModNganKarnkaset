@@ -1,10 +1,10 @@
 @extends('../core/core')
-@section('title','เพิ่มกิจกรรม / ผลงาน')
+@section('title','กิจกรรม')
 
 @section('content')
 <body>
 <div id="app">
-    <create-event-component></create-event-component>
+    <single-event-component></single-event-component>
 </div>
 
 @include('../core/core_upload')

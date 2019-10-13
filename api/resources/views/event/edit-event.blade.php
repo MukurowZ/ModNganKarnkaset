@@ -1,5 +1,5 @@
 @extends('../core/core')
-@section('title','กิจกรรมทั้งหมด')
+@section('title','แก้ไขกิจกรรม')
 
 @section('content')
     <div id="app">

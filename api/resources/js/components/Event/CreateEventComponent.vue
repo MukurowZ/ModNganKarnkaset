@@ -2,24 +2,17 @@
 <div style="font-family: Kanit;" class="container font-weight-bold" >
     <div>
     <br />
-    <h2>CREATE NEW EVENT REPORT</h2>
-    <br />
+    <h2>CREATE NEW {{ upperType }} REPORT</h2>
     <br />
     <form action="/event">
         <div class="form-group">
-        <div class="form-group">
-        <label>EVENT OWNER:</label>
+        <label>{{ upperType }} NAME:</label>
         <br />
-        <input type="text" class="form-control" v-model="owner_id" />
-        </div>
-
-        <label>EVENT NAME:</label>
-        <br />
-        <input type="text" class="form-control" v-model="name" placeholder="โปรดระบุชื่อกิจกรรม"/>
+        <input type="text" class="form-control" v-model="name" :placeholder="getPlaceHolder('โปรดระบุหัวข้อกิจกรรม/ผลงาน')"/>
         </div>
         <div class="form-group">
-        <label>EVENT DESCRIPTION:</label>
-        <textarea :placeholder="getPlaceHolder()" id="description" type="text" class="form-control" v-model="description" size="5000"/>
+        <label>{{ upperType }} DESCRIPTION:</label>
+        <textarea :placeholder="getPlaceHolder('โปรดระบุรายละเอียดกิจกรรม/ผลงาน')" id="description" type="text" class="form-control" v-model="description" size="5000"/>
         <p style="color: gray" v-if="!isOver()">You have {{charactersRemaining}} / 5,000 characters remaining.</p>
         <p style="color: red" v-else class="over">You are {{ charactersOver }} characters over the limit.</p>
         </div>
@@ -37,10 +30,11 @@
 </template>
 
 <script>
+import { adminMixin } from '../mixins/adminMixin.js'
+import { itemTypeMixin } from '../mixins/itemType.js'
+import { getPlaceHolder } from '../mixins/getPlaceHolder.js'
 export default {
-    beforeMount() {
-
-    },
+    mixins: [adminMixin,itemTypeMixin,getPlaceHolder],
     mounted() {
         // for count character remain
         this.maxCharacters = this.limit;
@@ -61,7 +55,6 @@ export default {
             name: "",
             description: "",
             img_set: "",
-            owner_id: "",
             // for count character remain
             maxCharacters: 5000,
             limit: 5000,
@@ -73,12 +66,21 @@ export default {
             this.img_set = value
         },
         addNewEvent(e) {
-            axios.post("/api/event", {
-                event_name: this.name,
-                event_description: this.description,
-                img_set_id: this.img_set,
-                owner_id: this.owner_id
-            });
+            const token = localStorage.getItem('token')
+            if(this.itemType=="event"){
+                axios.post("/api/"+this.itemType+"?token="+token, {
+                    event_name: this.name,
+                    event_description: this.description,
+                    img_set_id: this.img_set,
+                    owner_id: this.owner_id
+                });
+            }else
+                axios.post("/api/"+this.itemType+"?token="+token, {
+                    activity_name: this.name,
+                    activity_description: this.description,
+                    img_set_id: this.img_set,
+                    owner_id: this.owner_id
+                });
         },
         customLabel ({ id, name }) {
             return `${id} – ${name}`
@@ -86,9 +88,6 @@ export default {
         isOver() {
             return this.charactersRemaining < 0;
         },
-        getPlaceHolder(){
-            return 'โปรดระบุรายละเอียดกิจกรรม'
-        }
     }
 };
 </script>

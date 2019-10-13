@@ -6,7 +6,7 @@
     <!-- Full-width images with number text -->
     <!-- Use v-for -->
     <div class="mySlides">
-      <img src="./Image/img_woods.jpg" style="width:100%" />
+      <img src="" style="width:100%" />
     </div>
 
     <!-- Thumbnail images -->
@@ -15,7 +15,7 @@
       <div class="column">
         <img
           class="demo cursor"
-          src="./Image/img_woods.jpg"
+          src=""
           style="width:100%"
           onclick="currentSlide(1)"
           alt="The Woods"
@@ -38,3 +38,9 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+
+}
+</script>

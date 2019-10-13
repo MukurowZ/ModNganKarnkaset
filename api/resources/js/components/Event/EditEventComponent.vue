@@ -4,15 +4,8 @@
     <br />
     <h2>Edit Event</h2>
     <br />
-    <br />
     <form action="/event" method="post">
         <div class="form-group">
-            <div class="form-group">
-            <label>EVENT OWNER:</label>
-            <br />
-            <input type="text" class="form-control" v-model="owner_id" />
-            </div>
-
             <label>EVENT NAME:</label>
             <br />
             <input type="text" class="form-control" v-model="name" placeholder="โปรดระบุชื่อกิจกรรม"/>
@@ -37,11 +30,11 @@
 </template>
 
 <script>
+import { adminMixin } from '../mixins/adminMixin.js'
+import { itemTypeMixin } from '../mixins/itemType.js'
 export default {
+    mixins: [adminMixin,itemTypeMixin],
     props:['id'],
-    beforeMount() {
-
-    },
     mounted() {
         this.maxCharacters = this.limit;
         this.getEventData(this.id);
@@ -50,10 +43,10 @@ export default {
     computed: {
         charactersRemaining() {
             return this.maxCharacters - this.description.length;
-      },
-      charactersOver() {
-            return this.isOver() ? this.description.length - this.maxCharacters : 0;
-      },
+        },
+        charactersOver() {
+                return this.isOver() ? this.description.length - this.maxCharacters : 0;
+        },
     },
     data() {
         return {
@@ -83,17 +76,18 @@ export default {
             this.img_set = value
         },
         getEventData(id){
-            axios.get('/api/event/'+id).then(response=> this.setEventData(response.data));
+            axios.get('/api/'+this.itemType+'/'+id).then(response=> this.setEventData(response.data));
         },
         setEventData(e){
             this.name = e.event_name
             this.description = e.event_description
             this.img_set = e.img_set_id
-            this.owner_id = e.owner_id
+            this.owner_id = e.contentDetail[0].owner_id
             this.editId = e.img_set_id
         },
         editEvent() {
-            axios.put("/api/event/"+this.id,{
+            const token = localStorage.getItem('token');
+            axios.put("/api/"+this.itemType+'/'+this.id+"?token="+token,{
                 event_name: this.name,
                 event_description: this.description,
                 img_set_id: this.img_set,
