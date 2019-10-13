@@ -201,28 +201,33 @@ export default {
             .catch(err => this.setData(err, "break"));
         },
         searchProductByType(e) {
-        this.showSearch = false;
-        e = e.toLowerCase();
-        fetch("/api/search/productType?q=" + e)
-            .then(res => res.json())
-            .then(res => this.setData(res, "s_product"))
-            .catch(err => this.setData(err, "break"));
+            this.showSearch = false;
+            e = e.toLowerCase();
+            fetch("/api/search/productType?q=" + e)
+                .then(res => res.json())
+                .then(res => this.setData(res, "s_product"))
+                .catch(err => this.setData(err, "break"));
+        },
+        getAllData(){
+            this.getCategory();
+            this.getBackCategorys();
+            this.getProduct();
         },
         getCategory() {
-        axios
-            .get("/api/hcategory")
-            .then(response => this.setData(response.data, "hcategory"))
-            .catch(err => this.setData(err, "break"));
+            axios
+                .get("/api/hcategory")
+                .then(response => this.setData(response.data, "hcategory"))
+                .catch(err => this.setData(err, "break"));
         },
         getBackCategory() {
-        axios
-            .get("/api/category")
-            .then(response => this.setData(response.data, "category"))
-            .catch(err => this.setData(err, "break"));
+            axios
+                .get("/api/category")
+                .then(response => this.setData(response.data, "category"))
+                .catch(err => this.setData(err, "break"));
         },
         getProduct() {
             axios
-                .get("/api/product")
+                .get("/api/"+this.itemType)
                 .then(response => this.setData(response.data, "product"))
                 .catch(err => this.setData(err, "break"));
         },
@@ -255,7 +260,7 @@ export default {
         },
         getUrl(e) {
             if (e != null) {
-                window.location.href = "/product/" + e;
+                window.location.href = "/"+this.itemType+"/" + e;
             }
             return "";
         },
@@ -263,7 +268,7 @@ export default {
             return "/" + e.toLowerCase();
         },
         getLink2(e) {
-            return "/product/" + e.toLowerCase();
+            return "/"+this.itemType+"/" + e.toLowerCase();
         },
         fullPath(e) {
             if (e != null) {
