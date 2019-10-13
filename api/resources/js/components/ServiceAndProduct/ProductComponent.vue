@@ -59,8 +59,8 @@
                   <div
                     v-for="s_product in s_products"
                     v-bind:key="s_product.id"
-                    class="card my-2 col-md-3"
-                    style="height: 28rem"
+                    class="card my-2 col-md-6 col-lg-4"
+                    style="height: 30rem"
                   >
                     <img
                       v-lazy="fullPath(s_product.img.path)"
@@ -76,8 +76,8 @@
                         <small style="color: rgb(158, 158, 158)">Type: {{ s_product.type }}</small>
                       </h5>
                       <p
-                        class="card-text"
-                        style="height: 35%; text-overflow: ellipsis; overflow: hidden;"
+                        class="card-text py-0"
+                        style="height: 6rem; text-overflow: ellipsis; overflow: hidden;"
                       >{{ s_product.description }}</p>
                       <div class="price">{{ s_product.price }}&#3647;</div>
                       <a v-on:click="getUrl(s_product.id)" class="btn btn-primary">More detail</a>
@@ -93,8 +93,8 @@
                   <div
                     v-for="product in products"
                     v-bind:key="product.id"
-                    class="card my-2 col-md-6 col-lg-3"
-                    style="height: 28rem"
+                    class="card my-2 col-md-6 col-lg-4"
+                    style="height: 30rem"
                   >
                     <img
                       v-lazy="fullPath(product.img.path)"
@@ -110,8 +110,8 @@
                         <small style="color: rgb(158, 158, 158)">Type: {{ product.type }}</small>
                       </h5>
                       <p
-                        class="card-text"
-                        style="height: 35%; text-overflow: ellipsis; overflow: hidden;"
+                        class="card-text py-0"
+                        style="height: 6rem; text-overflow: ellipsis; overflow: hidden;"
                       >{{ product.description }}</p>
                       <div class="price">{{ product.price }}&#3647;</div>
                       <a v-on:click="getUrl(product.id)" class="btn btn-primary">More detail</a>
