@@ -210,7 +210,7 @@ export default {
         },
         getAllData(){
             this.getCategory();
-            this.getBackCategorys();
+            this.getBackCategory();
             this.getProduct();
         },
         getCategory() {
@@ -234,28 +234,28 @@ export default {
         setData(e, f) {
             switch (f) {
                 case "hcategory":
-                this.categorys = e;
-                break;
+                    this.categorys = e;
+                    break;
                 case "category":
-                this.backCategorys = e;
-                break;
+                    this.backCategorys = e;
+                    break;
                 case "product":
-                e = this.renameCategory(e);
-                this.products = e;
-                break;
+                    e = this.renameCategory(e);
+                    this.products = e;
+                    break;
                 case "service":
-                e = this.renameCategory(e);
-                this.services = e;
-                break;
+                    e = this.renameCategory(e);
+                    this.services = e;
+                    break;
                 case "s_product":
-                this.s_products = e;
-                this.showSearch = true;
-                this.search = "";
-                this.s_products = JSON.parse(this.s_product);
-                break;
+                    this.s_products = e;
+                    this.showSearch = true;
+                    this.search = "";
+                    this.s_products = JSON.parse(this.s_product);
+                    break;
                 case "break":
-                e = "";
-                break;
+                    e = "";
+                    break;
             }
         },
         getUrl(e) {
@@ -278,14 +278,13 @@ export default {
         },
         renameCategory(e) {
             var i = 0;
-            var j = 0;
             var c = JSON.parse(JSON.stringify(this.getBackCategorys()));
             c = Object.entries(c);
             for (i = 0; i < e.length; i++) {
                 c.forEach(b => {
-                if (b[1].id == e[i].type) {
-                    e[i].type = b[1].name + " " + b[1].THname;
-                }
+                    if (b[1].id == e[i].type) {
+                        e[i].type = b[1].name + " " + b[1].THname;
+                    }
                 });
             }
             return e;

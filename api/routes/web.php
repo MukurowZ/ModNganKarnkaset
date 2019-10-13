@@ -43,6 +43,10 @@ Route::group(['prefix'=>'/service'], function ($id) {
     Route::get('/{id}','View\ProductServiceController@show');
 });
 
+Route::get('/contact', function () {
+    return view('contact/contact_form');
+});
+
 Route::group(['middleware' => ['jwt.verify']], function () {
     Route::group(['prefix'=>'/admin'], function(){
         Route::get('/contact','View\AdminController@contact');
@@ -69,31 +73,8 @@ Route::group(['middleware' => ['jwt.verify']], function () {
 
 });
 
-Route::get('/product', function () {
-    return view('product_service/product');
-});
-
-Route::get('/service', function () {
-    return view('product_service/product');
-});
 
 // FOR TESTING PURPOSE
 // Route::get('/product/test', function () {
 //     return view('product_service/test');
 // });
-
-Route::get('/product/{id}', function ($id) {
-    return view('product_service/view-product', compact('id'));
-});
-
-Route::get('/product_service/create', function () {
-    return view('product_service/create-product');
-});
-
-Route::get('/contact', function () {
-    return view('contact/contact_form');
-});
-
-Route::get('/admin/contact', function () {
-    return view('contact/contact_report');
-});

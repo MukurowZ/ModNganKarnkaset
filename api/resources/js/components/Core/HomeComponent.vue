@@ -73,64 +73,9 @@
           <div class="title pb-5 col-12">
             <h2 class="align-left pb-3 mbr-fonts-style display-1">บริการล่าสุด</h2>
           </div>
-          <!--Card-1-->
-          <div class="card col-12 col-md-6 p-3 col-lg-4">
-            <div class="card-wrapper">
-              <div class="card-img">
-                <img src="assets/images/product1.jpg" alt="Mobirise" />
-              </div>
-              <div class="card-box">
-                <h4 class="card-title mbr-fonts-style display-5">Watch Star</h4>
-                <p class="mbr-text mbr-fonts-style display-7">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium dolores doloribus
-                  eligendi eum illo placeat quis repellendus sequi tempore!
-                </p>
-                <!--Btn-->
-                <div class="mbr-section-btn align-left">
-                  <a href="https://mobirise.co" class="btn btn-warning-outline display-4">$ 790</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!--Card-2-->
-          <div class="card col-12 col-md-6 p-3 col-lg-4">
-            <div class="card-wrapper">
-              <div class="card-img">
-                <img src="assets/images/product1.jpg" alt="Mobirise" />
-              </div>
-              <div class="card-box">
-                <h4 class="card-title mbr-fonts-style display-5">Watch Special</h4>
-                <p class="mbr-text mbr-fonts-style display-7">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium dolores doloribus
-                  eligendi eum illo placeat quis repellendus sequi tempore!
-                </p>
-                <!--Btn-->
-                <div class="mbr-section-btn align-left">
-                  <a href="https://mobirise.co" class="btn btn-warning-outline display-4">$ 690</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!--Card-3-->
-          <div class="card col-12 col-md-6 p-3 col-lg-4 last-child">
-            <div class="card-wrapper">
-              <div class="card-img">
-                <img src="assets/images/product1.jpg" alt="Mobirise" />
-              </div>
-              <div class="card-box">
-                <h4 class="card-title mbr-fonts-style display-5">Watch Srong</h4>
-                <p class="mbr-text mbr-fonts-style display-7">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium dolores doloribus
-                  eligendi eum illo placeat quis repellendus sequi tempore!
-                </p>
-                <!--Btn-->
-                <div class="mbr-section-btn align-left">
-                  <a href="https://mobirise.co" class="btn btn-warning-outline display-4">$ 990</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!--Card-4-->
+
+          <three-product-component :itemType="'service'"></three-product-component>
+
         </div>
       </div>
     </section>
@@ -162,89 +107,56 @@
 
       <!--Container-->
       <div class="container">
-        <div class="row justify-content-center">
-          <!--Titles-->
-          <div class="title pb-5 col-12">
-            <h2 class="align-left pb-3 mbr-fonts-style display-1">
-              สินค้าล่าสุด
-              <br />
-            </h2>
-          </div>
-          <!--Card-1-->
-          <div class="card col-12 col-md-6 p-3 col-lg-4">
-            <div class="card-wrapper">
-              <div class="card-img">
-                <img src="assets/images/product1.jpg" alt="Mobirise" />
-              </div>
-              <div class="card-box">
-                <h4 class="card-title mbr-fonts-style display-5">Watch Star</h4>
-                <p class="mbr-text mbr-fonts-style display-7">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium dolores doloribus
-                  eligendi eum illo placeat quis repellendus sequi tempore!
-                </p>
-                <!--Btn-->
-                <div class="mbr-section-btn align-left">
-                  <a href="https://mobirise.co" class="btn btn-warning-outline display-4">$ 790</a>
-                </div>
-              </div>
+            <div class="row justify-content-center">
+            <!--Titles-->
+            <div class="title pb-5 col-12">
+                <h2 class="align-left pb-3 mbr-fonts-style display-1">
+                สินค้าล่าสุด
+                <br />
+                </h2>
             </div>
-          </div>
-          <!--Card-2-->
-          <div class="card col-12 col-md-6 p-3 col-lg-4">
-            <div class="card-wrapper">
-              <div class="card-img">
-                <img src="assets/images/product1.jpg" alt="Mobirise" />
-              </div>
-              <div class="card-box">
-                <h4 class="card-title mbr-fonts-style display-5">Watch Special</h4>
-                <p class="mbr-text mbr-fonts-style display-7">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium dolores doloribus
-                  eligendi eum illo placeat quis repellendus sequi tempore!
-                </p>
-                <!--Btn-->
-                <div class="mbr-section-btn align-left">
-                  <a href="https://mobirise.co" class="btn btn-warning-outline display-4">$ 690</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!--Card-3-->
-          <div class="card col-12 col-md-6 p-3 col-lg-4 last-child">
-            <div class="card-wrapper">
-              <div class="card-img">
-                <img src="assets/images/product1.jpg" alt="Mobirise" />
-              </div>
-              <div class="card-box">
-                <h4 class="card-title mbr-fonts-style display-5">Watch Srong</h4>
-                <p class="mbr-text mbr-fonts-style display-7">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium dolores doloribus
-                  eligendi eum illo placeat quis repellendus sequi tempore!
-                </p>
-                <!--Btn-->
-                <div class="mbr-section-btn align-left">
-                  <a href="https://mobirise.co" class="btn btn-warning-outline display-4">$ 990</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!--Card-4-->
+
+            <three-product-component :itemType="'product'"></three-product-component>
+
         </div>
       </div>
     </section>
+    <section>
+        <div class="row justify-content-center">
+            <table>
+            <tr>
+                <td style="width: 50%">New event from us</td>
+                <td style="width: 50%">New activity from us</td>
+            </tr>
+            <tr>
+                <td>
+                    <three-event-component :itemType="'event'"></three-event-component>
+                </td>
+                <td>
+                    <three-event-component :itemType="'activity'"></three-event-component>
+                </td>
+            </tr>
+            </table>
+        </div>
+
+    </section>
+
+
+
   </div>
 </template>
 
 <script>
 export default {
-  methods: {
-    getUrlProduct() {
-      window.location.href = "/product";
-      return "";
-    },
-    getUrlService() {
-      window.location.href = "/service";
-      return "";
+    methods: {
+        getUrlProduct() {
+            window.location.href = "/product";
+            return "";
+        },
+        getUrlService() {
+            window.location.href = "/service";
+            return "";
+        }
     }
-  }
 };
 </script>

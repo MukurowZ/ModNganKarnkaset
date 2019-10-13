@@ -42,19 +42,22 @@ Route::group(['middleware' => ['jwt.verify']], function () {
 Route::get('/search/product','SearchController@search');
 Route::get('/search/productType','SearchController@searchByType');
 Route::get('/hcategory','CategoryController@headIndex');
-
+Route::apiResource('category','CategoryController')->only('index');
 Route::apiResource('content','ContentController')->only('index','show');
 Route::apiResource('event','EventController')->only('index','show');
 Route::apiResource('activity','ActivityController')->only('index','show');
 Route::apiResource('product','ProductController')->only('index','show');
 Route::apiResource('service','ServiceController')->only('index','show');
-Route::apiResource('category','CategoryController')->only('index');
+
 
 Route::get('/img/set/{id}','ImgController@get_OneImg');
 Route::get('/img/all/{id}','ImgController@get_Img');
 Route::apiResource('img_set','Img_setController')->only('show');
 
-Route::get('/s/threeproduct','ProductController@getThree');
-Route::get('/s/threeservice','ServiceController@getThree');
-
+Route::group(['prefix'=>'/s'], function(){
+    Route::get('/threeproduct','ProductController@getThree');
+    Route::get('/threeservice','ServiceController@getThree');
+    Route::get('/threeevent','EventController@getThree');
+    Route::get('/threeactivity','ActivityController@getThree');
+});
 
