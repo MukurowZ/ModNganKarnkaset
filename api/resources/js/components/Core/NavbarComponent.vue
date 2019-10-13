@@ -21,14 +21,21 @@
             </b-nav-form> -->
 
             <b-nav-item-dropdown disabled text="Lang" left>
-            <b-dropdown-item href="#">EN</b-dropdown-item>
-            <b-dropdown-item href="#">CN</b-dropdown-item>
-            <b-dropdown-item href="#">TH</b-dropdown-item>
+                <b-dropdown-item href="#">EN</b-dropdown-item>
+                <b-dropdown-item href="#">CN</b-dropdown-item>
+                <b-dropdown-item href="#">TH</b-dropdown-item>
             </b-nav-item-dropdown>
 
-            <b-nav-item v-if="auth" href="/admin/login"></b-nav-item>
-
-            <b-nav-item v-else="" href="/admin/logout">Sign Out</b-nav-item>
+            <b-nav-item-dropdown v-if="auth" text="จัดการ" v-on:click="logout">
+                <b-dropdown-item v-on:click="url('event')">กิจกรรม</b-dropdown-item>
+                <b-dropdown-item v-on:click="url('activity')">ผลงาน</b-dropdown-item>
+                <b-dropdown-item v-on:click="url('product')">ผลิตภัณฑ์</b-dropdown-item>
+                <b-dropdown-item v-on:click="url('service')">บริการ</b-dropdown-item>
+                <b-dropdown-item v-on:click="url('contact')">รายการติดต่อ</b-dropdown-item>
+                <b-dropdown-item v-on:click="url('user')">ผู้ใช้</b-dropdown-item>
+                <hr align="left" width="75%">
+                <b-dropdown-item v-on:click="logout">ออกจากระบบ</b-dropdown-item>
+            </b-nav-item-dropdown>
             <!-- <template slot="button-content"><em>User</em></template>
             <b-dropdown-item href="#">Profile</b-dropdown-item>
             <b-dropdown-item href="#">Sign Out</b-dropdown-item> -->
@@ -45,15 +52,44 @@ export default {
     },
     data() {
         return {
-            auth: true,
+            auth: false,
         }
     },
     methods: {
         getAuthStatus(){
-
+            if(localStorage.getItem('token')!=null)
+                this.setAuth(true);
+            else this.setAuth(false);
         },
         setAuth(e){
             this.auth = e;
+        },
+        logout(){
+            localStorage.removeItem('token');
+            localStorage.removeItem('id')
+            window.location.href = "/"
+        },
+        url(e){
+            switch(e){
+                case "event":
+                    window.location.href = "/event/manage"
+                    break;
+                case "activity":
+                    window.location.href = ""
+                    break;
+                case "product":
+                    window.location.href = ""
+                    break;
+                case "service":
+                    window.location.href = ""
+                    break;
+                case "contact":
+                    window.location.href = "/admin/contact"
+                    break;
+                case "user":
+                    window.location.href = ""
+                    break;
+            }
         }
     },
 }

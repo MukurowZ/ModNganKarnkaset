@@ -27,8 +27,8 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     Route::apiResource('contact','Contact_logController');
 
     Route::apiResource('partner','PartnerController')->except('index');
-    Route::apiResource('product','ProductController')->except('index','show');
-    Route::apiResource('service','ServiceController')->except('index');
+    Route::apiResource('product','ProductController')->only('index','show');
+    Route::apiResource('service','ServiceController')->only('index','show');
 });
 
 Route::get('/search/product','SearchController@search');
@@ -38,7 +38,7 @@ Route::apiResource('img','ImgController')->only('index');
 Route::apiResource('event','EventController')->only('index','show');
 Route::apiResource('activity','ActivityController')->only('index');
 Route::apiResource('product','ProductController')->only('index','show');
-Route::apiResource('server','ServiceConttroller')->only('index');
+Route::apiResource('service','ServiceController')->only('index','show');
 Route::apiResource('category','CategoryController')->only('index');
 
 Route::apiResource('img_set','Img_setController');
@@ -46,5 +46,8 @@ Route::get('/img/set/{id}','ImgController@get_OneImg');
 Route::get('/img/all/{id}','ImgController@get_Img');
 Route::post('/img/upload','ImgController@post_upload');
 Route::apiResource('img','ImgController')->except('index');
+
+Route::get('/s/threeproduct','ProductController@getThree');
+Route::get('/s/threeservice','ServiceController@getThree');
 
 

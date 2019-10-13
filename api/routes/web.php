@@ -19,32 +19,35 @@ Route::get('/admin/login', function () {
     return view('login/login');
 });
 
-
 Route::get('/index', function () {
     return view('welcome');
 });
 
-Route::group(['prefix'=>'/event'], function(){
-    Route::get('/','View\EventController@index');
-});
-
-// Route::get('/event', function () {
-//     return view('event/event');
-// });
-
-Route::get('/view_event', function () {
+Route::get('/event', function () {
     return view('event/show-event');
 });
 
 Route::get('/event/create', function () {
     return view('event/create-event');
 });
-
-Route::get('/event/{id}/edit', function ($id) {
-    return view('event/edit-event', compact('id'));
+Route::group(['middleware' => ['jwt.verify']], function () {
+    Route::get('/event/{id}/edit', function ($id) {
+        return view('event/edit-event', compact('id'));
+    });
 });
 
+Route::group(['prefix'=>'/event/manage'], function(){
+    Route::get('/','View\EventController@index');
+});
+// Route::get('/event', function () {
+//     return view('event/event');
+// });
+
 Route::get('/product', function () {
+    return view('product_service/product');
+});
+
+Route::get('/service', function () {
     return view('product_service/product');
 });
 
@@ -68,7 +71,6 @@ Route::get('/contact', function () {
 Route::get('/admin/contact', function () {
     return view('contact/contact_report');
 });
-
 
 Route::get('/admin/login', function () {
     return view('login/login');

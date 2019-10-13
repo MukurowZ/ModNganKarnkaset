@@ -23,8 +23,11 @@ class AuthController extends Controller
         }
         $user = auth()->user();
         $role = $user->role;
-
-        return response()->json(compact('token', 'role'));
+        return response()->json([
+            'access_token' => $token,
+            'token_type'   => 'bearer',
+            'user_id' => $user['id']
+        ]);
     }
 
     public function getAuthenticatedUser()

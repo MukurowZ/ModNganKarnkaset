@@ -1,42 +1,71 @@
 <template>
     <div>
         <div class="box">
-            <div style="text-align: center;"><h4>เข้าสู่ระบบ</h4></div>
-            <table>
-            <tr>
-                <td> <label>Email</label> </td>
-                <td style="width: 100%;"> <input v-model="email" type="text" class="form-control" placeholder="โปรดใส่อีเมลล์"> </td>
-
-            </tr>
-            <tr>
-                <td> <label>Password</label> </td>
-                <td> <input v-model="password" type="password" class="form-control" placeholder="โปรดใส่รหัสผ่าน"> </td>
-            </tr>
-            </table>
-            <br>
-            <!-- <div class="d-flex justify-content-end"  style="margin-right: 15px;"> -->
-
-                <button class="btn btn-primary" type="submit" v-on:click="login">เข้าสู่ระบบ</button>
-            <!-- </div> -->
+            <form @submit="login">
+                <div style="text-align: center;"><h4>เข้าสู่ระบบ</h4></div>
+                <table>
+                <tr>
+                    <td> <label>Email</label> </td>
+                    <td style="width: 100%;">
+                        <input v-model="email" type="text" class="form-control" autocomplete="email" placeholder="โปรดใส่อีเมลล์">
+                    </td>
+                </tr>
+                <tr>
+                    <td> <label>Password</label> </td>
+                    <td>
+                        <input v-model="password" type="password" class="form-control" autocomplete="password" placeholder="โปรดใส่รหัสผ่าน">
+                    </td>
+                </tr>
+                </table>
+                <center><span style="color:red" >{{ msg }}</span></center>
+                <br>
+                <button class="btn btn-primary" style="width: 100%" type="submit">เข้าสู่ระบบ</button>
+            </form>
         </div>
     </div>
 </template>
+
 <script>
 export default {
     data() {
         return {
             email: '',
             password: '',
+            msg: '',
+            encrypt_id: '',
         }
     },
     methods: {
-        login(){
-            axios.post("/api/login",{
+        login() {
+            let vue = this;
+            axios.post("/api/login", {
                 email: this.email,
                 password: this.password
-            });
+            })
+            .then(function(res) {
+                localStorage.setItem('token', res.data.access_token);
+                localStorage.setItem('id',
+                    res.data.access_token.substring(20,35) +
+                    res.data.access_token.substring(80,105) +
+                    res.data.user_id +
+                    res.data.access_token.substring(10,25) +
+                    res.data.access_token.substring(125,145)
+                );
+            })
+            .catch(function(err) {
+                if(err.response!=null)
+                    switch (err.response.status) {
+                    case 400:
+                        vue.msg = "Incorrect email or password"
+                        break;
+                    }
+            })
+            .then(function() {});
         },
     },
+    computed: {
+
+    }
 }
 </script>
 <style lang="css">
