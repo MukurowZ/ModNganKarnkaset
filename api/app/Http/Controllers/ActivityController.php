@@ -74,4 +74,8 @@ class ActivityController extends Controller
         }
         return back(response('', 204));
     }
+
+    // GET FIRST 3
+    public function getThree(){ return Activity::orderBy('id', 'desc')->take(3)->get();}
+
 }

@@ -56,6 +56,7 @@ Vue.component('create-event-component',require('./components/Event/CreateEventCo
 Vue.component('edit-event-component',require('./components/Event/EditEventComponent.vue').default);
 Vue.component('show-event-component',require('./components/Event/ShowEventComponent.vue').default);
 Vue.component('single-event-component',require('./components/Event/ViewEventComponent.vue').default);
+Vue.component('three-event-component',require('./components/Event/ShowEventListComponent.vue').default);
 
 // Core
 Vue.component('navbar-component',require('./components/Core/NavbarComponent.vue').default);
@@ -73,6 +74,7 @@ Vue.component('contact-report-component',require('./components/contact/contactre
 Vue.component('category-component',require('./components/ServiceAndProduct/ProductComponent.vue').default);   // For search product
 Vue.component('create-pands-component',require('./components/ServiceAndProduct/CreatePandSComponent.vue').default); // For create
 Vue.component('view-product-component',require('./components/ServiceAndProduct/ViewProductComponent.vue').default);     //  For view overall product
+Vue.component('three-product-component',require('./components/ServiceAndProduct/ShowProductListComponent.vue').default);     //  For view overall product
 
 // Log in
 Vue.component('login-component',require('./components/Login/LoginComponent.vue').default);

@@ -68,8 +68,5 @@ class ProductController extends Controller
     }
 
     // GET FIRST 3
-    public function getThree()
-    {
-        return Product::orderBy('id', 'desc')->take(3)->get();
-    }
+    public function getThree(){ return Product::orderBy('id', 'desc')->take(3)->get();}
 }
