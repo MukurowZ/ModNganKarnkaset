@@ -1,6 +1,6 @@
 <template>
 <div style="font-family: Kanit; ">
-  <b-navbar toggleable="lg" type="light" style="background-color: #c4e6d2">
+  <b-navbar toggleable="lg" :sticky="getTrue()" type="light" style="background-color: #c4e6d2">
         <b-navbar-brand href="/" style="font-weight: 450;">มดงานการเกษตร</b-navbar-brand>
 
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -10,6 +10,8 @@
             <b-nav-item href="/">หน้าหลัก <font-awesome-icon :icon="['fas', 'home']" /></b-nav-item>
             <b-nav-item  href="/product">สินค้า <font-awesome-icon :icon="['fas', 'shopping-bag']" /></b-nav-item>
             <b-nav-item  href="/service">บริการ <font-awesome-icon :icon="['fas', 'hand-holding']" /></b-nav-item>
+            <b-nav-item  href="/event">กิจกรรม <font-awesome-icon :icon="['fas', 'calendar-alt']" /></b-nav-item>
+            <b-nav-item  href="/activity">ผลงาน <font-awesome-icon :icon="['fas', 'globe-asia']" /></b-nav-item>
             <b-nav-item href="/contact">ติดต่อเรา <font-awesome-icon :icon="['fas', 'phone']" /> </b-nav-item>
         </b-navbar-nav>
 
@@ -46,7 +48,9 @@
 </template>
 
 <script>
+import { adminMixin } from '../mixins/adminMixin.js'
 export default {
+    mixins: [adminMixin],
     mounted() {
         this.getAuthStatus();
     },
@@ -66,30 +70,33 @@ export default {
         },
         logout(){
             localStorage.removeItem('token');
-            localStorage.removeItem('id')
-            window.location.href = "/"
+            localStorage.removeItem('id');
+            window.location.href = "/";
         },
         url(e){
             switch(e){
                 case "event":
-                    window.location.href = "/event/manage"
+                    window.location.href = "/admin/event"+"?token="+this.token
                     break;
                 case "activity":
-                    window.location.href = ""
+                    window.location.href = "/admin/activity"+"?token="+this.token
                     break;
                 case "product":
-                    window.location.href = ""
+                    window.location.href = "/admin/product"+"?token="+this.token
                     break;
                 case "service":
-                    window.location.href = ""
+                    window.location.href = "/admin/service"+"?token="+this.token
                     break;
                 case "contact":
-                    window.location.href = "/admin/contact"
+                    window.location.href = "/admin/contact"+"?token="+this.token
                     break;
                 case "user":
-                    window.location.href = ""
+                    window.location.href = "/admin/user"+"?token="+this.token
                     break;
             }
+        },
+        getTrue(){
+            return false;
         }
     },
 }

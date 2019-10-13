@@ -3,20 +3,18 @@
         <div class="box">
             <form @submit="login">
                 <div style="text-align: center;"><h4>เข้าสู่ระบบ</h4></div>
-                <table>
-                <tr>
-                    <td> <label>Email</label> </td>
-                    <td style="width: 100%;">
-                        <input v-model="email" type="text" class="form-control" autocomplete="email" placeholder="โปรดใส่อีเมลล์">
-                    </td>
-                </tr>
-                <tr>
-                    <td> <label>Password</label> </td>
-                    <td>
-                        <input v-model="password" type="password" class="form-control" autocomplete="password" placeholder="โปรดใส่รหัสผ่าน">
-                    </td>
-                </tr>
-                </table>
+                    <br>
+                    <b-input-group prepend="Username">
+                        <input v-model="email" type="text"
+                        class="form-control" autocomplete="email"
+                        placeholder="โปรดใส่อีเมลล์">
+                    </b-input-group>
+                    <br>
+                    <b-input-group prepend="Password">
+                        <input v-model="password" type="password"
+                        class="form-control" autocomplete="password"
+                        placeholder="โปรดใส่รหัสผ่าน">
+                    </b-input-group>
                 <center><span style="color:red" >{{ msg }}</span></center>
                 <br>
                 <button class="btn btn-primary" style="width: 100%" type="submit">เข้าสู่ระบบ</button>
@@ -60,7 +58,9 @@ export default {
                         break;
                     }
             })
-            .then(function() {});
+            .then(function() {
+                window.location.href = "/";
+            });
         },
     },
     computed: {

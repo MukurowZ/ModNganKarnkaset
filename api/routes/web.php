@@ -15,33 +15,59 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admin/login', function () {
-    return view('login/login');
-});
-
 Route::get('/index', function () {
     return view('welcome');
 });
 
-Route::get('/event', function () {
-    return view('event/show-event');
+Route::get('/admin/login', function () {
+    return view('login/login');
 });
 
-Route::get('/event/create', function () {
-    return view('event/create-event');
-});
-Route::group(['middleware' => ['jwt.verify']], function () {
-    Route::get('/event/{id}/edit', function ($id) {
-        return view('event/edit-event', compact('id'));
-    });
-});
-
-Route::group(['prefix'=>'/event/manage'], function(){
+Route::group(['prefix'=>'/event'], function ($id) {
     Route::get('/','View\EventController@index');
+    Route::get('/{id}','View\EventController@show');
 });
-// Route::get('/event', function () {
-//     return view('event/event');
-// });
+
+Route::group(['prefix'=>'/activity'], function ($id) {
+    Route::get('/','View\EventController@index');
+    Route::get('/{id}','View\EventController@show');
+});
+
+Route::group(['prefix'=>'/product'], function ($id) {
+    Route::get('/','View\ProductServiceController@index');
+    Route::get('/{id}','View\ProductServiceController@show');
+});
+
+Route::group(['prefix'=>'/service'], function ($id) {
+    Route::get('/','View\ProductServiceController@index');
+    Route::get('/{id}','View\ProductServiceController@show');
+});
+
+Route::group(['middleware' => ['jwt.verify']], function () {
+    Route::group(['prefix'=>'/admin'], function(){
+        Route::get('/contact','View\AdminController@contact');
+        Route::group(['prefix'=>'/event'], function ($id) {
+            Route::get('/','View\AdminController@event');
+            Route::get('/{id}/edit','View\AdminController@editEvent');
+            Route::get('/create','View\AdminController@createEvent');
+        });
+
+        Route::group(['prefix'=>'/activity'], function ($id) {
+            Route::get('/','View\AdminController@event');
+            Route::get('/{id}/edit','View\AdminController@editEvent');
+            Route::get('/create','View\AdminController@createEvent');
+        });
+        Route::group(['prefix'=>'/product'], function ($id) {
+            Route::get('/','View\AdminController@product');
+            Route::get('/{id}/edit','View\AdminController@editProduct');
+            Route::get('/create','View\AdminController@createProduct');
+        });
+
+        Route::get('/product','View\AdminController@product');
+        Route::get('/service','View\AdminController@service');
+    });
+
+});
 
 Route::get('/product', function () {
     return view('product_service/product');
@@ -52,9 +78,9 @@ Route::get('/service', function () {
 });
 
 // FOR TESTING PURPOSE
-Route::get('/product/test', function () {
-    return view('product_service/test');
-});
+// Route::get('/product/test', function () {
+//     return view('product_service/test');
+// });
 
 Route::get('/product/{id}', function ($id) {
     return view('product_service/view-product', compact('id'));
@@ -70,8 +96,4 @@ Route::get('/contact', function () {
 
 Route::get('/admin/contact', function () {
     return view('contact/contact_report');
-});
-
-Route::get('/admin/login', function () {
-    return view('login/login');
 });
