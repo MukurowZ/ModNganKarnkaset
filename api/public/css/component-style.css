@@ -12,6 +12,10 @@
     padding: 0.5em;
 }
 
+.event-info{
+    margin-left: 3em;
+}
+
 .event-post {
     margin-top: 4rem;
     min-height: 14rem;
