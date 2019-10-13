@@ -16,6 +16,12 @@
     margin-left: 3em;
 }
 
+.event-list-info{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 100%;
+}
+
 .event-post {
     margin-top: 4rem;
     min-height: 14rem;
