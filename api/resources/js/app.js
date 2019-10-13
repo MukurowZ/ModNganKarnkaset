@@ -15,7 +15,7 @@ Vue.use(BootstrapVue);
 Vue.use(VueLazyload, {
     preLoad: 1.3,
     error: '/storage/main/warning.svg',
-    loading: '/storage/main/loading.svg',
+    loading: '/storage/main/Double_Ring-1s-143px.svg',
     attempt: 1
 });
 
