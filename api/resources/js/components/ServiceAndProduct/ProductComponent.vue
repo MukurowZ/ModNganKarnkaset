@@ -59,8 +59,8 @@
                   <div
                     v-for="s_product in s_products"
                     v-bind:key="s_product.id"
-                    class="card my-2 col-md-3"
-                    style="height: 28rem"
+                    class="card my-2 col-md-6 col-lg-4"
+                    style="height: 30rem"
                   >
                     <img
                       v-lazy="fullPath(s_product.img.path)"
@@ -74,8 +74,11 @@
                         <br />
                         <small style="color: rgb(158, 158, 158)">Type: {{ s_product.type }}</small>
                       </h5>
-                      <p class="card-text" style="height: 7rem; text-overflow: ellipsis; overflow: hidden;">{{ s_product.description }}</p>
-                      <div class="price">{{ s_product.price }}&#3647; </div>
+                      <p
+                        class="card-text py-0"
+                        style="height: 6rem; text-overflow: ellipsis; overflow: hidden;"
+                      >{{ s_product.description }}</p>
+                      <div class="price">{{ s_product.price }}&#3647;</div>
                       <a v-on:click="getUrl(s_product.id)" class="btn btn-primary">More detail</a>
                     </div>
                   </div>
@@ -89,8 +92,8 @@
                   <div
                     v-for="product in products"
                     v-bind:key="product.id"
-                    class="card my-2 col-md-6 col-lg-3"
-                    style="height: 28rem"
+                    class="card my-2 col-md-6 col-lg-4"
+                    style="height: 30rem"
                   >
                     <img
                       v-lazy="fullPath(product.img.path)"
@@ -104,8 +107,11 @@
                         <br />
                         <small style="color: rgb(158, 158, 158)">Type: {{ product.type }}</small>
                       </h5>
-                      <p class="card-text"  style="height: 7rem; text-overflow: ellipsis; overflow: hidden;">{{ product.description }}</p>
-                      <div class="price">{{ product.price }}&#3647; </div>
+                      <p
+                        class="card-text py-0"
+                        style="height: 6rem; text-overflow: ellipsis; overflow: hidden;"
+                      >{{ product.description }}</p>
+                      <div class="price">{{ product.price }}&#3647;</div>
                       <a v-on:click="getUrl(product.id)" class="btn btn-primary">More detail</a>
                     </div>
                   </div>
@@ -129,133 +135,127 @@ export default {
     },
     data() {
         return {
-            backCategorys: [],
-            categorys: [],
-            category: {
-                id: "",
-                name: "",
-                THname: "",
-                head: "",
-                isHead: "",
-                subCategorys: [],
-                subCategory: {
-                    id: "",
-                    name: "",
-                    THname: "",
-                    isHead: ""
-                }
-            },
-            products: [],
-            product: {
-                id: "",
-                name: "",
-                story: "",
-                price: "",
-                img_set_id: "",
-                description: "",
-                video: "",
-                type: "",
-                owner_id: "",
-                img: {
-                    id: "",
-                    img_set_id: "",
-                    path: "",
-                }
-            },
-            services: [],
-            service: {
-                id: "",
-                name: "",
-                stroy: "",
-                price: "",
-                img_set_id: "",
-                description: "",
-                video: "",
-                type: "",
-                owner_id: "",
-                img: {
-                    id: "",
-                    img_set_id: "",
-                    path: "",
-                }
-            },
-            showProduct: '',
-            showService: '',
-            search: '',
-            showSearch: '',
-            s_product: [],
+        backCategorys: [],
+        categorys: [],
+        category: {
+            id: "",
+            name: "",
+            THname: "",
+            head: "",
+            isHead: "",
+            subCategorys: [],
+            subCategory: {
+            id: "",
+            name: "",
+            THname: "",
+            isHead: ""
+            }
+        },
+        products: [],
+        product: {
+            id: "",
+            name: "",
+            story: "",
+            price: "",
+            img_set_id: "",
+            description: "",
+            video: "",
+            type: "",
+            owner_id: "",
+            img: {
+            id: "",
+            img_set_id: "",
+            path: ""
+            }
+        },
+        services: [],
+        service: {
+            id: "",
+            name: "",
+            stroy: "",
+            price: "",
+            img_set_id: "",
+            description: "",
+            video: "",
+            type: "",
+            owner_id: "",
+            img: {
+            id: "",
+            img_set_id: "",
+            path: ""
+            }
+        },
+        showProduct: "",
+        showService: "",
+        search: "",
+        showSearch: "",
+        s_product: []
         };
     },
     methods: {
-        searchProduct(){
-            this.showSearch = false;
-            fetch('/api/search/product?q='+this.search)
+        searchProduct() {
+        this.showSearch = false;
+        fetch("/api/search/product?q=" + this.search)
             .then(res => res.json())
-            .then(res => this.setData(res,"s_product"))
-            .catch(err => this.setData(err,"break"));
+            .then(res => this.setData(res, "s_product"))
+            .catch(err => this.setData(err, "break"));
         },
-        searchProductByType(e){
-            this.showSearch = false;
-            e = e.toLowerCase();
-            fetch('/api/search/productType?q='+e)
+        searchProductByType(e) {
+        this.showSearch = false;
+        e = e.toLowerCase();
+        fetch("/api/search/productType?q=" + e)
             .then(res => res.json())
-            .then(res => this.setData(res,"s_product"))
-            .catch(err => this.setData(err,"break"));
-        },
-        getAllData(){
-            this.getCategory();
-            this.getBackCategory();
-            this.getProduct();
+            .then(res => this.setData(res, "s_product"))
+            .catch(err => this.setData(err, "break"));
         },
         getCategory() {
-            axios
-                .get("/api/hcategory")
-                .then(response => this.setData(response.data, "hcategory")).catch(err => this.setData(err,"break"));;
+        axios
+            .get("/api/hcategory")
+            .then(response => this.setData(response.data, "hcategory"))
+            .catch(err => this.setData(err, "break"));
         },
         getBackCategory() {
-            axios
-                .get("/api/category")
-                .then(response => this.setData(response.data, "category")).catch(err => this.setData(err,"break"));;
+        axios
+            .get("/api/category")
+            .then(response => this.setData(response.data, "category"))
+            .catch(err => this.setData(err, "break"));
         },
         getProduct() {
             axios
-                .get("/api/"+this.itemType)
-                .then(response => this.setData(response.data, "product")).catch(err => this.setData(err,"break"));;
-        },
-        getBackCategorys(){
-            return this.backCategorys
+                .get("/api/product")
+                .then(response => this.setData(response.data, "product"))
+                .catch(err => this.setData(err, "break"));
         },
         setData(e, f) {
             switch (f) {
                 case "hcategory":
-                    this.categorys = e;
-                    break;
+                this.categorys = e;
+                break;
                 case "category":
-                    this.backCategorys = e;
-                    break;
+                this.backCategorys = e;
+                break;
                 case "product":
-                    e = this.renameCategory(e);
-                    this.products = e;
-                    break;
+                e = this.renameCategory(e);
+                this.products = e;
+                break;
                 case "service":
-                    e = this.renameCategory(e);
-                    this.services = e;
-                    break;
+                e = this.renameCategory(e);
+                this.services = e;
+                break;
                 case "s_product":
-                    e = this.renameCategory(e);
-                    this.s_products = e;
-                    this.showSearch = true;
-                    this.search = '';
-                    this.s_products = JSON.parse(this.s_product);
-                    break;
+                this.s_products = e;
+                this.showSearch = true;
+                this.search = "";
+                this.s_products = JSON.parse(this.s_product);
+                break;
                 case "break":
-                    e = "";
-                    break;
+                e = "";
+                break;
             }
         },
         getUrl(e) {
             if (e != null) {
-                window.location.href = this.itemType + "/" + e;
+                window.location.href = "/product/" + e;
             }
             return "";
         },
@@ -263,7 +263,7 @@ export default {
             return "/" + e.toLowerCase();
         },
         getLink2(e) {
-            return this.getType + "/" + e.toLowerCase();
+            return "/product/" + e.toLowerCase();
         },
         fullPath(e) {
             if (e != null) {
@@ -271,19 +271,23 @@ export default {
             }
             return "";
         },
-        renameCategory(e){
+        renameCategory(e) {
             var i = 0;
-            var c = JSON.parse(JSON.stringify(this.getBackCategorys()))
-            c = Object.entries(c)
-            for(i = 0; i<e.length; i++){
+            var j = 0;
+            var c = JSON.parse(JSON.stringify(this.getBackCategorys()));
+            c = Object.entries(c);
+            for (i = 0; i < e.length; i++) {
                 c.forEach(b => {
-                    if(b[1].id==e[i].type){
-                        e[i].type = b[1].name + " " + b[1].THname;
-                    }
-                })
+                if (b[1].id == e[i].type) {
+                    e[i].type = b[1].name + " " + b[1].THname;
+                }
+                });
             }
             return e;
         },
-    }
-};
+        getBackCategorys() {
+            return this.backCategorys;
+        }
+    },
+}
 </script>
