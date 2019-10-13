@@ -26,7 +26,7 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     Route::apiResource('contact','Contact_logController');
 
     Route::post('/img/upload','ImgController@post_upload');
-    Route::apiResource('img_set','Img_setController')->except('show');
+    Route::apiResource('img_set','Img_setController')->except('index','show');
     Route::apiResource('img','ImgController');
 
     Route::apiResource('content','ContentController')->except('index','show');
@@ -52,7 +52,7 @@ Route::apiResource('service','ServiceController')->only('index','show');
 
 Route::get('/img/set/{id}','ImgController@get_OneImg');
 Route::get('/img/all/{id}','ImgController@get_Img');
-Route::apiResource('img_set','Img_setController')->only('show');
+Route::apiResource('img_set','Img_setController')->only('index','show');
 
 Route::group(['prefix'=>'/s'], function(){
     Route::get('/threeproduct','ProductController@getThree');

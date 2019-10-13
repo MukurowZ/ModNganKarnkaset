@@ -67,8 +67,24 @@ Route::group(['middleware' => ['jwt.verify']], function () {
             Route::get('/create','View\AdminController@createProduct');
         });
 
-        Route::get('/product','View\AdminController@product');
-        Route::get('/service','View\AdminController@service');
+        Route::group(['prefix'=>'/service'], function ($id) {
+            Route::get('/','View\AdminController@product');
+            Route::get('/{id}/edit','View\AdminController@editProduct');
+            Route::get('/create','View\AdminController@createProduct');
+        });
+
+        Route::group(['prefix'=>'/user'], function ($id) {
+            Route::get('/','View\AdminController@manage');
+            Route::get('/all','View\AdminController@user');
+            Route::get('/{id}/edit','View\AdminController@editUser');
+            Route::get('/create','View\AdminController@createUser');
+        });
+
+        Route::group(['prefix'=>'/department'], function ($id) {
+            Route::get('/','View\AdminController@department');
+            Route::get('/{id}/edit','View\AdminController@editDepartment');
+            Route::get('/create','View\AdminController@createDepartment');
+        });
     });
 
 });

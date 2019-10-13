@@ -26,7 +26,8 @@ class DepartmentController extends Controller
     public function store(DepartmentRequest $request)
     {
         $validated = $request->validated();
-        return Department::create($validated);
+        Department::create($validated);
+        return view('/');
     }
 
     /**
@@ -62,7 +63,8 @@ class DepartmentController extends Controller
      */
     public function destroy(Department $department)
     {
-        $departments->delete();
-        return response('', 204);//
+        $department->delete();
+        response('', 204);//
+        return view('/');
     }
 }
