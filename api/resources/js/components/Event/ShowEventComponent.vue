@@ -7,6 +7,7 @@
           <div class="card" style="width: 100%;">
             <ul class="list-group list-group-flush">
               <li v-for="event in events" v-bind:key="event.id" class="list-group-item forum-post">
+                <a :href="getEventUrl(event.id)">
                 <div class="row" style="height: 90%">
                   <div class="col-md-3">
                     <img v-lazy="fullPath(event.img_set_id)" height="200px" />
@@ -31,6 +32,7 @@
                     </h6>
                   </div>
                 </div>
+                </a>
               </li>
             </ul>
           </div>
