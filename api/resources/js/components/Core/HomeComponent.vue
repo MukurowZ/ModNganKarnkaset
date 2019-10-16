@@ -124,8 +124,8 @@
         <div class="row justify-content-center">
             <table>
             <tr>
-                <td style="width: 50%"><h1>New event from us</h1></td>
-                <td style="width: 50%"><h1>New activity from us</h1></td>
+                <td style="width: 50%; padding-left: 4em"><h1>New event from us</h1></td>
+                <td style="width: 50%; padding-left: 4em"><h1>New activity from us</h1></td>
             </tr>
             <tr>
                 <td>
