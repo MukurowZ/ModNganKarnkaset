@@ -38,7 +38,6 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     Route::apiResource('service','ServiceController')->only('index','show');
 });
 
-
 Route::get('/search/product','SearchController@search');
 Route::get('/search/productType','SearchController@searchByType');
 Route::get('/hcategory','CategoryController@headIndex');

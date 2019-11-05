@@ -101,7 +101,7 @@ class ImgController extends Controller
                 $path = Hash::make($path);
                 $path = str_replace("/","-",$path);
                 $path = str_replace(".","-",$path);
-                $path = time()."".$path.$ext;
+                $path = time()."".$path.'.'.$ext;
                 Img::create([
                     'img_set_id' => $set['id'],
                     'path' => $path

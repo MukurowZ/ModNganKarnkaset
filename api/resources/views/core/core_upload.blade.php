@@ -17,11 +17,11 @@
         </button>
     </div>
     <div class="modal-body">
-    <form class="form-group" method="post" action="/api/img/upload" id="upload" enctype="multipart/form-data">
+    <form class="form-group" method="post" action="/api/img/upload?token=" id="upload" enctype="multipart/form-data">
         Owner Id: <br><br> <input type="text" name="owner_id"><br><br>
         ชื่ออัลบั้ม <br><br> <input type="text" name="name" placeholder="Please provide album name"><br><br>
         <input type="file" name="file[]" multiple><br><br>
-        <button type="submit" class="btn btn-primary" >อัปโหลด</button>
+        <button type="submit" class="btn btn-primary">อัปโหลด</button>
     </form>
     </div>
     <div class="modal-footer">
@@ -38,12 +38,15 @@
 <script>
     var form = document.getElementById("upload");
     var request = new XMLHttpRequest();
-
+    var token = localStorage.getItem('token');
+    var url = "/api/img/upload?token="+token;
+    document.getElementById("upload").setAttribute("action",url);
 
     function form.addEventListener('submit',function(e)){
+        document.getElementById("upload").setAttribute("action",url);
         e.preventDefault();
         var formdata = new FormData(form);
-        request.open('post','/api/img/upload');
+        request.open('post','/api/img/upload?token='+token);
         request.addEventListener("load",transferComplete);
         request.send(formdata);
     };
