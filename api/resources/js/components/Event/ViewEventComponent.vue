@@ -1,25 +1,25 @@
 <template>
   <div class="container">
     <br />
-    <h1>{{ name }}</h1>
+    <h1 style="font-family: Kanit;">{{ name }}</h1>
     <br />
-    <!-- Full-width images with number text -->
-    <!-- Use v-for -->
-    <div v-for="image in images" v-bind:key="image.id" class="mySlides">
-        <img v-lazy="fullPath(image.path)" style="width:100%"/>
-    </div>
+    <div class="modn-content" style="max-width:1200px">
+        <!-- Full-width images with number text -->
+        <!-- Use v-for -->
+        <img v-for="image in images" v-bind:key="image.id" class="mySlides" v-lazy="fullPath(image.path)" style="width:100%;display:none"/>
 
-    <!-- Thumbnail images -->
-    <!-- Use v-for -->
-    <div class="row" >
-      <div class="column" v-for="image in images" v-bind:key="image.id">
-        <img
-          class="demo cursor"
-          v-lazy="fullPath(image.path)"
-          style="width:100%"
-          v-on:click="currentSlide(image.id)"
-        />
-      </div>
+        <!-- Thumbnail images -->
+        <!-- Use v-for -->
+        <div class="modn-row-padding modn-section">
+        <div class="modn-col s4" v-for="image in images" v-bind:key="image.id">
+            <img
+            class="selector modn-opacity modn-hover-opacity-off"
+            v-lazy="fullPath(image.path)"
+            style="width:100%;cursor:pointer"
+            v-on:click="currentSlide(image.id)"
+            />
+        </div>
+        </div>
     </div>
 
     <!-- Event Content -->
@@ -42,11 +42,9 @@ import { itemTypeMixin } from '../mixins/itemType.js'
 export default {
     mixins: [itemTypeMixin],
     props:['id'],
-    created() {
-
-    },
     mounted() {
         this.getEventData(this.id);
+        this.begin();
         this.showSlides(this.slideIndex);
     },
     data() {
@@ -68,11 +66,14 @@ export default {
                 }
             },
             images: [],
-            slideIndex: 1,
+            slideIndex: 0,
             slides: '',
         }
     },
     methods: {
+        begin(){
+            setTimeout(() => this.currentSlide(this.slideIndex), 1000);
+        },
         getEventData(id){
             axios.get('/api/'+this.itemType+'/'+id).then(response=> this.setEventData(response.data));
         },
@@ -80,7 +81,10 @@ export default {
             this.img_set = e.img_set_id
             this.owner_id = e.contentDetail[0].owner_id
             this.editId = e.img_set_id
-            if(this.itemType=="event") this.description = e.event_description
+            if(this.itemType=="event") {
+                this.description = e.event_description
+                this.name = e.event_name
+            }
             else {
                 this.description = e.activity_description
                 this.name = e.activity_name
@@ -97,6 +101,7 @@ export default {
         },
         // Thumbnail image controls
         currentSlide(n) {
+            n = this.images[this.images.length-1].id-n;
             this.showSlides((this.slideIndex = n));
         },
         showSlides(n) {
@@ -105,7 +110,7 @@ export default {
                 this.slides = [...document.getElementsByClassName("mySlides")]
             }
             var i;
-            var dots = document.getElementsByClassName("demo");
+            var dots = document.getElementsByClassName("selector");
             if (n > this.slides.length) {
                 this.slideIndex = 1;
             }
@@ -116,11 +121,15 @@ export default {
                 this.slides[i].style.display = "none";
             }
             for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
+                dots[i].className = dots[i].className.replace(" modn-opacity-off", "");
             }
             this.slides[this.slideIndex - 1].style.display = "block";
-            dots[this.slideIndex - 1].className += " active";
+            dots[this.slideIndex - 1].className += " modn-opacity-off";
         }
     }
 };
 </script>
+
+<style lang="css">
+    @import 'w3.css';
+</style>

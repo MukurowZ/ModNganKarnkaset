@@ -36,8 +36,8 @@ export default {
     mixins: [adminMixin,itemTypeMixin],
     props:['id'],
     mounted() {
-        this.maxCharacters = this.limit;
         this.getEventData(this.id);
+        setTimeout(() => this.maxCharacters = this.limit, 1000);
         // console.log(this.img_set);
     },
     computed: {
@@ -45,7 +45,7 @@ export default {
             return this.maxCharacters - this.description.length;
         },
         charactersOver() {
-                return this.isOver() ? this.description.length - this.maxCharacters : 0;
+            return this.isOver() ? this.description.length - this.maxCharacters : 0;
         },
     },
     data() {
@@ -79,20 +79,34 @@ export default {
             axios.get('/api/'+this.itemType+'/'+id).then(response=> this.setEventData(response.data));
         },
         setEventData(e){
-            this.name = e.event_name
-            this.description = e.event_description
+            if(this.itemType=="event") {
+                this.description = e.event_description
+                this.name = e.event_name
+            }
+            else {
+                this.description = e.activity_description
+                this.name = e.activity_name
+            }
             this.img_set = e.img_set_id
             this.owner_id = e.contentDetail[0].owner_id
             this.editId = e.img_set_id
         },
         editEvent() {
             const token = localStorage.getItem('token');
-            axios.put("/api/"+this.itemType+'/'+this.id+"?token="+token,{
-                event_name: this.name,
-                event_description: this.description,
-                img_set_id: this.img_set,
-                owner_id: this.owner_id,
-            });
+            if(this.itemType=="event"){
+                axios.put("/api/"+this.itemType+"?token="+token, {
+                    event_name: this.name,
+                    event_description: this.description,
+                    img_set_id: this.img_set,
+                    owner_id: this.owner_id
+                });
+            }else
+                axios.put("/api/"+this.itemType+"?token="+token, {
+                    activity_name: this.name,
+                    activity_description: this.description,
+                    img_set_id: this.img_set,
+                    owner_id: this.owner_id
+                });
         },
         isOver() {
             return this.charactersRemaining < 0;

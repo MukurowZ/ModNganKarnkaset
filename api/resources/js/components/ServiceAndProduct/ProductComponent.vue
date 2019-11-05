@@ -44,7 +44,7 @@
                     v-bind:key="category.id"
                     @click.prevent="searchProductByType(category.name)"
                   >
-                    <a class="list-group-item list-group-item-action">{{category.name}}</a>
+                    <a class="list-group-item list-group-item-action"><div>{{category.name}}</div></a>
                   </div>
                   <br />
                 </div>

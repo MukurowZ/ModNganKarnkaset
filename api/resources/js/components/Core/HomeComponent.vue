@@ -146,6 +146,9 @@
 
 <script>
 export default {
+    mounted() {
+        history.pushState('', '', '/');
+    },
     methods: {
         getUrlProduct() {
             window.location.href = "/product";
@@ -154,7 +157,7 @@ export default {
         getUrlService() {
             window.location.href = "/service";
             return "";
-        }
+        },
     }
 };
 </script>
