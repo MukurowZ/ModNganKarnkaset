@@ -33,6 +33,11 @@
     /* padding-bottom: 3em; */
 }
 
+a:hover,a:visited { 
+    color:#000;
+    text-decoration: none;
+}
+
 .event-comment .card-text {
     padding-bottom: 3em;
 }
