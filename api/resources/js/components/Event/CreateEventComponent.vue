@@ -66,16 +66,15 @@ export default {
             this.img_set = value
         },
         addNewEvent(e) {
-            const token = localStorage.getItem('token')
             if(this.itemType=="event"){
-                axios.post("/api/"+this.itemType+"?token="+token, {
+                axios.post("/api/"+this.itemType+"?token="+this.token, {
                     event_name: this.name,
                     event_description: this.description,
                     img_set_id: this.img_set,
                     owner_id: this.owner_id
                 });
             }else
-                axios.post("/api/"+this.itemType+"?token="+token, {
+                axios.post("/api/"+this.itemType+"?token="+this.token, {
                     activity_name: this.name,
                     activity_description: this.description,
                     img_set_id: this.img_set,
