@@ -19,7 +19,7 @@ class User extends Authenticatable implements JWTSubject
     protected $primaryKey = 'id';
     protected $table = "user";
     protected $appends = [
-
+        'dept'
     ];
 
     public $incrementing = true;
@@ -34,6 +34,13 @@ class User extends Authenticatable implements JWTSubject
     }
     public function getJWTCustomClaims() {
         return [];
+    }
+
+    public function dept(){
+        return $this->hasOne('App\Model\Department','id','department_id');
+    }
+    public function getDeptAttribute(){
+        return $this->attributes['dept'] = Department::where('id',$this->attributes['department_id'])->get()->first();
     }
 
 }
