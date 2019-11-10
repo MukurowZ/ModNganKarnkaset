@@ -21,12 +21,15 @@ class AdminController extends Controller
     public function editProduct($id){ return view('product_service.edit-product', compact('id'));}
     public function createProduct(){ return view('product_service.create-product');}
 
-    public function manage(){ return view('user.user-manage');}
-    public function user(){ return view('user.allUser');}
+    // User
+    public function user(){ return view('user.manage-user');}
     public function createUser(){ return view('user.create-user');}
     public function editUser($id){ return view('user.edit-user',compact('id'));}
 
+    // Department
+    public function department(){ return view('user.manage-department');}
 
+    // Init User
     public function init_user(){
         $a = User::get()->first();
         if($a==null){
@@ -36,5 +39,5 @@ class AdminController extends Controller
         }
     }
 
-    public function department(){ return view('user.manage-department');}
+
 }
