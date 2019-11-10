@@ -2,8 +2,7 @@
 <div class="container" style="font-family: Kanit;">
     <div>
     <br />
-    <h2  class="font-weight-bold">เพิ่มสินค้าและบริการ</h2>
-    <br />
+    <h2 style="font-family: Kanit;" class="font-weight-bold">เพิ่มสินค้าและบริการ</h2>
     <br />
     <form action="/product">
         <div class="form-group">
@@ -55,7 +54,6 @@
             </option>
         </select>
         <br />
-            <!-- Img_set_id -->
         <br>
 
         <img-select-component @clicked="onSelectedImage"></img-select-component>
@@ -153,7 +151,7 @@ export default {
         },
         addNewProduct_Service() {
             const token = localStorage.getItem('token')
-            axios.post("/api/"+this.type.name.toLowerCase()+"?token="+token, {
+            axios.post("/api/"+this.type.name.toLowerCase()+"?token="+this.token, {
                 name: this.name,
                 story: this.story,
                 price: this.price,
@@ -198,7 +196,7 @@ export default {
             else if (this.type.id == this.oldType) {}
             else {
                 this.oldType = this.type.id;
-                axios.get("/api/category/"+this.type.id).then(response => this.setSubCategory(response.data));
+                axios.get("/api/category/"+this.type.id+"?token="+this.token).then(response => this.setSubCategory(response.data));
             }
         },
         setSubCategory(e){
