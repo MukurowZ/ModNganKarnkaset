@@ -82,9 +82,11 @@ Vue.component('edit-product-component',require('./components/ServiceAndProduct/E
 Vue.component('login-component',require('./components/Login/LoginComponent.vue').default);
 
 // User system
-Vue.component('manager-component',require('./components/user/managerMenu.vue').default);
-Vue.component('create-user-component',require('./components/user/createUser.vue').default);
-Vue.component('create-department-component',require('./components/user/createDepartment.vue').default);
+Vue.component('manager-menu-component',require('./components/user/managerMenu.vue').default);
+Vue.component('user-creator-component',require('./components/user/createUser.vue').default);
+Vue.component('user-manager-component',require('./components/user/userManager.vue').default);
+Vue.component('department-creator-component',require('./components/user/createDepartment.vue').default);
+Vue.component('department-manager-component',require('./components/user/departmentManager.vue').default);
 
 
 /**
