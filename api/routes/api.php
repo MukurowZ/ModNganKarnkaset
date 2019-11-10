@@ -25,29 +25,31 @@ Route::group(['middleware' => ['jwt.verify']], function () {
 
     Route::apiResource('contact','Contact_logController');
 
-    Route::post('/img/upload','ImgController@post_upload');
     Route::apiResource('img_set','Img_setController')->except('index','show');
     Route::apiResource('img','ImgController');
 
     Route::apiResource('content','ContentController')->except('index','show');
     Route::apiResource('event','EventController')->except('index','show');
     Route::apiResource('activity','ActivityController')->except('index','show');
+    Route::apiResource('service','ServiceController')->except('index','show');
 
     Route::apiResource('category','CategoryController')->except('index');
-    Route::apiResource('product','ProductController')->only('index','show');
-    Route::apiResource('service','ServiceController')->only('index','show');
+    Route::apiResource('product','ProductController')->except('index','show');
+
 });
 
-Route::get('/search/product','SearchController@search');
-Route::get('/search/productType','SearchController@searchByType');
-Route::get('/hcategory','CategoryController@headIndex');
 Route::apiResource('category','CategoryController')->only('index');
 Route::apiResource('content','ContentController')->only('index','show');
 Route::apiResource('event','EventController')->only('index','show');
 Route::apiResource('activity','ActivityController')->only('index','show');
 Route::apiResource('product','ProductController')->only('index','show');
 Route::apiResource('service','ServiceController')->only('index','show');
+Route::get('/search/product','SearchController@search');
+Route::get('/search/productType','SearchController@searchByType');
+Route::get('/hcategory','CategoryController@headIndex');
 
+
+Route::post('/img/upload','ImgController@post_upload');
 
 Route::get('/img/set/{id}','ImgController@get_OneImg');
 Route::get('/img/all/{id}','ImgController@get_Img');

@@ -1,7 +1,7 @@
 @section('core_upload')
 <body>
 <div class="d-flex align-items-start">
-    <button type="button" class="btn btn-primary" style="margin-left: 1%;"  data-toggle="modal" data-target="#uploadModal">
+    <button type="button" onclick="pref()" class="btn btn-primary" style="margin-left: 1%;" data-toggle="modal" data-target="#uploadModal">
         เพิ่มรูปภาพ
     </button>
 </div>
@@ -17,7 +17,7 @@
         </button>
     </div>
     <div class="modal-body">
-    <form class="form-group" method="post" action="/api/img/upload?token=" id="upload" enctype="multipart/form-data">
+    <form class="form-group" method="post" action="/api/img/upload" id="upload" enctype="multipart/form-data">
         Owner Id: <br><br> <input type="text" name="owner_id"><br><br>
         ชื่ออัลบั้ม <br><br> <input type="text" name="name" placeholder="Please provide album name"><br><br>
         <input type="file" name="file[]" multiple><br><br>
@@ -33,20 +33,15 @@
 <!-- End Modal -->
 
 </body>
-</html>
-
 <script>
     var form = document.getElementById("upload");
     var request = new XMLHttpRequest();
-    var token = localStorage.getItem('token');
-    var url = "/api/img/upload?token="+token;
-    document.getElementById("upload").setAttribute("action",url);
-
+    var url = "/api/img/upload";
     function form.addEventListener('submit',function(e)){
         document.getElementById("upload").setAttribute("action",url);
         e.preventDefault();
         var formdata = new FormData(form);
-        request.open('post','/api/img/upload?token='+token);
+        request.open('post','/api/img/upload');
         request.addEventListener("load",transferComplete);
         request.send(formdata);
     };
@@ -59,4 +54,6 @@
     }
 
 </script>
+</html>
+
 @show
