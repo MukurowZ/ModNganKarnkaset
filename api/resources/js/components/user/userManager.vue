@@ -1,7 +1,7 @@
 <template>
-    <div>
+    <div style="font-family: Kanit;" class="container" >
         <table>
-            <tr>
+            <tr class="font-weight-bold">
                 <td>ชื่อผู้ใช้</td>
                 <td>อีเมลล์</td>
                 <td>ชื่อจริง</td>
@@ -11,7 +11,13 @@
                 <td>ลบข้อมูล</td>
             </tr>
             <tr v-for="user in users" v-bind:key="user.id">
+                <td>{{ user.userId }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.permission }}</td>
+                <td>{{ user.dept.name }}</td>
                 <td></td>
+                <td><b-button class="btn btn-danger" v-on:click="showModal(dept.id,dept.name)">ลบผู้ใช้</b-button></td>
             </tr>
         </table>
     </div>
@@ -21,12 +27,60 @@ import { adminMixin } from '../mixins/adminMixin.js'
 export default {
     mixins: [adminMixin],
     mounted() {
-
+        this.getAllUser();
     },
     data() {
         return {
             users: [],
+            user: {
+                id: '',
+                userId: '',
+                email: '',
+                password: '',
+                name: '',
+                lastname: '',
+                department_id: '',
+                permission: '',
+                dept: {
+                    id: '',
+                    name: '',
+                },
+            },
         }
+    },
+    methods: {
+        getAllUser(){
+            axios.get("/api/user"+"?token="+this.token).then(response => this.setUserData(response.data));
+        },
+        setUserData(e){
+            this.users = e;
+        },
+        removeUser(e){
+
+        },
+        showModal(e,f) {
+            this.$bvModal
+                .msgBoxConfirm(
+                "ต้องการที่จะลบหน่วยงาน " + f + " ใช่หรือไม่",
+            {
+                title: "Please Confirm",
+                size: "sm",
+                buttonSize: "sm",
+                okVariant: "danger",
+                okTitle: "YES",
+                cancelTitle: "NO",
+                cancelVariant: "outline-secondary",
+                footerClass: "p-2",
+                hideHeaderClose: false,
+                centered: false
+            })
+            .then(value => {
+                if(value==true){
+                    this.removeUser(e);
+                }
+            })
+            .catch(err => {})
+        },
     },
 }
 </script>

@@ -8,8 +8,10 @@
 @section('content')
 <body>
     <div id="app">
-        <create-department-component></create-department-component>
-        <manage-department-component></manage-department-component>
+        <manager-menu-component></manager-menu-component>
+        <department-creator-component></department-creator-component>
+        <br>
+        <department-manager-component></department-manager-component>
     </div>
 </body>
 @endsection

@@ -31,7 +31,7 @@ class CreateUsersTable extends Migration
             $table->dateTime('created_at');
 
             $table->foreign('department_id')->references('id')->on('department')
-                ->onDelete('cascade')->onUpdate('cascade');
+                ->onDelete('restrict')->onUpdate('restrict');
         });
     }
 

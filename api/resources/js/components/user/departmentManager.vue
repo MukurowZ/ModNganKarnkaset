@@ -50,9 +50,23 @@ export default {
             location.reload();
         },
         showModal(e,f) {
-            this.$bvModal.msgBoxOk('ยืนยันที่จะลบหน่วยงาน ' + f)
+            this.$bvModal
+                .msgBoxConfirm(
+                "ต้องการที่จะลบหน่วยงาน " + f + " ใช่หรือไม่",
+            {
+                title: "Please Confirm",
+                size: "sm",
+                buttonSize: "sm",
+                okVariant: "danger",
+                okTitle: "YES",
+                cancelTitle: "NO",
+                cancelVariant: "outline-secondary",
+                footerClass: "p-2",
+                hideHeaderClose: false,
+                centered: false
+            })
             .then(value => {
-                if(value){
+                if(value==true){
                     this.removeDepartment(e);
                 }
             })

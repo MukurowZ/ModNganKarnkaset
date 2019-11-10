@@ -8,7 +8,8 @@
 @section('content')
 <body>
     <div id="app">
-        <user-creator-component></user-creator-component>
+        <manager-menu-component></manager-menu-component>
+        <user-manager-component></user-manager-component>
     </div>
 </body>
 @endsection

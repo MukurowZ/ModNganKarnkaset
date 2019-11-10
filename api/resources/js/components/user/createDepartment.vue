@@ -6,7 +6,7 @@
     <br />
     <form>
         <div class="form-group">
-        <label>DEPARTMENT NAME:</label>
+        <label>ชื่อหน่วยงาน:</label>
         <br />
         <input type="text" class="form-control" v-model="name" :placeholder="getPlaceHolder('โปรดระบุชื่อหน่วยงาน')"/>
         </div>
@@ -45,7 +45,7 @@ export default {
             return "/admin/user?token="+this.token
         },
         getRedirect(){
-            return '/admin/department'+'?token='+token
+            return '/admin/department'+'?token='+this.token
         }
     }
 };

@@ -105,6 +105,7 @@ export default {
                 department_id: this.department_id,
                 permission: 'admin',
             });
+            window.location.href = '/user?token='+this.token;
         },
         getPlaceHolder(e){
             return e;
