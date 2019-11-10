@@ -26,7 +26,6 @@ class AdminController extends Controller
     public function createUser(){ return view('user.create-user');}
     public function editUser($id){ return view('user.edit-user',compact('id'));}
 
-    public function createDepartment(){ return view('user.create-department');}
 
     public function init_user(){
         $a = User::get()->first();
@@ -36,4 +35,6 @@ class AdminController extends Controller
             return view('welcome');
         }
     }
+
+    public function department(){ return view('user.manage-department');}
 }

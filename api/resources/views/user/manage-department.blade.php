@@ -1,5 +1,5 @@
 @extends('../core/core')
-@section('title','เพิ่มหน่วยงาน')
+@section('title','จัดการหน่วยงาน')
 @section('navbar')
 @parent
 
@@ -9,6 +9,7 @@
 <body>
     <div id="app">
         <create-department-component></create-department-component>
+        <manage-department-component></manage-department-component>
     </div>
 </body>
 @endsection

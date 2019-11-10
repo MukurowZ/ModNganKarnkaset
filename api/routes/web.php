@@ -84,8 +84,6 @@ Route::group(['middleware' => ['jwt.verify']], function () {
 
         Route::group(['prefix'=>'/department'], function ($id) {
             Route::get('/','View\AdminController@department');
-            Route::get('/{id}/edit','View\AdminController@editDepartment');
-            Route::get('/create','View\AdminController@createDepartment');
         });
     });
 

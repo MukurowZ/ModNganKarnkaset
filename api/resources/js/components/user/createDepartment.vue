@@ -2,7 +2,7 @@
 <div style="font-family: Kanit;" class="container font-weight-bold" >
     <div>
     <br />
-    <h2>CREATE NEW DEPARTMENT</h2>
+    <h2 style="font-family: Kanit;">เพิ่มหน่วยงานใหม่</h2>
     <br />
     <form>
         <div class="form-group">
@@ -36,6 +36,7 @@ export default {
             axios.post("/api/department"+"?token="+this.token, {
                 name: this.name,
             });
+            location.reload();
         },
         getPlaceHolder(e){
             return e;
