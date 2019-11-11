@@ -69,6 +69,8 @@ export default {
             this.auth = e;
         },
         logout(){
+            sessionStorage.removeItem('token');
+            sessionStorage.removeItem('id');
             localStorage.removeItem('token');
             localStorage.removeItem('id');
             window.location.href = "/";

@@ -7,6 +7,7 @@
                     <b-input-group prepend="Username">
                         <input v-model="email" type="text"
                         class="form-control" autocomplete="email"
+
                         placeholder="โปรดใส่อีเมลล์">
                     </b-input-group>
                     <br>
@@ -17,7 +18,9 @@
                     </b-input-group>
                 <center><span style="color:red" >{{ msg }}</span></center>
                 <br>
-                <button class="btn btn-primary" style="width: 100%" type="submit">เข้าสู่ระบบ</button>
+                <input type="checkbox" v-model="alwaysLogin" value="true"> เข้าสู่ระบบตลอดเวลา
+                <br>
+                <button class="btn btn-primary mt-2" style="width: 100%;" type="submit">เข้าสู่ระบบ</button>
             </form>
         </div>
     </div>
@@ -31,6 +34,7 @@ export default {
             password: '',
             msg: '',
             encrypt_id: '',
+            alwaysLogin: 'false'
         }
     },
     methods: {
@@ -41,14 +45,25 @@ export default {
                 password: this.password
             })
             .then(function(res) {
-                localStorage.setItem('token', res.data.access_token);
-                localStorage.setItem('id',
-                    res.data.access_token.substring(20,35) +
-                    res.data.access_token.substring(80,105) +
-                    res.data.user_id +
-                    res.data.access_token.substring(10,25) +
-                    res.data.access_token.substring(125,145)
-                );
+                if(alwaysLogin==true){
+                    localStorage.setItem('token', res.data.access_token);
+                    localStorage.setItem('id',
+                        res.data.access_token.substring(20,35) +
+                        res.data.access_token.substring(80,105) +
+                        res.data.user_id +
+                        res.data.access_token.substring(10,25) +
+                        res.data.access_token.substring(125,145)
+                    );
+                }else{
+                    sessionStorage.setItem('token', res.data.access_token);
+                    sessionStorage.setItem('id',
+                        res.data.access_token.substring(20,35) +
+                        res.data.access_token.substring(80,105) +
+                        res.data.user_id +
+                        res.data.access_token.substring(10,25) +
+                        res.data.access_token.substring(125,145)
+                    );
+                }
             })
             .catch(function(err) {
                 if(err.response!=null)
