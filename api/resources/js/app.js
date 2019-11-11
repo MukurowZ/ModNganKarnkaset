@@ -85,6 +85,7 @@ Vue.component('login-component',require('./components/Login/LoginComponent.vue')
 Vue.component('manager-menu-component',require('./components/user/managerMenu.vue').default);
 Vue.component('user-creator-component',require('./components/user/createUser.vue').default);
 Vue.component('user-manager-component',require('./components/user/userManager.vue').default);
+Vue.component('user-editor-component',require('./components/user/editUser.vue').default);
 Vue.component('department-creator-component',require('./components/user/createDepartment.vue').default);
 Vue.component('department-manager-component',require('./components/user/departmentManager.vue').default);
 

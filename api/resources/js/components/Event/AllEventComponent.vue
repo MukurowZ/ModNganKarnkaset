@@ -85,8 +85,7 @@ export default {
         },
         getEditUrl(e) {
             if (e != null) {
-                const token = localStorage.getItem('token')
-                window.location.href = "/admin/"+ this.itemType +"/" + e + "/edit"+"?token="+token;
+                window.location.href = "/admin/"+ this.itemType +"/" + e + "/edit"+"?token="+this.token;
             }
             return "";
         },
@@ -112,9 +111,8 @@ export default {
             )
             .then(value => {
             this.confirmBox = value;
-            if (value) {
-                const token = localStorage.getItem('token');
-                return fetch("/api/"+ this.itemType +"/" + id+this.id+"?token="+token, {
+            if (value==true) {
+                return fetch("/api/"+ this.itemType +"/" + id+this.id+"?token="+this.token, {
                 method: "DELETE"
                 }).then((window.location.href = "../"+ this.itemType));
             } else {
