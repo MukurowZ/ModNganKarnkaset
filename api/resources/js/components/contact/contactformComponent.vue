@@ -3,7 +3,7 @@
         <br>
         <h1>Contact us</h1>
         <form>
-            <div class="form-group">
+            <div class="form-group" style="font-size: 1.2em">
                 <br>
                 <label>Topic</label>
                 <br />
