@@ -1,3 +1,6 @@
+* {
+    word-wrap: break-word;
+}
 .forum-post {
     min-height: 230px;
 }
@@ -12,12 +15,11 @@
     padding: 0.5em;
 }
 
-.event-info{
+.event-info {
     margin-left: 3em;
 }
 
-.event-list-info{
-    overflow: hidden;
+.event-list-info {
     text-overflow: ellipsis;
     height: 100%;
 }
@@ -33,8 +35,9 @@
     /* padding-bottom: 3em; */
 }
 
-a:hover,a:visited { 
-    color:#000;
+a:hover,
+a:visited {
+    color: #000;
     text-decoration: none;
 }
 
@@ -53,12 +56,11 @@ a:hover,a:visited {
 .company-info {
     text-align: left;
     color: whitesmoke;
-
 }
 
 .company-contact {
     color: whitesmoke;
-    text-align: right
+    text-align: right;
 }
 
 .price {
@@ -131,5 +133,5 @@ a:hover,a:visited {
 
 .active,
 .demo:hover {
-    transform: scale(0.1);;
+    transform: scale(0.1);
 }
