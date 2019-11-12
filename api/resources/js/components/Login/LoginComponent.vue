@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container">
         <div class="box">
             <form @submit="login">
                 <div style="text-align: center;"><h4>เข้าสู่ระบบ</h4></div>
