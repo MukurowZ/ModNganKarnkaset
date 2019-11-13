@@ -37,7 +37,7 @@ class User extends Authenticatable implements JWTSubject
     }
 
     public function dept(){
-        return $this->hasOne('App\Model\Department','id','department_id');
+        return $this->hasMany('App\Model\Department','id','department_id');
     }
     public function getDeptAttribute(){
         return $this->attributes['dept'] = Department::where('id',$this->attributes['department_id'])->get()->first();
