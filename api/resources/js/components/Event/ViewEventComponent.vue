@@ -110,7 +110,7 @@ export default {
                 this.slides = [...document.getElementsByClassName("mySlides")]
             }
             var i;
-            var dots = document.getElementsByClassName("selector");
+            // var this.refs['selector'] = document.getElementsByClassName("selector");
             if (n > this.slides.length) {
                 this.slideIndex = 1;
             }
@@ -120,11 +120,11 @@ export default {
             for (i = 0; i < this.slides.length; i++) {
                 this.slides[i].style.display = "none";
             }
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" modn-opacity-off", "");
+            for (i = 0; i < this.refs['selector'].length; i++) {
+                this.refs['selector'].className = this.refs['selector'].className.replace(" modn-opacity-off", "");
             }
             this.slides[this.slideIndex - 1].style.display = "block";
-            dots[this.slideIndex - 1].className += " modn-opacity-off";
+            this.refs['selector'].className += " modn-opacity-off";
         }
     }
 };
