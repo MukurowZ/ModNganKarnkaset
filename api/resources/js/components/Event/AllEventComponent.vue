@@ -79,18 +79,14 @@ export default {
             if (this.itemType == "event")
                 for (i = 0; i < e.length; i++) {
                     if (e[i].event_description.length > 200) {
-                        e[i].event_description = e[
-                            i
-                        ].event_description.substring(0, 201);
+                        e[i].event_description = e[i].event_description.substring(0, 201);
                         e[i].longDescription = true;
                     } else e[i].longDescription = false;
                 }
             else
                 for (i = 0; i < e.length; i++) {
                     if (e[i].activity_description.length > 200) {
-                        e[i].event_description = e[
-                            i
-                        ].activity_description.substring(0, 201);
+                        e[i].event_description = e[i].activity_description.substring(0, 201);
                         e[i].event_name = e[i].activity_name;
                         e[i].activity_description = null;
                         e[i].activity_name = null;
