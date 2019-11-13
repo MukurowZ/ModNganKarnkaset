@@ -1,4 +1,5 @@
 <template>
+<<<<<<< Updated upstream
     <footer
         class="pt-5"
         style="font-family: Kanit; 
@@ -26,6 +27,19 @@
                     </p>
                 </div>
             </div>
+=======
+  <footer
+    class="py-5"
+    style="color: #000000; font-family: Kanit; background-color: #c4e6d2; background-image: url(./Image/footer.jpg); min-height: 15rem;">
+    <div class="container">
+      <div class="row">
+        <div class="company-info col-sm" style="color: #000000;">
+          <h3>ModNganKarnkaset Thai</h3>
+          <p>
+            Something about company. Something about comp omething about company. Something about company.
+            Something about company. Something about company. Something about company. Something about company.
+          </p>
+>>>>>>> Stashed changes
         </div>
     </footer>
 </template>

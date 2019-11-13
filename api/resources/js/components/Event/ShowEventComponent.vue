@@ -53,10 +53,11 @@ export default {
   methods: {
     getEventData() {
       axios
-        .get("/api/" + this.itemType + "/")
+        .get("/api/" + this.itemType)
         .then(response => this.setEventData(response.data));
     },
     setEventData(e) {
+      console.log("sasa");
       e.forEach(a => {
         axios.get("/api/img/set/" + a.img_set_id).then(response => {
           a.img_set_id = response.data.path;

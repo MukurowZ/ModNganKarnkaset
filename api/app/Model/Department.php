@@ -19,7 +19,7 @@ class Department extends Model
     public $timestamps = false;
 
     protected $hidden = [
-
+        
     ];
 
 }
