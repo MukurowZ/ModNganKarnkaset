@@ -1,13 +1,12 @@
 <template>
-    <div class="container">
-        <div class="box">
+    <div class="container" >
+        <div class="box ">
             <form @submit="login">
-                <div style="text-align: center;"><h4>เข้าสู่ระบบ</h4></div>
+                <div style="text-align: center;"><h4 style="font-family: Kanit;">เข้าสู่ระบบ</h4></div>
                     <br>
                     <b-input-group prepend="Username">
                         <input v-model="email" type="text"
                         class="form-control" autocomplete="email"
-
                         placeholder="โปรดใส่อีเมลล์">
                     </b-input-group>
                     <br>
@@ -18,10 +17,18 @@
                     </b-input-group>
                 <center><span style="color:red" >{{ msg }}</span></center>
                 <br>
-                <input type="checkbox" v-model="alwaysLogin" value="true"> เข้าสู่ระบบตลอดเวลา
-                <br>
-                <button class="btn btn-primary mt-2" style="width: 100%;" type="submit">เข้าสู่ระบบ</button>
             </form>
+            <b-form-checkbox
+                    id="alwaysLogin"
+                    v-model="alwaysLogin"
+                    name="alwaysLogin"
+                    value=true
+                    unchecked-value=false
+                    >
+                    <p style="font-family: Kanit;">จดจำฉันไว้</p>
+                </b-form-checkbox>
+                <br>
+           <button class="btn btn-primary mt-2" style="width: 100%;" type="submit" v-on:click="login()">เข้าสู่ระบบ</button>
         </div>
     </div>
 </template>
@@ -34,18 +41,26 @@ export default {
             password: '',
             msg: '',
             encrypt_id: '',
-            alwaysLogin: 'false'
+            alwaysLogin: false
         }
     },
     methods: {
+        getAlways(){
+            return this.alwaysLogin;
+        },
         login() {
             let vue = this;
+            let alwaysLogin = this.getAlways();
+            console.log(alwaysLogin);
             axios.post("/api/login", {
                 email: this.email,
                 password: this.password
             })
             .then(function(res) {
-                if(alwaysLogin==true){
+                console.log(res);
+                console.log(alwaysLogin);
+                if(alwaysLogin){
+                    console.log("res3")
                     localStorage.setItem('token', res.data.access_token);
                     localStorage.setItem('id',
                         res.data.access_token.substring(20,35) +
@@ -55,6 +70,7 @@ export default {
                         res.data.access_token.substring(125,145)
                     );
                 }else{
+                    console.log("res2")
                     sessionStorage.setItem('token', res.data.access_token);
                     sessionStorage.setItem('id',
                         res.data.access_token.substring(20,35) +
@@ -64,6 +80,7 @@ export default {
                         res.data.access_token.substring(125,145)
                     );
                 }
+                window.location.href = "/";
             })
             .catch(function(err) {
                 if(err.response!=null)
@@ -73,9 +90,6 @@ export default {
                         break;
                     }
             })
-            .then(function() {
-                window.location.href = "/";
-            });
         },
     },
     computed: {

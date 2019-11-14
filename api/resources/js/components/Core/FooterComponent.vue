@@ -11,6 +11,8 @@
             Something about company. Something about company. Something about company. Something about company.
           </p>
         </div>
+        </div>
+        </div>
     </footer>
 </template>
 

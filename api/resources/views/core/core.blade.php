@@ -13,9 +13,6 @@
         <!-- Styles -->
         <link rel="stylesheet" href="/css/app.css">
         <link rel="stylesheet" href="/css/component-style.css">
-        <style>
-
-        </style>
 </head>
 <body>
 <div id="nav">

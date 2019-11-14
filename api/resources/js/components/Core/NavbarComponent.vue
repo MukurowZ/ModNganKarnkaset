@@ -63,6 +63,8 @@ export default {
         getAuthStatus(){
             if(localStorage.getItem('token')!=null)
                 this.setAuth(true);
+            if(sessionStorage.getItem('token')!=null)
+                this.setAuth(true);
             else this.setAuth(false);
         },
         setAuth(e){
