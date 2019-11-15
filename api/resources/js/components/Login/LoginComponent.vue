@@ -51,16 +51,12 @@ export default {
         login() {
             let vue = this;
             let alwaysLogin = this.getAlways();
-            console.log(alwaysLogin);
             axios.post("/api/login", {
                 email: this.email,
                 password: this.password
             })
             .then(function(res) {
-                console.log(res);
-                console.log(alwaysLogin);
                 if(alwaysLogin){
-                    console.log("res3")
                     localStorage.setItem('token', res.data.access_token);
                     localStorage.setItem('id',
                         res.data.access_token.substring(20,35) +
@@ -70,7 +66,6 @@ export default {
                         res.data.access_token.substring(125,145)
                     );
                 }else{
-                    console.log("res2")
                     sessionStorage.setItem('token', res.data.access_token);
                     sessionStorage.setItem('id',
                         res.data.access_token.substring(20,35) +

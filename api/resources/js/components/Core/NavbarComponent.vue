@@ -61,20 +61,22 @@ export default {
     },
     methods: {
         getAuthStatus(){
-            if(localStorage.getItem('token')!=null)
-                this.setAuth(true);
-            if(sessionStorage.getItem('token')!=null)
+            if(localStorage.getItem('token')!=null || sessionStorage.getItem('token')!=null)
                 this.setAuth(true);
             else this.setAuth(false);
+
         },
         setAuth(e){
             this.auth = e;
         },
         logout(){
-            sessionStorage.removeItem('token');
-            sessionStorage.removeItem('id');
-            localStorage.removeItem('token');
-            localStorage.removeItem('id');
+            if(localStorage.getItem('token')!=null){
+                localStorage.removeItem('token');
+                localStorage.removeItem('id');
+            }else{
+                sessionStorage.removeItem('token');
+                sessionStorage.removeItem('id');
+            }
             window.location.href = "/";
         },
         url(e){
