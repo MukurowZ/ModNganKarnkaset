@@ -6,10 +6,20 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <script src="{{ asset('js/app.js') }}"></script>
         <script type="text/javascript" src="js/app.js"></script>
+        <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script>
+            $( document ).ready(function() {
+                img
+            });
+
+            $( window ).on( "load", function() {
+                console.log( "window loaded" );
+            });
+        </script>
         <title>@yield('title')</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Kanit:400,700|Open+Sans&display=swap&subset=thai" rel="stylesheet">
-        
+
         <!-- Styles -->
         <link rel="stylesheet" href="/css/app.css">
         <link rel="stylesheet" href="/css/component-style.css">
