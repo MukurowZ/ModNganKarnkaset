@@ -1,6 +1,7 @@
 <template>
 <div style="font-family: Kanit; ">
-  <b-navbar toggleable="lg" :sticky="getTrue()" type="light" style="background-color: #c4e6d2">
+    <Loading :active.sync="isLoading" :is-full-page="fullPage" :color="'#008000'" :loader="'dots'"></Loading>
+    <b-navbar toggleable="lg" :sticky="getTrue()" type="light" style="background-color: #c4e6d2">
         <b-navbar-brand href="/" style="font-weight: 450;">มดงานการเกษตร</b-navbar-brand>
 
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -52,11 +53,14 @@ import { adminMixin } from '../mixins/adminMixin.js'
 export default {
     mixins: [adminMixin],
     mounted() {
+        this.doAjax();
         this.getAuthStatus();
     },
     data() {
         return {
             auth: false,
+            isLoading: false,
+            fullPage: true
         }
     },
     methods: {
@@ -64,7 +68,6 @@ export default {
             if(localStorage.getItem('token')!=null || sessionStorage.getItem('token')!=null)
                 this.setAuth(true);
             else this.setAuth(false);
-
         },
         setAuth(e){
             this.auth = e;
@@ -103,7 +106,13 @@ export default {
         },
         getTrue(){
             return false;
-        }
+        },
+        doAjax() {
+            this.isLoading = true;
+            setTimeout(() => {
+                this.isLoading = false
+            },3000)
+        },
     },
 }
 </script>
