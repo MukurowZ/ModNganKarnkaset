@@ -32,7 +32,9 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 library.add(fas,fab);
 
 import { VueTelInput } from 'vue-tel-input'
+import Loading from 'vue-loading-overlay';
 
+import 'vue-loading-overlay/dist/vue-loading.css';
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
@@ -51,6 +53,7 @@ Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.component('multiselect', Multiselect);
 Vue.component('ProductCarousel', ProductCarousel);
 Vue.component('VueTelInput', VueTelInput);
+Vue.component('Loading',Loading);
 
 // Event component
 Vue.component('all-event-component',require('./components/Event/AllEventComponent.vue').default);
