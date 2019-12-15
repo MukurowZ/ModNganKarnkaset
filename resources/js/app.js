@@ -8,6 +8,7 @@ import BootstrapVue from 'bootstrap-vue'
 import VueLazyload from 'vue-lazyload'
 import Multiselect from 'vue-multiselect'
 import ProductCarousel from 'vue-product-carousel'
+import Vuetify from 'vuetify/lib'
 
 require('./bootstrap');
 
@@ -18,6 +19,7 @@ Vue.use(VueLazyload, {
     loading: '/storage/main/Double_Ring-1s-143px.svg',
     attempt: 1
 });
+Vue.use(Vuetify);
 
 window.Vue = require('vue');
 window.axios = require('axios');
