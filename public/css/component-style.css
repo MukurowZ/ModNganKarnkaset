@@ -1,0 +1,137 @@
+* {
+    word-wrap: break-word;
+}
+.forum-post {
+    min-height: 230px;
+}
+
+.forum-post:hover {
+    transform: scale(1.025);
+    cursor: pointer;
+}
+
+.forum-post img {
+    position: absolute;
+    padding: 0.5em;
+}
+
+.event-info {
+    margin-left: 3em;
+}
+
+.event-list-info {
+    text-overflow: ellipsis;
+    height: 100%;
+}
+
+.event-post {
+    margin-top: 4rem;
+    min-height: 14rem;
+    padding: 1em;
+}
+
+.event-comment {
+    margin: 1rem 0px;
+    /* padding-bottom: 3em; */
+}
+
+a:hover,
+a:visited {
+    color: #000;
+    text-decoration: none;
+}
+
+.event-comment .card-text {
+    padding-bottom: 3em;
+}
+
+.info-box {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 0.5em;
+    color: rgb(158, 158, 158);
+}
+
+.company-info {
+    text-align: left;
+    color: whitesmoke;
+}
+
+.company-contact {
+    color: whitesmoke;
+    text-align: right;
+}
+
+.price {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: end;
+}
+
+.mySlides {
+    display: none;
+    width: 100%;
+    height: 50%;
+}
+
+.mySlides img {
+    object-fit: cover;
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+    cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 40%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.103);
+    transform: scale(0.2);
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Six columns side by side */
+.column {
+    float: left;
+    width: 16.66%;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+    opacity: 1;
+}
+
+.active,
+.demo:hover {
+    transform: scale(0.1);
+}
