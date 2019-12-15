@@ -28,7 +28,9 @@
                 <b-dropdown-item href="#">CN</b-dropdown-item>
                 <b-dropdown-item href="#">TH</b-dropdown-item>
             </b-nav-item-dropdown>
-
+            <v-avatar color="teal" size="48">
+                <span class="white--text headline">EEE</span>
+            </v-avatar>
             <b-nav-item-dropdown v-if="auth" text="จัดการ" v-on:click="logout">
                 <b-dropdown-item v-on:click="url('event')">กิจกรรม</b-dropdown-item>
                 <b-dropdown-item v-on:click="url('activity')">ผลงาน</b-dropdown-item>
@@ -37,6 +39,7 @@
                 <b-dropdown-item v-on:click="url('contact')">รายการติดต่อ</b-dropdown-item>
                 <b-dropdown-item v-on:click="url('user')">ผู้ใช้</b-dropdown-item>
                 <hr align="left" width="75%">
+
                 <b-dropdown-item v-on:click="logout">ออกจากระบบ</b-dropdown-item>
             </b-nav-item-dropdown>
             <!-- <template slot="button-content"><em>User</em></template>
