@@ -1,6 +1,5 @@
 <template>
     <div>
-
         <section class="cid-rBPYu8gBku mbr-fullscreen mbr-parallax-background" id="header2-5">
         <div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(35, 35, 35);"></div>
 
@@ -11,7 +10,7 @@
 
                 <p
                 class="mbr-text pb-3 mbr-fonts-style display-5"
-                >คำเปรยคำเปรยคำเปรยคำเปรยคำเปรยคำเปรยคำเปรยคำเปรยคำเปรยคำเปรยคำเปรยคำเปรยคำเปรยคำเปรยคำเปรยคำเปรยคำเปรยคำเปรยคำเปรยคำเปรยคำเปรยคำเปรยคำเปรยคำเปรยคำเปรยคำเปรยคำเปรยคำเปรยคำเปรยคำเปรยคำเปรยคำเปรย</p>
+                >สินค้าและบริการทางการเกษตรครบวงจร จากบริษัทมดงานการเกษตร</p>
                 <div class="mbr-section-btn">
                 <a class="btn btn-md btn-primary display-7" href="index.html#info3-c">
                     สินค้า
@@ -33,7 +32,7 @@
                 >สินค้าและบริการทางการเกษตรครบวงจร</h2>
                 <h3
                 class="mbr-section-subtitle align-center mbr-light mbr-fonts-style display-5"
-                >อธิบายอธิบายอธิบายอธิบายอธิบายอธิบายอธิบาย</h3>
+                >รายการผลิตภัณฑ์และบริการ ล่าสุดจากมดงานการเกษตรไทย</h3>
             </div>
             </div>
         </div>
@@ -48,7 +47,7 @@
                 <h2 class="align-left mbr-bold mbr-white pb-3 mbr-fonts-style display-2">บริการ</h2>
                 <h3
                 class="mbr-section-subtitle align-left mbr-light mbr-white pb-3 mbr-fonts-style display-5"
-                >อธิบายอธิบายอธิบาย</h3>
+                >Service from us</h3>
 
                 <div class="mbr-section-btn align-left py-4">
                 <a v-on:click="getUrlService()" class="btn btn-primary display-4">ชมบริการทั้งหมด</a>
@@ -59,10 +58,6 @@
         </section>
 
         <section class="services1 cid-rCl6JgpQ7y" id="services1-f">
-        <!---->
-
-        <!---->
-        <!--Overlay-->
 
         <!--Container-->
         <div class="container">
@@ -87,8 +82,7 @@
                 <h3
                 class="mbr-section-subtitle align-left mbr-light mbr-white pb-3 mbr-fonts-style display-5"
                 >
-                Shape your future web project with sharp design and
-                refine coded functions
+                Product from us
                 </h3>
 
                 <div class="mbr-section-btn align-left py-4">
@@ -100,9 +94,6 @@
         </section>
 
         <section class="services1 cid-rCl5TV8PlF" id="services1-d">
-        <!---->
-
-        <!---->
         <!--Overlay-->
 
         <!--Container-->
@@ -125,10 +116,10 @@
             <table>
             <tr>
                 <td style="width: 50%; padding-left: 4em">
-                <h1>New event from us</h1>
+                <h1>กิจกรรมล่าสุดของบริษัทเรา</h1>
                 </td>
                 <td style="width: 50%; padding-left: 4em">
-                <h1>New activity from us</h1>
+                <h1>ผลงานล่าสุดของบริษัทเรา</h1>
                 </td>
             </tr>
             <tr>
