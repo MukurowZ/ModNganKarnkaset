@@ -83,6 +83,10 @@ Vue.component('three-product-component',require('./components/ServiceAndProduct/
 Vue.component('all-product-component',require('./components/ServiceAndProduct/AllProductComponent.vue').default);     //  For view overall product
 Vue.component('edit-product-component',require('./components/ServiceAndProduct/EditProductComponent.vue').default);     //  For view overall product
 
+// Category
+Vue.component('category-manager-component',require('./components/ServiceAndProduct/CategoryComponent.vue').default);
+Vue.component('category-creator-component',require('./components/ServiceAndProduct/CategoryCreatorComponent.vue').default);
+
 // Log in
 Vue.component('login-component',require('./components/Login/LoginComponent.vue').default);
 

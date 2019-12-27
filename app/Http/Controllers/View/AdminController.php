@@ -11,6 +11,9 @@ class AdminController extends Controller
 {
     public function contact(){ return view('contact.contact_report');}
 
+    // Category
+    public function category(){ return view('product_service.category');}
+
     // Event Section
     public function event(){ return view('event.admin-event');}
     public function editEvent($id){ return view('event.edit-event', compact('id'));}
