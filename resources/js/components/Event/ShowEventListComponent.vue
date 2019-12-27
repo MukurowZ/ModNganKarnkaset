@@ -107,7 +107,7 @@ export default {
           a.activity_description = null;
           a.activity_name = null;
         }
-        a.owner_name = a.contentDetail[0].ownerName[0].name;
+        a.owner_name = a.contentDetail[0].owner[0].name;
       });
       this.events = e;
       return e;

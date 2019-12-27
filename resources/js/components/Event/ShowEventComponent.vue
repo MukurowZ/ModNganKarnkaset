@@ -57,7 +57,6 @@ export default {
         .then(response => this.setEventData(response.data));
     },
     setEventData(e) {
-      console.log("sasa");
       e.forEach(a => {
         axios.get("/api/img/set/" + a.img_set_id).then(response => {
           a.img_set_id = response.data.path;
@@ -69,7 +68,7 @@ export default {
             a.activity_description.substring(0, 300) + "...";
           a.activity_description = null;
         }
-        a.owner_name = a.contentDetail[0].ownerName[0].name;
+        a.owner_name = a.contentDetail[0].owner[0].name;
       });
       this.events = e;
     },
@@ -103,7 +102,7 @@ export default {
         created_at: "",
         update_at: "",
         img_path: "",
-        owner_name: ""
+        owner: ""
       },
       path: []
     };
