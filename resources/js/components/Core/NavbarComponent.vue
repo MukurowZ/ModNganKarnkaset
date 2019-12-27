@@ -31,7 +31,7 @@
             <v-avatar color="teal" size="48">
                 <span class="white--text headline">EEE</span>
             </v-avatar>
-            <b-nav-item-dropdown v-if="auth" text="จัดการ" v-on:click="logout">
+            <b-nav-item-dropdown v-if="auth" text="จัดการ" v-on:click="logout" class="mr-4">
                 <b-dropdown-item v-on:click="url('event')">กิจกรรม</b-dropdown-item>
                 <b-dropdown-item v-on:click="url('activity')">ผลงาน</b-dropdown-item>
                 <b-dropdown-item v-on:click="url('product')">ผลิตภัณฑ์</b-dropdown-item>
