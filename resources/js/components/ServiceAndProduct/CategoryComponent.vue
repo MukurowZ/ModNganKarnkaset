@@ -58,7 +58,7 @@ export default {
         editCategory(e,i){
             axios.put("/api/category/"+e+"?token="+this.token,{
                 name: this.categorys[i].name,
-                THname: this.categorys[i].name,
+                THname: this.categorys[i].THname,
             });
             location.reload();
         },

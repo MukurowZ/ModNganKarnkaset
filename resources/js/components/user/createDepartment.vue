@@ -36,7 +36,6 @@ export default {
             axios.post("/api/department"+"?token="+this.token, {
                 name: this.name,
             });
-            location.reload();
         },
         getPlaceHolder(e){
             return e;

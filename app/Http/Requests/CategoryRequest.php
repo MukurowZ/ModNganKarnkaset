@@ -47,10 +47,10 @@ class CategoryRequest extends FormRequest
                 ];
             case 'PUT':
                 return [
-                    'name' => 'unique:category,name',
+                    'name' => 'nullable',
                     'head' => 'nullable',
                     'isHead' => 'nullable',
-                    'THname' => 'unique:category,THname'
+                    'THname' => 'nullable'
                 ];
         }
     }

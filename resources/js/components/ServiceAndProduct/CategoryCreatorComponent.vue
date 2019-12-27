@@ -17,7 +17,8 @@
             </div>
         </div>
         <div class="form-group d-flex">
-            <button type="submit" class="btn btn-success" v-on:click="addNewDepartment()">เพิ่มหน่วยงาน</button>
+            <button type="submit" class="btn btn-success" v-on:click="addNewCategory()">เพิ่มหมวดหมู่สินค้า</button>
+            <a class="btn btn-outline-secondary" style="margin-left:5px;" :href="getUrl()" >ยกเลิก</a>
         </div>
     </form>
     </div>
@@ -37,25 +38,21 @@ export default {
         }
     },
     methods: {
-        addNewDepartment() {
-            if(type=="1") this.head="1" // Product
-            else this.head="2"          // Service
+        addNewCategory() {
+            if(this.type=="1") this.head="1" // Product
+            else this.head="2";          // Service
             axios.post("/api/category"+"?token="+this.token, {
                 name: this.name,
                 THname: this.THname,
                 head: this.head
             });
-            location.reload();
         },
         getPlaceHolder(e){
             return e;
         },
         getUrl(){
-            return "/admin/user?token="+this.token
+            return "/admin/category?token="+this.token
         },
-        getRedirect(){
-            return '/admin/department'+'?token='+this.token
-        }
     }
 };
 </script>
