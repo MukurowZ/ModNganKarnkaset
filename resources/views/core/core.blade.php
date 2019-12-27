@@ -9,11 +9,11 @@
         <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
         <script>
             $( document ).ready(function() {
-                img
+
             });
 
             $( window ).on( "load", function() {
-                console.log( "window loaded" );
+
             });
         </script>
         <title>@yield('title')</title>
