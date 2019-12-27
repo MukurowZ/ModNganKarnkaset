@@ -21,8 +21,8 @@ Route::get('sym','AdminController@store');
 Route::group(['middleware' => ['jwt.verify']], function () {
     Route::get('auth/user', 'Authenticate\AuthController@getAuthenticatedUser');
     // Route::get('token', 'Authenticate\AuthController@checkRole');
-
     Route::apiResource('user','UserController');
+
     Route::apiResource('department','DepartmentController');
     Route::apiResource('partner','PartnerController')->except('index');
 
@@ -50,7 +50,6 @@ Route::apiResource('service','ServiceController')->only('index','show');
 Route::get('/search/product','SearchController@search');
 Route::get('/search/productType','SearchController@searchByType');
 Route::get('/hcategory','CategoryController@headIndex');
-
 
 Route::post('/img/upload','ImgController@post_upload');
 
