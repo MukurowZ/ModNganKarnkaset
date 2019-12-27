@@ -98,7 +98,7 @@ export default {
     },
     methods: {
         getUserData() {
-            axios.get("/api/user/"+this.id+"?token="+this.token).then(responnse => this.setUserData(response.data));
+            axios.get("/api/user/"+this.id+"?token="+this.token).then(response => this.setUserData(response.data));
         },
         setUserData(e){
             this.userId = e.userId

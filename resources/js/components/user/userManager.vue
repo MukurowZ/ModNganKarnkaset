@@ -16,7 +16,7 @@
                 <td>{{ user.name }}</td>
                 <td>{{ user.permission }}</td>
                 <td>{{ user.dept.name }}</td>
-                <td><button class="btn btn-warning" style="margin-left: 5px" v-on:click="getEditUrl(user.id)">แก้ไขกิจกรรม</button></td>
+                <td><button class="btn btn-warning" style="margin-left: 5px" v-on:click="getEditUrl(user.id)">แก้ไขข้อมูลผู้ใช้</button></td>
                 <td><b-button class="btn btn-danger" v-on:click="showModal(dept.id,dept.name)">ลบผู้ใช้</b-button></td>
             </tr>
         </table>
@@ -84,7 +84,7 @@ export default {
             .catch(err => {})
         },
         getEditUrl(e){
-            window.location.href = '../user/'+e+'?token='+this.token;
+            window.location.href = '../admin/user/'+e+'/edit?token='+this.token;
         }
     },
 }

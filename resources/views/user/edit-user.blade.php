@@ -8,7 +8,7 @@
 @section('content')
 <body>
     <div id="app">
-        <user-editor-component></user-editor-component>
+        <user-editor-component id="{{ $id }}"></user-editor-component>
     </div>
 </body>
 @endsection
