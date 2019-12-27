@@ -16,7 +16,7 @@ class ContactTable extends Migration
         Schema::create('country', function(Blueprint $table){
             $table->increments('id');
             $table->string('name');
-            $table->string('prefix',3);
+            $table->string('prefix',5);
         });
 
         Schema::create('contact_log', function(Blueprint $table){
