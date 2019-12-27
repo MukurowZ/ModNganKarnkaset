@@ -38,7 +38,7 @@
                 <b-dropdown-item v-on:click="url('service')">บริการ</b-dropdown-item>
                 <b-dropdown-item v-on:click="url('contact')">รายการติดต่อ</b-dropdown-item>
                 <b-dropdown-item v-on:click="url('user')">ผู้ใช้</b-dropdown-item>
-                <hr align="left" width="75%">
+                <hr align="right" width="75%">
 
                 <b-dropdown-item v-on:click="logout">ออกจากระบบ</b-dropdown-item>
             </b-nav-item-dropdown>
