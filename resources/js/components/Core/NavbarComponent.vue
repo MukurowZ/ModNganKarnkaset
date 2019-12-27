@@ -28,18 +28,16 @@
                 <b-dropdown-item href="#">CN</b-dropdown-item>
                 <b-dropdown-item href="#">TH</b-dropdown-item>
             </b-nav-item-dropdown>
-            <v-avatar color="teal" size="48">
-                <span class="white--text headline">EEE</span>
-            </v-avatar>
             <b-nav-item-dropdown right v-if="auth" text="จัดการ" v-on:click="logout">
                 <b-dropdown-item v-on:click="url('event')">กิจกรรม</b-dropdown-item>
                 <b-dropdown-item v-on:click="url('activity')">ผลงาน</b-dropdown-item>
                 <b-dropdown-item v-on:click="url('product')">ผลิตภัณฑ์</b-dropdown-item>
                 <b-dropdown-item v-on:click="url('service')">บริการ</b-dropdown-item>
+                <b-dropdown-item v-on:click="url('category')">หมวดหมู่สินค้า/บริการ</b-dropdown-item>
                 <b-dropdown-item v-on:click="url('contact')">รายการติดต่อ</b-dropdown-item>
+                <b-dropdown-item v-on:click="url('department')">หน่วยงาน</b-dropdown-item>
                 <b-dropdown-item v-on:click="url('user')">ผู้ใช้</b-dropdown-item>
                 <hr align="right" width="75%">
-
                 <b-dropdown-item v-on:click="logout">ออกจากระบบ</b-dropdown-item>
             </b-nav-item-dropdown>
             <!-- <template slot="button-content"><em>User</em></template>
@@ -105,6 +103,12 @@ export default {
                 case "user":
                     window.location.href = "/admin/user"+"?token="+this.token
                     break;
+                case "department":
+                    window.location.href = "/admin/department"+"?token="+this.token
+                    break;
+                case "category":
+                    window.location.href = "/admin/category"+"?token="+this.token
+                    break;
             }
         },
         getTrue(){
@@ -114,7 +118,7 @@ export default {
             this.isLoading = true;
             setTimeout(() => {
                 this.isLoading = false
-            },3000)
+            },2000)
         },
     },
 }
