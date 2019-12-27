@@ -1,38 +1,36 @@
 <template>
   <div class="container">
-    <div class="row">
-      <div class="card-header">Contact Component</div>
-      <table class="table">
-        <thead>
-          <tr>
-            <td>ID</td>
-            <td>Topic</td>
-            <td>Details</td>
-            <td>Address</td>
-            <td>Email</td>
-            <td>Country</td>
-            <td>Telephone</td>
-            <td>created_at</td>
-            <td>updated_at</td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="contact in contacts" v-bind:key="contact.id">
-            <td>{{contact.id}}</td>
-            <td>{{contact.topic}}</td>
-            <td>{{contact.details}}</td>
-            <td>{{contact.address}}</td>
-            <td>{{contact.email}}</td>
-            <td>{{contact.country_id}}</td>
-            <td>
-              <a :href="getTel(contact.tel)">{{contact.tel}}</a>
-            </td>
-            <td>{{contact.created_at}}</td>
-            <td>{{contact.updated_at}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <div class="card-header">Contact Component</div>
+    <table class="table">
+      <thead ead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Topic</th>
+          <th scope="col-4">Details</th>
+          <th scope="col">Address</th>
+          <th scope="col">Email</th>
+          <th scope="col">Country</th>
+          <th scope="col">Telephone</th>
+          <th scope="col">created_at</th>
+          <th scope="col">updated_at</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="contact in contacts" v-bind:key="contact.id">
+          <td>{{contact.id}}</td>
+          <td>{{contact.topic}}</td>
+          <td>{{contact.details}}</td>
+          <td>{{contact.address}}</td>
+          <td>{{contact.email}}</td>
+          <td>{{contact.country_id}}</td>
+          <td>
+            <a :href="getTel(contact.tel)">{{contact.tel}}</a>
+          </td>
+          <td>{{contact.created_at}}</td>
+          <td>{{contact.updated_at}}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
