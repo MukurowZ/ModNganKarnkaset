@@ -12,7 +12,7 @@
             <tr v-for="(dept,i) in departments" v-bind:key="dept.id">
                 <td>{{ dept.name }}</td>
                 <td><input type="text" v-model="departments[i].edit_name"></td>
-                <td><button class="btn btn-success" v-on:click="editDepartment(dept.id,i)">แก้ไข</button></td>
+                <td><button class="btn btn-warning" v-on:click="editDepartment(dept.id,i)">แก้ไข</button></td>
                 <td><b-button class="btn btn-danger" v-on:click="showModal(dept.id,dept.name)">ลบหน่วยงาน</b-button></td>
             </tr>
         </table>
