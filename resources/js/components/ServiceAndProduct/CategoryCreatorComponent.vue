@@ -12,7 +12,8 @@
                     <option value="1">Product</option>
                     <option value="2">Service</option>
                 </select>
-                <input type="text" class="form-control" v-model="name" :placeholder="getPlaceHolder('โปรดระบุชื่อหมวดหมู่')"/>
+                <input type="text" class="form-control" v-model="name" :placeholder="getPlaceHolder('โปรดระบุชื่อหมวดหมู่ในภาษาอังกฤษ')"/>
+                <input type="text" class="form-control" v-model="THname" :placeholder="getPlaceHolder('โปรดระบุชื่อหมวดหมู่ในภาษาไทย')"/>
             </div>
         </div>
         <div class="form-group d-flex">
