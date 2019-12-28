@@ -11,26 +11,26 @@
                 <div class="row">
                     <div class="col-md-12" style="min-height: 100%">
                         <div style="background-color: white; height: 50em;" class="mx-2">
-                            <h1 style="font-weight: bold">
+                            <h1 style="font-family: Kanit; font-weight: bold">
                                 {{ product.name }}
                                 <h5 style="color: rgb(158, 158, 158)">
                                     {{ product.type }}
                                 </h5>
-                                <h5 style="color: rgb(158, 158, 158)">
-                                    {{ product.type }}
-                                </h5>
                             </h1>
-                            <h3 style="font-weight: bolder">
+                            <h3 style="font-family: Kanit; font-weight: bolder">
                                 {{ product.price }} Baht
                             </h3>
                             <div class="card-text">
                                 <div style="color: rgb(43, 43, 43)">
+                                    <p>ความเป็นมาของผลิตภัณฑ์และบริการ</p>
                                     {{ product.story }}
                                     <br />
+                                    <p>คำอธิบายของผลิตภัณฑ์และบริการ</p>
                                     {{ product.description }}
                                 </div>
                             </div>
-
+                            <div v-html="product.video">
+                            </div>
                             <a
                                 href="../contact"
                                 class="btn btn-primary"
@@ -97,11 +97,20 @@ export default {
                 .get("/api/" + this.itemType + "/" + id)
                 .then(response => this.setData(response.data));
         },
+        getCategory() {
+            axios
+                .get("/api/category/"+this.product.type)
+                .then(response => this.setCategory(response.data))
+        },
         setData(e) {
             this.product = e;
             axios.get("/api/img_set/" + e.img_set_id).then(response => {
                 this.setImgData(response.data);
             });
+            this.getCategory();
+        },
+        setCategory(e){
+            this.product.type=e.THname;
         },
         setImgData(e) {
             this.img = e;
