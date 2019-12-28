@@ -15,6 +15,7 @@
                 <input type="text" class="form-control" v-model="name" :placeholder="getPlaceHolder('โปรดระบุชื่อหมวดหมู่ในภาษาอังกฤษ')"/>
                 <input type="text" class="form-control" v-model="THname" :placeholder="getPlaceHolder('โปรดระบุชื่อหมวดหมู่ในภาษาไทย')"/>
             </div>
+            <p stlye="color:lightgray;" class="font-weight-light">*ในการสร้างหมวดหมู่สินค้า โปรดเลือกประเภทของหมวดหมู่ในช่องแรก และใส่ชื่อภาษาอังกฤษและภาษาไทยในช่องถัดไป</p>
         </div>
         <div class="form-group d-flex">
             <button type="submit" class="btn btn-success" v-on:click="addNewCategory()">เพิ่มหมวดหมู่สินค้า</button>
@@ -45,7 +46,8 @@ export default {
                 name: this.name,
                 THname: this.THname,
                 head: this.head
-            });
+            }).then(window.location="../admin/category?token="+this.token)
+            .catch(window.location="../admin/category?token="+this.token);
         },
         getPlaceHolder(e){
             return e;

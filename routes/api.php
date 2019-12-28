@@ -15,15 +15,12 @@ use Illuminate\Http\Request;
 
 Route::post('login', 'Authenticate\AuthController@authenticate');
 
-Route::get('sym','AdminController@store');
-
-
 Route::group(['middleware' => ['jwt.verify']], function () {
     Route::get('auth/user', 'Authenticate\AuthController@getAuthenticatedUser');
     // Route::get('token', 'Authenticate\AuthController@checkRole');
     Route::apiResource('user','UserController');
-
     Route::apiResource('department','DepartmentController');
+
     Route::apiResource('partner','PartnerController')->except('index');
 
     Route::apiResource('contact','Contact_logController');

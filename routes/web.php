@@ -47,8 +47,6 @@ Route::get('/contact', function () {
     return view('contact/contact_form');
 });
 
-Route::get('/admin/initial_user', 'View\AdminController@init_user');
-
 Route::group(['middleware' => ['jwt.verify']], function () {
     Route::group(['prefix'=>'/admin'], function(){
         Route::get('/contact','View\AdminController@contact');
@@ -89,7 +87,6 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     });
 
 });
-
 
 // FOR TESTING PURPOSE
 // Route::get('/product/test', function () {

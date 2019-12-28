@@ -5,6 +5,7 @@ namespace App\Http\Controllers\View;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\User;
+use App\Model\Department;
 use Illuminate\Routing\Route;
 
 class AdminController extends Controller
@@ -37,6 +38,16 @@ class AdminController extends Controller
         $a = User::get()->first();
         if($a==null){
             return view('user.create-user');
+        }else{
+            return view('welcome');
+        }
+    }
+    
+    // Init Department
+    public function init_dept(){
+        $a = Department::get()->first();
+        if($a==null){
+            return view('user.manage-department');
         }else{
             return view('welcome');
         }
