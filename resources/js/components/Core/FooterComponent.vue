@@ -1,7 +1,7 @@
 <template>
   <footer
     class="py-5"
-    style="color: #000000; font-family: Kanit; background-color: #2d1110; background-image: url(./storage/main/footer.jpg); min-height: 15rem;">
+    style="color: #000000; font-family: Kanit; background-color: #2d1110; background-image: url(../storage/main/footer.jpg); min-height: 15rem;">
     <div class="container">
       <div class="row">
         <div class="company-info col-sm" style="color: #fffff;">
