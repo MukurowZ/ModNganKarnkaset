@@ -57,7 +57,7 @@
         <br />
         <br>
 
-        <img-select-component @clicked="onSelectedImage"></img-select-component>
+        <img-select-component :editId="img_set" @clicked="onSelectedImage"></img-select-component>
 
         <div class="form-group d-flex">
         <button class="btn btn-success" v-on:click="addNewProduct_Service()">เพิ่มสินค้า / บริการ</button>
