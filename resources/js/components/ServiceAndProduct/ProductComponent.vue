@@ -74,14 +74,13 @@
                 <div
                     class="col-10 bd-highlight rounded-bottom border border-success"
                 >
-                    <div class="container">
+                    <div class="container py-0">
                         <div v-if="showSearch == true">
                             <div class="row">
                                 <div
                                     v-for="s_product in s_products"
                                     v-bind:key="s_product.id"
                                     class="card my-2 col-md-6 col-lg-4"
-                                    style="height: 27rem"
                                 >
                                     <img
                                         v-lazy="fullPath(s_product.img.path)"
