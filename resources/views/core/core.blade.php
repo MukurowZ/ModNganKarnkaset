@@ -6,6 +6,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <script src="{{ asset('js/app.js') }}"></script>
         <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="js/carousel.js"></script>
         <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
         <script>
             $( document ).ready(function() {
