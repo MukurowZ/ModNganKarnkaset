@@ -3,9 +3,9 @@
     <br />
     <h1 style="font-family: Kanit;">{{ name }}</h1>
     <br />
-    <div class="modn-content" style="max-width:1200px">
-      <!-- Full-width images with number text -->
-      <!-- Use v-for -->
+    <!-- <div class="modn-content" style="max-width:1200px"> 
+      Full-width images with number text
+      Use v-for
       <img
         v-for="image in images"
         v-bind:key="image.id"
@@ -14,8 +14,8 @@
         style="width:100%;display:none"
       />
 
-      <!-- Thumbnail images -->
-      <!-- Use v-for -->
+      Thumbnail images
+      Use v-for
       <div class="modn-row-padding modn-section">
         <div class="modn-col s4" v-for="image in images" v-bind:key="image.id">
           <img
@@ -26,15 +26,37 @@
           />
         </div>
       </div>
+    </div>-->
+    
+    <div class="card-carousel">
+      <div class="card-img">
+        <img :src="currentImage" alt />
+        <div class="actions">
+          <span @click="prevImage" class="prev">
+            <i class="fas fa-chevron-left"></i>
+          </span>
+          <span @click="nextImage" class="next">
+            <i class="fas fa-chevron-right"></i>
+          </span>
+        </div>
+      </div>
+      <div class="thumbnails">
+        <div
+          v-for="image in images"
+          v-bind:key="image.id"
+          :class="['thumbnail-image', (activeImage == index) ? 'active' : '']"
+          @click="activateImage(index)"
+        >
+          <img v-lazy="fullPath(image.path)" />
+        </div>
+      </div>
     </div>
 
     <!-- Event Content -->
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12" style="min-height: 50rem">
-          <div class="card event-post" style="width: 100%;">
-            <p class="card-text">{{ description }}</p>
-          </div>
+    <div class="row">
+      <div class="col-md-12" style="min-height: 50rem">
+        <div class="card event-post" style="width: 100%;">
+          <p class="card-text">{{ description }}</p>
         </div>
       </div>
     </div>
