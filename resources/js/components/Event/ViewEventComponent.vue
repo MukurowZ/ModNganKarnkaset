@@ -3,8 +3,9 @@
     <br />
     <h1 style="font-family: Kanit;">{{ name }}</h1>
     <br />
-    <!-- 
-
+    <div class="modn-content" style="max-width:1200px">
+      <!-- Full-width images with number text -->
+      <!-- Use v-for -->
       <img
         v-for="image in images"
         v-bind:key="image.id"
@@ -12,6 +13,9 @@
         v-lazy="fullPath(image.path)"
         style="width:100%;display:none"
       />
+
+      <!-- Thumbnail images -->
+      <!-- Use v-for -->
       <div class="modn-row-padding modn-section">
         <div class="modn-col s4" v-for="image in images" v-bind:key="image.id">
           <img
@@ -22,16 +26,6 @@
           />
         </div>
       </div>
-    </div>
- -->
-
-    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-      <img
-        v-for="image in images"
-        v-bind:key="image.id"
-        v-lazy="fullPath(image.path)"
-        style="width:100%;display:none"
-      />
     </div>
 
     <!-- Event Content -->
@@ -48,22 +42,6 @@
 </template>
 
 <script>
-$(document).ready(function() {
-  $(".fancybox").fancybox({
-    openEffect: "none",
-    closeEffect: "none"
-  });
-
-  $(".zoom").hover(
-    function() {
-      $(this).addClass("transition");
-    },
-    function() {
-      $(this).removeClass("transition");
-    }
-  );
-});
-
 import { itemTypeMixin } from "../mixins/itemType.js";
 export default {
   mixins: [itemTypeMixin],
