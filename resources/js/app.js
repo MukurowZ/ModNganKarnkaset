@@ -68,6 +68,7 @@ Vue.component('navbar-component',require('./components/Core/NavbarComponent.vue'
 Vue.component('footer-component',require('./components/Core/FooterComponent.vue').default);
 Vue.component('home-component',require('./components/Core/HomeComponent.vue').default);
 Vue.component('page-not-found',require('./components/Core/Pagenotfound.vue').default);
+Vue.component('carousel',require('./components/Core/carousel.vue').default);
 
 // Img
 Vue.component('img-select-component',require('./components/Img/ImgSelectComponent.vue').default);

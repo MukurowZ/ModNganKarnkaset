@@ -7,6 +7,7 @@
                 :images="image"
                 style="position: relative;"
             >
+            <carousel :startingImage="1" :images="image" :autoSlideInterval="1500" :showProgressBar="true"></carousel>
                 <!-- Sidebar content -->
                 <div class="row">
                     <div class="col-md-12" style="min-height: 100%">
