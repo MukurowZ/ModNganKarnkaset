@@ -1,7 +1,7 @@
 <template>
   <div style="font-family: Kanit;" class="container">
     <br />
-    <div class="mx-auto">
+    <div class="row">
       <b-navbar
         type="light"
         style="background-color: white"
@@ -29,99 +29,100 @@
           </b-navbar-nav>
         </b-collapse>
       </b-navbar>
-      <br />
-      <div class="row">
-        <div class="col-2 align-self-start p-2 bd-highlight rounded-bottom border border-primary">
-          <div class="list-group">
-            <div v-for="category in categorys" v-bind:key="category.id">
-              <a :href="getLink(category.name)" class="list-group-item list-group-item-action">
-                <b>{{ category.name }}</b>
-              </a>
-              <div
-                v-for="category in category.subCategory"
-                v-bind:key="category.id"
-                @click.prevent="
+    </div>
+
+    <br />
+    <div class="row">
+      <div class="col-2 align-self-start p-2 bd-highlight rounded-bottom border border-primary">
+        <div class="list-group">
+          <div v-for="category in categorys" v-bind:key="category.id">
+            <a :href="getLink(category.name)" class="list-group-item list-group-item-action">
+              <b>{{ category.name }}</b>
+            </a>
+            <div
+              v-for="category in category.subCategory"
+              v-bind:key="category.id"
+              @click.prevent="
                                         searchProductByType(category.name)
                                     "
-              >
-                <a class="list-group-item list-group-item-action">
-                  <div>{{ category.name }}</div>
-                </a>
-              </div>
-              <br />
+            >
+              <a class="list-group-item list-group-item-action">
+                <div>{{ category.name }}</div>
+              </a>
             </div>
+            <br />
           </div>
         </div>
+      </div>
 
-        <div class="col-10 bd-highlight rounded-bottom border border-success">
-          <div class="container py-0">
-            <div v-if="showSearch == true">
-              <div class="row">
-                <div
-                  v-for="s_product in s_products"
-                  v-bind:key="s_product.id"
-                  class="card my-2 col-md-6 col-lg-4"
-                >
-                  <img
-                    v-lazy="fullPath(s_product.img.path)"
-                    class="card-img-top mx-auto mt-2"
-                    alt="product img"
-                    style="height: 146.05px"
-                  />
-                  <div class="card-body">
-                    <h5 class="card-title">
-                      {{ s_product.name }}
-                      <br />
-                      <small style="color: rgb(158, 158, 158)">
-                        Type:
-                        {{ s_product.type }}
-                      </small>
-                    </h5>
-                    <p
-                      class="card-text py-0"
-                      style="height: 6rem; text-overflow: ellipsis; overflow: hidden;"
-                    >{{ s_product.description }}</p>
-                    <div class="price">{{ s_product.price }}&#3647;</div>
-                    <a v-on:click="getUrl(s_product.id)" class="btn btn-primary">More detail</a>
-                  </div>
+      <div class="col-10 bd-highlight rounded-bottom border border-success">
+        <div class="container py-0">
+          <div v-if="showSearch == true">
+            <div class="row">
+              <div
+                v-for="s_product in s_products"
+                v-bind:key="s_product.id"
+                class="card my-2 col-md-6 col-lg-4"
+              >
+                <img
+                  v-lazy="fullPath(s_product.img.path)"
+                  class="card-img-top mx-auto mt-2"
+                  alt="product img"
+                  style="height: 146.05px"
+                />
+                <div class="card-body">
+                  <h5 class="card-title">
+                    {{ s_product.name }}
+                    <br />
+                    <small style="color: rgb(158, 158, 158)">
+                      Type:
+                      {{ s_product.type }}
+                    </small>
+                  </h5>
+                  <p
+                    class="card-text py-0"
+                    style="height: 6rem; text-overflow: ellipsis; overflow: hidden;"
+                  >{{ s_product.description }}</p>
+                  <div class="price">{{ s_product.price }}&#3647;</div>
+                  <a v-on:click="getUrl(s_product.id)" class="btn btn-primary">More detail</a>
                 </div>
               </div>
             </div>
           </div>
+        </div>
 
-          <div v-if="showSearch == false">
-            <div class="container">
-              <div class="row">
-                <div
-                  v-for="product in products"
-                  v-bind:key="product.id"
-                  class="card my-2 col-md-6 col-lg-4"
-                  style="height: 27rem"
-                >
-                  <img
-                    v-lazy="fullPath(product.img.path)"
-                    class="card-img-top mx-auto mt-2"
-                    alt="product img"
-                    style="height: 146.05px"
-                  />
-                  <div class="card-body">
-                    <h5 class="card-title">
-                      {{ product.name }}
-                      <br />
-                      <small style="color: rgb(158, 158, 158)">Type: {{ product.type }}</small>
-                    </h5>
-                    <p
-                      class="card-text py-0"
-                      style="height: 6rem; text-overflow: ellipsis; overflow: hidden;"
-                    >{{ product.description }}</p>
-                    <div class="price">Price: {{ product.price }}&#3647;</div>
-                    <a
-                      v-on:click="getUrl(product.id)"
-                      align="center"
-                      style="color: white; width: 100%"
-                      class="btn btn-primary"
-                    >More detail</a>
-                  </div>
+        <div v-if="showSearch == false">
+          <div class="container">
+            <div class="row">
+              <div
+                v-for="product in products"
+                v-bind:key="product.id"
+                class="card my-2 col-md-6 col-lg-4"
+                style="height: 27rem"
+              >
+                <img
+                  v-lazy="fullPath(product.img.path)"
+                  class="card-img-top mx-auto mt-2"
+                  alt="product img"
+                  style="height: 146.05px"
+                />
+                <div class="card-body">
+                  <h5 class="card-title">
+                    {{ product.name }}
+                    <br />
+                    <small style="color: rgb(158, 158, 158)">Type: {{ product.type }}</small>
+                  </h5>
+                  <p
+                    class="card-text py-0"
+                    style="height: 6rem; text-overflow: ellipsis; overflow: hidden;"
+                  >{{ product.description }}</p>
+                  <div class="price">Price: {{ product.price }}&#3647;</div>
+                  <a
+                    v-on:click="getUrl(product.id)"
+                    align="center"
+                    style="color: white; width: 100%"
+                    class="btn btn-primary"
+                  >More detail</a>
                 </div>
               </div>
             </div>
