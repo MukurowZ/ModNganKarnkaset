@@ -14,7 +14,6 @@
                 <img v-lazy="fullPath(event.img_set_id)" height="200px" />
               </div>
               <div class="col-md-6" style="margin-left: 1em">
-
                 <div class="row">
                   <h4 class="card-title mb-2">{{event.event_name}}</h4>
                 </div>
@@ -28,16 +27,17 @@
                     >อ่านต่อ</a>
                   </p>
                 </div>
-
               </div>
-              <div class="info-box">
-                <h6>
-                  {{event.owner_name}}
-                  <br />
-                  <small>Created on {{event.created_at}}</small>
-                  <br />
-                  <small>Last Updated {{event.updated_at}}</small>
-                </h6>
+              <div class="row justify-content-end">
+                <div class="info-box">
+                  <h6>
+                    {{event.owner_name}}
+                    <br />
+                    <small>Created on {{event.created_at}}</small>
+                    <br />
+                    <small>Last Updated {{event.updated_at}}</small>
+                  </h6>
+                </div>
               </div>
             </div>
           </li>
@@ -102,8 +102,7 @@ export default {
         else {
           a.event_description =
             a.activity_description.substring(0, 300) + "...";
-          a.event_name =
-            a.activity_name;
+          a.event_name = a.activity_name;
           a.activity_description = null;
           a.activity_name = null;
         }
