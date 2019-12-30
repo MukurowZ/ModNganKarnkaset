@@ -43,8 +43,9 @@ Route::group(['prefix'=>'/service'], function ($id) {
     Route::get('/{id}','View\ProductServiceController@show');
 });
 
-Route::get('/contact', function () {
-    return view('contact/contact_form');
+Route::group(['prefix'=>'/contact'], function (){
+    Route::get('/','View\ContactController@contact');
+    Route::get('/form','View\ContactController@form');
 });
 
 Route::group(['middleware' => ['jwt.verify']], function () {

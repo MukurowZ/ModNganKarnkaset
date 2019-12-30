@@ -76,6 +76,8 @@ Vue.component('img-select-component',require('./components/Img/ImgSelectComponen
 // Contact
 Vue.component('contact-form-component',require('./components/contact/contactformComponent.vue').default);
 Vue.component('contact-report-component',require('./components/contact/contactreportComponent.vue').default);
+Vue.component('main-contact-component',require('./components/contact/mainContactComponent.vue').default);
+Vue.component('contact-menu-component',require('./components/contact/contactMenuComponent.vue').default);
 
 // Product & Service
 Vue.component('category-component',require('./components/ServiceAndProduct/ProductComponent.vue').default);   // For search product

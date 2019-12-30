@@ -1,11 +1,11 @@
 @extends('../core/core')
-@section('title','แบบฟอร์มการติดต่อ')
+@section('title','Contact us')
 
 @section('content')
 <body>
 <div id="app">
     <contact-menu-component></contact-menu-component>
-    <contact-form-component></contact-form-component>
+    <main-contact-component></main-contact-component>
 </div>
 </body>
 </html>

@@ -1,7 +1,6 @@
 <template>
     <div style="font-family: Kanit;" class="container font-weight-bold" >
         <br>
-        <h1>Contact us</h1>
         <form>
             <div class="form-group" style="font-size: 1.2em">
                 <br>
