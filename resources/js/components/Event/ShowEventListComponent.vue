@@ -28,16 +28,16 @@
                   </p>
                 </div>
               </div>
-              <div class="row justify-content-end">
-                <div class="info-box">
-                  <h6>
-                    {{event.owner_name}}
-                    <br />
-                    <small>Created on {{event.created_at}}</small>
-                    <br />
-                    <small>Last Updated {{event.updated_at}}</small>
-                  </h6>
-                </div>
+            </div>
+            <div class="row justify-content-end">
+              <div class="info-box">
+                <h6>
+                  {{event.owner_name}}
+                  <br />
+                  <small>Created on {{event.created_at}}</small>
+                  <br />
+                  <small>Last Updated {{event.updated_at}}</small>
+                </h6>
               </div>
             </div>
           </li>
