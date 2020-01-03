@@ -2,11 +2,11 @@
   <div style="font-family: Kanit;" class="container">
     <br />
     <div class="row">
-      <div class="col-12">
+      <div class="col-12 rounded-top border border-danger">
         <b-navbar
           type="light"
           style="background-color: white"
-          class="rounded-top border border-danger"
+          class=""
         >
           <b-navbar-brand style="font-weight: 450;">สินค้าและบริการ</b-navbar-brand>
 
