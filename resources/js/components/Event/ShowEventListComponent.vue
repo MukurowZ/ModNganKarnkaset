@@ -10,10 +10,10 @@
             class="list-group-item forum-post"
           >
             <div class="row">
-              <div class="col-md-5">
+              <div class="col-md-3">
                 <img v-lazy="fullPath(event.img_set_id)" height="200px" />
               </div>
-              <div class="col-md-6" style="margin-left: 1em">
+              <div class="col-md-9" style="margin-left: 1em">
                 <div class="row">
                   <h4 class="card-title mb-2">{{event.event_name}}</h4>
                 </div>
