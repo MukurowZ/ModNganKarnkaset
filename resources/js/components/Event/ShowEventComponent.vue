@@ -12,11 +12,10 @@
                     <div class="col-md-3">
                       <img v-lazy="fullPath(event.img_set_id)" height="200px" />
                     </div>
-                    <div class="col-md-9" style="margin-left: 1em">
+                    <div class="col-md-8">
                       <div class="row">
                         <h4 class="card-title mb-2">{{event.event_name}}</h4>
                       </div>
-
                       <div class="row" style="height: 7rem">
                         <p class="card-text event-list-info">
                           {{event.event_description}}
