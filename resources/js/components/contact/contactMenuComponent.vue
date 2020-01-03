@@ -1,10 +1,14 @@
 <template>
-    <div class="container" >
-        <p>ติดต่อเรา</p>
-        <p>Contact us</p>
+    <div style="font-family: Kanit;" class="container font-weight-bold">
+        <lable style="font-size: 1.5em">ติดต่อเรา</lable>
+        <br>
+        <lable style="font-size: 0.9em; margin-top:-2px; color:grey">Contact us</lable>
+        <br>
         <br>
         <button ref="contact" class="btn btn-success" v-on:click="contact()">ติดต่อเรา</button>
         <button ref="form" class="btn btn-success" v-on:click="form()">ส่งแบบฟอร์มติดต่อ</button>
+        <br>
+        <hr align="left" width="50%">
     </div>
 </template>
 <script>

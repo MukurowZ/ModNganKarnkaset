@@ -1,5 +1,5 @@
 @extends('../core/core')
-@section('title','แบบฟอร์มการติดต่อ')
+@section('title','มดงานการเกษตรไทย - Contact form')
 
 @section('content')
 <body>

@@ -1,9 +1,7 @@
 <template>
     <div style="font-family: Kanit;" class="container font-weight-bold" >
-        <br>
         <form>
             <div class="form-group" style="font-size: 1.2em">
-                <br>
                 <label>Topic</label>
                 <br />
                 <input type="text" class="form-control" v-model="topic" placeholder="โปรดระบุหัวข้อในการติดต่อ"/>
