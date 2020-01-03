@@ -8,30 +8,35 @@
             <ul class="list-group list-group-flush">
               <li v-for="event in events" v-bind:key="event.id" class="list-group-item forum-post">
                 <a :href="getEventUrl(event.id)">
-                  <div class="row" style="height: 90%">
+                  <div class="row">
                     <div class="col-md-3">
                       <img v-lazy="fullPath(event.img_set_id)" height="200px" />
                     </div>
-                    <div class="col-md-9 event-info">
-                      <h4 class="card-title mb-2">{{event.event_name}}</h4>
-                      <p class="card-text">
-                        {{event.event_description}}
-                        <a
-                          style="color: gray"
-                          :href="getEventUrl(event.id)"
-                        >อ่านต่อ</a>
-                      </p>
-                    </div>
-                    <div class="row justify-content-end">
-                      <div class="info-box col-md-3">
-                        <h6>
-                          {{event.owner_name}}
-                          <br />
-                          <small>Created on {{event.created_at}}</small>
-                          <br />
-                          <small>Last Updated {{event.updated_at}}</small>
-                        </h6>
+                    <div class="col-md-9" style="margin-left: 1em">
+                      <div class="row">
+                        <h4 class="card-title mb-2">{{event.event_name}}</h4>
                       </div>
+
+                      <div class="row" style="height: 7rem">
+                        <p class="card-text event-list-info">
+                          {{event.event_description}}
+                          <a
+                            style="color: gray"
+                            :href="getEventUrl(event.id)"
+                          >อ่านต่อ</a>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row justify-content-end">
+                    <div class="info-box">
+                      <h6>
+                        {{event.owner_name}}
+                        <br />
+                        <small>Created on {{event.created_at}}</small>
+                        <br />
+                        <small>Last Updated {{event.updated_at}}</small>
+                      </h6>
                     </div>
                   </div>
                 </a>

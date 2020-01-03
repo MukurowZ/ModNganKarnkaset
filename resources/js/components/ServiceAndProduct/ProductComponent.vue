@@ -2,33 +2,35 @@
   <div style="font-family: Kanit;" class="container">
     <br />
     <div class="row">
-      <b-navbar
-        type="light"
-        style="background-color: white"
-        class="rounded-top border border-danger"
-      >
-        <b-navbar-brand style="font-weight: 450;">สินค้าและบริการ</b-navbar-brand>
+      <div class="col-12">
+        <b-navbar
+          type="light"
+          style="background-color: white"
+          class="rounded-top border border-danger"
+        >
+          <b-navbar-brand style="font-weight: 450;">สินค้าและบริการ</b-navbar-brand>
 
-        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+          <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
-        <b-collapse id="nav-collapse" is-nav>
-          <!-- Right aligned nav items -->
-          <b-navbar-nav class="ml-auto">
-            <b-nav-form>
-              <b-form-input size="sm" class="mr-sm-2" placeholder="ค้นหาสินค้า" v-model="search"></b-form-input>
-              <b-button
-                @click.prevent="searchProduct()"
-                size="sm"
-                class="my-2 my-sm-0"
-                type="submit"
-              >
-                ค้นหา
-                <font-awesome-icon :icon="['fas', 'search']" />
-              </b-button>
-            </b-nav-form>
-          </b-navbar-nav>
-        </b-collapse>
-      </b-navbar>
+          <b-collapse id="nav-collapse" is-nav>
+            <!-- Right aligned nav items -->
+            <b-navbar-nav class="ml-auto">
+              <b-nav-form>
+                <b-form-input size="sm" class="mr-sm-2" placeholder="ค้นหาสินค้า" v-model="search"></b-form-input>
+                <b-button
+                  @click.prevent="searchProduct()"
+                  size="sm"
+                  class="my-2 my-sm-0"
+                  type="submit"
+                >
+                  ค้นหา
+                  <font-awesome-icon :icon="['fas', 'search']" />
+                </b-button>
+              </b-nav-form>
+            </b-navbar-nav>
+          </b-collapse>
+        </b-navbar>
+      </div>
     </div>
 
     <br />
@@ -62,7 +64,7 @@
               <div
                 v-for="s_product in s_products"
                 v-bind:key="s_product.id"
-                class="card my-2 col-md-6 col-lg-4"
+                class="card col-md-6 col-lg-4"
               >
                 <img
                   v-lazy="fullPath(s_product.img.path)"

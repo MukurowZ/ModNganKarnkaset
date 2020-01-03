@@ -10,10 +10,10 @@
             class="list-group-item forum-post"
           >
             <div class="row">
-              <div class="col-md-5">
+              <div class="col-md-3">
                 <img v-lazy="fullPath(event.img_set_id)" height="200px" />
               </div>
-              <div class="col-md-6" style="margin-left: 1em">
+              <div class="col-md-9" style="margin-left: 1em">
                 <div class="row">
                   <h4 class="card-title mb-2">{{event.event_name}}</h4>
                 </div>
@@ -28,16 +28,16 @@
                   </p>
                 </div>
               </div>
-              <div class="row justify-content-end">
-                <div class="info-box">
-                  <h6>
-                    {{event.owner_name}}
-                    <br />
-                    <small>Created on {{event.created_at}}</small>
-                    <br />
-                    <small>Last Updated {{event.updated_at}}</small>
-                  </h6>
-                </div>
+            </div>
+            <div class="row justify-content-end">
+              <div class="info-box">
+                <h6>
+                  {{event.owner_name}}
+                  <br />
+                  <small>Created on {{event.created_at}}</small>
+                  <br />
+                  <small>Last Updated {{event.updated_at}}</small>
+                </h6>
               </div>
             </div>
           </li>
