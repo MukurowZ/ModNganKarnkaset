@@ -3,62 +3,41 @@
     <br />
     <h1 style="font-family: Kanit;">{{ name }}</h1>
     <br />
-    <!-- <div class="modn-content" style="max-width:1200px"> 
-      Full-width images with number text
-      Use v-for
-      <img
-        v-for="image in images"
-        v-bind:key="image.id"
-        class="mySlides"
-        v-lazy="fullPath(image.path)"
-        style="width:100%;display:none"
-      />
 
-      Thumbnail images
-      Use v-for
-      <div class="modn-row-padding modn-section">
-        <div class="modn-col s4" v-for="image in images" v-bind:key="image.id">
-          <img
-            class="selector modn-opacity modn-hover-opacity-off"
-            v-lazy="fullPath(image.path)"
-            style="width:100%;cursor:pointer"
-            v-on:click="currentSlide(image.id)"
-          />
-        </div>
-      </div>
-    </div>-->
-    
     <div class="card-carousel">
-      <div class="card-img">
+        <div class="card-img">
         <img :src="currentImage" alt />
         <div class="actions">
-          <span @click="prevImage" class="prev">
-            <i class="fas fa-chevron-left"></i>
-          </span>
-          <span @click="nextImage" class="next">
-            <i class="fas fa-chevron-right"></i>
-          </span>
+            <span @click="prevImage" class="prev">
+                <i class="fas fa-chevron-left"></i>
+            </span>
+            <span @click="nextImage" class="next">
+                <i class="fas fa-chevron-right"></i>
+            </span>
         </div>
-      </div>
-      <div class="thumbnails">
-        <div
-          v-for="image in images"
-          v-bind:key="image.id"
-          :class="['thumbnail-image', (activeImage == index) ? 'active' : '']"
-          @click="activateImage(index)"
-        >
+        </div>
+        <div class="thumbnails">
+            <agile class="main" ref="main" :options="options1" :as-nav-for="asNavFor1">
+                <div class="slide" v-for="(slide, index) in images" :key="index" :class="`slide--${index}`"><img v-lazy="fullPath(slide.path)"/></div>
+            </agile>
+            <agile class="thumbnails" ref="thumbnails" :options="options2" :as-nav-for="asNavFor2">
+                <div class="slide slide--thumbniail" v-for="(slide, index) in images" :key="index" :class="`slide--${index}`" @click="$refs.thumbnails.goTo(index)"><img v-lazy="fullPath(slide.path)"/></div>
+                <template slot="prevButton"><i class="fas fa-chevron-left"></i></template>
+                <template slot="nextButton"><i class="fas fa-chevron-right"></i></template>
+            </agile>
+            <!-- <div v-for="image in images" v-bind:key="image.id" @click="activateImage(index)">
           <img v-lazy="fullPath(image.path)" />
+        </div> -->
         </div>
-      </div>
     </div>
 
     <!-- Event Content -->
     <div class="row">
-      <div class="col-md-12" style="min-height: 50rem">
-        <div class="card event-post" style="width: 100%;">
-          <p class="card-text">{{ description }}</p>
+        <div class="col-md-12" style="min-height: 50rem">
+            <div class="card event-post" style="width: 100%;">
+            <p class="card-text">{{ description }}</p>
+            </div>
         </div>
-      </div>
     </div>
   </div>
 </template>
@@ -66,40 +45,62 @@
 <script>
 import { itemTypeMixin } from "../mixins/itemType.js";
 export default {
-  mixins: [itemTypeMixin],
-  props: ["id"],
-  mounted() {
-    this.getEventData(this.id);
-    this.begin();
-    this.showSlides(this.slideIndex);
-  },
-  data() {
-    return {
-      name: "",
-      description: "",
-      img_set: "",
-      owner_id: "",
-      sets: [],
-      set: {
-        id: "",
+    mixins: [itemTypeMixin],
+    props: ["id"],
+    mounted() {
+        this.getEventData(this.id);
+        this.showSlides(this.slideIndex);
+    },
+    data() {
+        return {
         name: "",
+        description: "",
+        img_set: "",
         owner_id: "",
-        imgids: [],
-        imgid: {
-          id: "",
-          img_set_id: "",
-          path: ""
-        }
-      },
-      images: [],
-      slideIndex: 0,
-      slides: ""
+        sets: [],
+        set: {
+            id: "",
+            name: "",
+            owner_id: "",
+            imgids: [],
+            imgid: {
+            id: "",
+            img_set_id: "",
+            path: ""
+            }
+        },
+        images: [],
+        asNavFor1: [],
+        asNavFor2: [],
+        options1: {
+            dots: false,
+            fade: true,
+            navButtons: false
+        },
+        options2: {
+            autoplay: true,
+            centerMode: true,
+            dots: false,
+            navButtons: false,
+            slidesToShow: 3,
+            responsive: [
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 5
+                }
+            },
+            {
+                breakpoint: 1000,
+                settings: {
+                    navButtons: true
+                }
+            }
+            ]
+        },
     };
   },
   methods: {
-    begin() {
-      setTimeout(() => this.currentSlide(this.slideIndex), 1000);
-    },
     getEventData(id) {
       axios
         .get("/api/" + this.itemType + "/" + id)
@@ -121,44 +122,11 @@ export default {
       });
     },
     setImgData(e) {
-      this.images = e.imgid;
+        this.images=e.imgid;
     },
     fullPath(e) {
       return "/storage/imgs/" + e;
     },
-    // Thumbnail image controls
-    currentSlide(n) {
-      n = this.images[this.images.length - 1].id - n;
-      this.showSlides((this.slideIndex = n));
-    },
-    showSlides(n) {
-      this.slides = [...document.getElementsByClassName("mySlides")];
-      while (this.slides == null) {
-        this.slides = [...document.getElementsByClassName("mySlides")];
-      }
-      var i;
-      // var this.refs['selector'] = document.getElementsByClassName("selector");
-      if (n > this.slides.length) {
-        this.slideIndex = 1;
-      }
-      if (n < 1) {
-        this.slideIndex = this.slides.length;
-      }
-      for (i = 0; i < this.slides.length; i++) {
-        this.slides[i].style.display = "none";
-      }
-      for (i = 0; i < this.refs["selector"].length; i++) {
-        this.refs["selector"].className = this.refs[
-          "selector"
-        ].className.replace(" modn-opacity-off", "");
-      }
-      this.slides[this.slideIndex - 1].style.display = "block";
-      this.refs["selector"].className += " modn-opacity-off";
-    }
   }
 };
 </script>
-
-<style lang="css">
-@import "w3.css";
-</style>

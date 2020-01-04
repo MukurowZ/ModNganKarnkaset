@@ -1,14 +1,13 @@
 <template>
     <div style="font-family: Kanit;" class="row">
-        <div class="col"></div>
+        <div id="fb-root"></div>
         <div class="col-8">
             <ProductCarousel
                 v-if="checker"
                 :images="image"
                 style="position: relative;"
             >
-            <carousel :startingImage="1" :images="image" :autoSlideInterval="1500" :showProgressBar="true"></carousel>
-            
+
                 <!-- Sidebar content -->
                 <div class="row">
                     <div class="col-md-12" style="min-height: 100%">
@@ -48,6 +47,7 @@
         <div class="col"></div>
     </div>
 </template>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v5.0"></script>
 <script>
 import { itemTypeMixin } from "../mixins/itemType.js";
 export default {
