@@ -3,20 +3,7 @@
     <br />
     <h1 style="font-family: Kanit;">{{ name }}</h1>
     <br />
-
-    <div class="card-carousel">
-        <div class="card-img">
-        <img :src="currentImage" alt />
-        <div class="actions">
-            <span @click="prevImage" class="prev">
-                <i class="fas fa-chevron-left"></i>
-            </span>
-            <span @click="nextImage" class="next">
-                <i class="fas fa-chevron-right"></i>
-            </span>
-        </div>
-        </div>
-        <div class="thumbnails">
+        <div>
             <agile class="main" ref="main" :options="options1" :as-nav-for="asNavFor1">
                 <div class="slide" v-for="(slide, index) in images" :key="index" :class="`slide--${index}`"><img v-lazy="fullPath(slide.path)"/></div>
             </agile>
@@ -25,11 +12,7 @@
                 <template slot="prevButton"><i class="fas fa-chevron-left"></i></template>
                 <template slot="nextButton"><i class="fas fa-chevron-right"></i></template>
             </agile>
-            <!-- <div v-for="image in images" v-bind:key="image.id" @click="activateImage(index)">
-          <img v-lazy="fullPath(image.path)" />
-        </div> -->
         </div>
-    </div>
 
     <!-- Event Content -->
     <div class="row">
