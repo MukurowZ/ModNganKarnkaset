@@ -113,3 +113,80 @@ export default {
   }
 };
 </script>
+
+<style lang="sass">
+.main
+	margin-bottom: 30px
+
+.thumbnails
+	margin: 0 -5px
+	width: calc(100% + 10px)
+
+.agile
+	&__nav-button
+		background: transparent
+		border: none
+		color: #ccc
+		cursor: pointer
+		font-size: 24px
+		transition-duration: .3s
+
+		.thumbnails &
+			position: absolute
+			top: 50%
+			transform: translateY(-50%)
+
+			&--prev
+				left: -45px
+
+			&--next
+				right: -45px
+
+		&:hover
+			color: #888
+
+	&__dot
+		margin: 0 10px
+
+		button
+			background-color: #eee
+			border: none
+			border-radius: 50%
+			cursor: pointer
+			display: block
+			height: 10px
+			font-size: 0
+			line-height: 0
+			margin: 0
+			padding: 0
+			transition-duration: .3s
+			width: 10px
+
+		&--current,
+		&:hover
+			button
+				background-color: #888
+
+.slide
+	align-items: center
+	box-sizing: border-box
+	color: #fff
+	display: flex
+	height: 450px
+	justify-content: center
+
+	&--thumbniail
+		cursor: pointer
+		height: 100px
+		padding: 0 5px
+		transition: opacity .3s
+
+		&:hover
+			opacity: .75
+
+	img
+		height: 100%
+		object-fit: cover
+		object-position: center
+		width: 100%
+</style>
