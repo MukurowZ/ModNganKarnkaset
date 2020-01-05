@@ -3,6 +3,7 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+
 import Vue from 'vue'
 import BootstrapVue from 'bootstrap-vue'
 import VueLazyload from 'vue-lazyload'
@@ -13,6 +14,7 @@ import VueAgile from 'vue-agile'
 
 require('./bootstrap');
 
+Vue.use(Vuetify);
 Vue.use(BootstrapVue);
 Vue.use(VueLazyload, {
     preLoad: 1.3,
@@ -103,7 +105,6 @@ Vue.component('user-manager-component',require('./components/user/userManager.vu
 Vue.component('user-editor-component',require('./components/user/editUser.vue').default);
 Vue.component('department-creator-component',require('./components/user/createDepartment.vue').default);
 Vue.component('department-manager-component',require('./components/user/departmentManager.vue').default);
-
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
