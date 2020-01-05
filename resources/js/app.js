@@ -10,7 +10,6 @@ import VueLazyload from 'vue-lazyload'
 import Multiselect from 'vue-multiselect'
 import ProductCarousel from 'vue-product-carousel'
 import Vuetify from 'vuetify'
-import VueAgile from 'vue-agile'
 
 require('./bootstrap');
 
@@ -22,7 +21,6 @@ Vue.use(VueLazyload, {
     attempt: 1
 });
 Vue.use(Vuetify);
-Vue.use(VueAgile);
 
 window.Vue = require('vue');
 window.axios = require('axios');

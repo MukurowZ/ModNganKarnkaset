@@ -1,7 +1,7 @@
 <template>
     <div style="font-family: Kanit;" class="row">
         <div id="fb-root"></div>
-        <div class="col-8">
+        <div class="col-8 mx-auto">
             <ProductCarousel
                 v-if="checker"
                 :images="image"
@@ -44,7 +44,6 @@
                 <!-- End sidebar content -->
             </ProductCarousel>
         </div>
-        <div class="col"></div>
     </div>
 </template>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v5.0"></script>

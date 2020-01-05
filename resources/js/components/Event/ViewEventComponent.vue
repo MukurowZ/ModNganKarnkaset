@@ -3,17 +3,29 @@
     <br />
     <h1 style="font-family: Kanit;">{{ name }}</h1>
     <br />
-        <div>
-            <agile class="main_carousel" ref="main" :options="options1" :as-nav-for="asNavFor1">
-                <div class="slide" v-for="(slide, index) in images" :key="index" :class="`slide--${index}`"><img v-lazy="fullPath(slide.path)"/></div>
-            </agile>
-            <agile class="thumbnails" ref="thumbnails" :options="options2" :as-nav-for="asNavFor2">
-                <div class="slide slide--thumbniail" v-for="(slide, index) in images" :key="index" :class="`slide--${index}`" @click="$refs.thumbnails.goTo(index)"><img v-lazy="fullPath(slide.path)"/></div>
-                <template slot="prevButton"><i class="fas fa-chevron-left"></i></template>
-                <template slot="nextButton"><i class="fas fa-chevron-right"></i></template>
-            </agile>
-        </div>
-
+    <b-carousel
+      id="carousel-1"
+      v-model="slide"
+      :interval="6000"
+      controls
+      indicators
+      background="#ababab"
+      img-width="1024"
+      img-height="200"
+      style="text-shadow: 1px 1px 2px #333;"
+      @sliding-start="onSlideStart"
+      @sliding-end="onSlideEnd"
+    >
+        <b-carousel-slide v-for="image in images" v-bind:key="image.id">
+            <template v-slot:img>
+                <center>
+                    <div class="flex" width="100%">
+                    <img v-lazy="fullPath(image.path)" height="500" class="mx-auto">
+                    </div>
+                </center>
+            </template>
+        </b-carousel-slide>
+    </b-carousel>
     <!-- Event Content -->
     <div class="row">
         <div class="col-md-12" style="min-height: 50rem">
@@ -54,34 +66,6 @@ export default {
             }
         },
         images: [],
-        asNavFor1: [],
-        asNavFor2: [],
-        options1: {
-            dots: false,
-            fade: true,
-            navButtons: false
-        },
-        options2: {
-            autoplay: true,
-            centerMode: true,
-            dots: false,
-            navButtons: false,
-            slidesToShow: 3,
-            responsive: [
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 5
-                }
-            },
-            {
-                breakpoint: 1000,
-                settings: {
-                    navButtons: true
-                }
-            }
-            ]
-        },
     };
   },
   methods: {
@@ -114,7 +98,3 @@ export default {
   }
 };
 </script>
-
-<style lang="sass">
-@import 'carousel.sass'
-</style>
