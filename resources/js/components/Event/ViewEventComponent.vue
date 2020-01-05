@@ -4,7 +4,7 @@
     <h1 style="font-family: Kanit;">{{ name }}</h1>
     <br />
         <div>
-            <agile class="main" ref="main" :options="options1" :as-nav-for="asNavFor1">
+            <agile class="main_carousel" ref="main" :options="options1" :as-nav-for="asNavFor1">
                 <div class="slide" v-for="(slide, index) in images" :key="index" :class="`slide--${index}`"><img v-lazy="fullPath(slide.path)"/></div>
             </agile>
             <agile class="thumbnails" ref="thumbnails" :options="options2" :as-nav-for="asNavFor2">
@@ -32,6 +32,8 @@ export default {
     props: ["id"],
     mounted() {
         this.getEventData(this.id);
+        this.asNavFor1.push(this.$refs.thumbnails)
+		this.asNavFor2.push(this.$refs.main)
     },
     data() {
         return {
