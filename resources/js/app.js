@@ -9,12 +9,11 @@ import BootstrapVue from 'bootstrap-vue'
 import VueLazyload from 'vue-lazyload'
 import Multiselect from 'vue-multiselect'
 import ProductCarousel from 'vue-product-carousel'
-import Vuetify from 'vuetify/lib'
+import Vuetify from 'vuetify'
 import VueAgile from 'vue-agile'
 
 require('./bootstrap');
 
-Vue.use(Vuetify);
 Vue.use(BootstrapVue);
 Vue.use(VueLazyload, {
     preLoad: 1.3,
@@ -72,7 +71,6 @@ Vue.component('navbar-component',require('./components/Core/NavbarComponent.vue'
 Vue.component('footer-component',require('./components/Core/FooterComponent.vue').default);
 Vue.component('home-component',require('./components/Core/HomeComponent.vue').default);
 Vue.component('page-not-found',require('./components/Core/Pagenotfound.vue').default);
-Vue.component('carousel',require('./components/Core/carousel.vue').default);
 
 // Img
 Vue.component('img-select-component',require('./components/Img/ImgSelectComponent.vue').default);
