@@ -9,7 +9,7 @@
       :interval="6000"
       controls
       indicators
-      background="#ffffff"
+      background="#757575"
       img-width="1024"
       img-height="200"
       style="text-shadow: 1px 1px 2px #333;"
@@ -19,7 +19,7 @@
         <b-carousel-slide v-for="image in images" v-bind:key="image.id">
             <template v-slot:img>
                 <center>
-                    <div class="flex" width="100%" style="background-color:#757575">
+                    <div class="flex" width="100%">
                     <img v-lazy="fullPath(image.path)" height="500" class="mx-auto">
                     </div>
                 </center>
@@ -98,3 +98,12 @@ export default {
   }
 };
 </script>
+
+<style scoped child-component="span">
+.carousel-control-prev-icon[data-v-256197b0] {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23003300' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath d='M5.25 0l-4 4 4 4 1.5-1.5L4.25 4l2.5-2.5L5.25 0z'/%3e%3c/svg%3e") !important;
+}
+.carousel-control-next-icon[data-v-256197b0] {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23003300' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath d='M2.75 0l-1.5 1.5L3.75 4l-2.5 2.5L2.75 8l4-4-4-4z'/%3e%3c/svg%3e") !important;
+}
+</style>

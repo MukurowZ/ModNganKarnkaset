@@ -12,7 +12,6 @@ import ProductCarousel from 'vue-product-carousel'
 
 require('./bootstrap');
 
-window.Vue = require('vue');
 window.axios = require('axios');
 Vue.use(BootstrapVue);
 Vue.use(VueLazyload, {
