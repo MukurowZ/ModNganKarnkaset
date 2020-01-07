@@ -100,7 +100,6 @@
                 v-for="product in products"
                 v-bind:key="product.id"
                 class="card my-2 col-md-6 col-lg-4"
-                style="height: 27rem"
               >
                 <img
                   v-lazy="fullPath(product.img.path)"
