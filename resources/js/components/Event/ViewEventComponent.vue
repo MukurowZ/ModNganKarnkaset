@@ -3,62 +3,36 @@
     <br />
     <h1 style="font-family: Kanit;">{{ name }}</h1>
     <br />
-    <!-- <div class="modn-content" style="max-width:1200px"> 
-      Full-width images with number text
-      Use v-for
-      <img
-        v-for="image in images"
-        v-bind:key="image.id"
-        class="mySlides"
-        v-lazy="fullPath(image.path)"
-        style="width:100%;display:none"
-      />
-
-      Thumbnail images
-      Use v-for
-      <div class="modn-row-padding modn-section">
-        <div class="modn-col s4" v-for="image in images" v-bind:key="image.id">
-          <img
-            class="selector modn-opacity modn-hover-opacity-off"
-            v-lazy="fullPath(image.path)"
-            style="width:100%;cursor:pointer"
-            v-on:click="currentSlide(image.id)"
-          />
-        </div>
-      </div>
-    </div>-->
-    
-    <div class="card-carousel">
-      <div class="card-img">
-        <img :src="currentImage" alt />
-        <div class="actions">
-          <span @click="prevImage" class="prev">
-            <i class="fas fa-chevron-left"></i>
-          </span>
-          <span @click="nextImage" class="next">
-            <i class="fas fa-chevron-right"></i>
-          </span>
-        </div>
-      </div>
-      <div class="thumbnails">
-        <div
-          v-for="image in images"
-          v-bind:key="image.id"
-          :class="['thumbnail-image', (activeImage == index) ? 'active' : '']"
-          @click="activateImage(index)"
-        >
-          <img v-lazy="fullPath(image.path)" />
-        </div>
-      </div>
-    </div>
-
+    <b-carousel
+      id="carousel-1"
+      v-model="slide"
+      :interval="6000"
+      controls
+      indicators
+      background="#ffffff"
+      img-width="1024"
+      img-height="200"
+      style="text-shadow: 1px 1px 2px #333;"
+      @sliding-start="onSlideStart"
+      @sliding-end="onSlideEnd"
+    >
+        <b-carousel-slide v-for="image in images" v-bind:key="image.id">
+            <template v-slot:img>
+                <center>
+                    <div class="flex" width="100%">
+                    <img v-lazy="fullPath(image.path)" height="500" class="mx-auto">
+                    </div>
+                </center>
+            </template>
+        </b-carousel-slide>
+    </b-carousel>
     <!-- Event Content -->
     <div class="row">
-      <div class="col-md-12" style="min-height: 50rem">
-        <div class="card event-post" style="width: 100%;">
-          <p class="card-text">{{ description }}</p>
+        <div class="col-md-12" style="min-height: 50rem">
+            <div class="card event-post" style="width: 100%;">
+            <p class="card-text">{{ description }}</p>
+            </div>
         </div>
-      </div>
     </div>
   </div>
 </template>
@@ -66,40 +40,35 @@
 <script>
 import { itemTypeMixin } from "../mixins/itemType.js";
 export default {
-  mixins: [itemTypeMixin],
-  props: ["id"],
-  mounted() {
-    this.getEventData(this.id);
-    this.begin();
-    this.showSlides(this.slideIndex);
-  },
-  data() {
-    return {
-      name: "",
-      description: "",
-      img_set: "",
-      owner_id: "",
-      sets: [],
-      set: {
-        id: "",
+    mixins: [itemTypeMixin],
+    props: ["id"],
+    mounted() {
+        this.getEventData(this.id);
+        this.asNavFor1.push(this.$refs.thumbnails)
+		this.asNavFor2.push(this.$refs.main)
+    },
+    data() {
+        return {
         name: "",
+        description: "",
+        img_set: "",
         owner_id: "",
-        imgids: [],
-        imgid: {
-          id: "",
-          img_set_id: "",
-          path: ""
-        }
-      },
-      images: [],
-      slideIndex: 0,
-      slides: ""
+        sets: [],
+        set: {
+            id: "",
+            name: "",
+            owner_id: "",
+            imgids: [],
+            imgid: {
+            id: "",
+            img_set_id: "",
+            path: ""
+            }
+        },
+        images: [],
     };
   },
   methods: {
-    begin() {
-      setTimeout(() => this.currentSlide(this.slideIndex), 1000);
-    },
     getEventData(id) {
       axios
         .get("/api/" + this.itemType + "/" + id)
@@ -121,44 +90,11 @@ export default {
       });
     },
     setImgData(e) {
-      this.images = e.imgid;
+        this.images=e.imgid;
     },
     fullPath(e) {
       return "/storage/imgs/" + e;
     },
-    // Thumbnail image controls
-    currentSlide(n) {
-      n = this.images[this.images.length - 1].id - n;
-      this.showSlides((this.slideIndex = n));
-    },
-    showSlides(n) {
-      this.slides = [...document.getElementsByClassName("mySlides")];
-      while (this.slides == null) {
-        this.slides = [...document.getElementsByClassName("mySlides")];
-      }
-      var i;
-      // var this.refs['selector'] = document.getElementsByClassName("selector");
-      if (n > this.slides.length) {
-        this.slideIndex = 1;
-      }
-      if (n < 1) {
-        this.slideIndex = this.slides.length;
-      }
-      for (i = 0; i < this.slides.length; i++) {
-        this.slides[i].style.display = "none";
-      }
-      for (i = 0; i < this.refs["selector"].length; i++) {
-        this.refs["selector"].className = this.refs[
-          "selector"
-        ].className.replace(" modn-opacity-off", "");
-      }
-      this.slides[this.slideIndex - 1].style.display = "block";
-      this.refs["selector"].className += " modn-opacity-off";
-    }
   }
 };
 </script>
-
-<style lang="css">
-@import "w3.css";
-</style>

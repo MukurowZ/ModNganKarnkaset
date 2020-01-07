@@ -3,15 +3,18 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+
 import Vue from 'vue'
 import BootstrapVue from 'bootstrap-vue'
 import VueLazyload from 'vue-lazyload'
 import Multiselect from 'vue-multiselect'
 import ProductCarousel from 'vue-product-carousel'
-import Vuetify from 'vuetify/lib'
+import Vuetify from 'vuetify'
 
 require('./bootstrap');
 
+// window.Vue = require('vue');
+window.axios = require('axios');
 Vue.use(BootstrapVue);
 Vue.use(VueLazyload, {
     preLoad: 1.3,
@@ -20,9 +23,6 @@ Vue.use(VueLazyload, {
     attempt: 1
 });
 Vue.use(Vuetify);
-
-window.Vue = require('vue');
-window.axios = require('axios');
 
 import { library }  from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
@@ -68,7 +68,6 @@ Vue.component('navbar-component',require('./components/Core/NavbarComponent.vue'
 Vue.component('footer-component',require('./components/Core/FooterComponent.vue').default);
 Vue.component('home-component',require('./components/Core/HomeComponent.vue').default);
 Vue.component('page-not-found',require('./components/Core/Pagenotfound.vue').default);
-Vue.component('carousel',require('./components/Core/carousel.vue').default);
 
 // Img
 Vue.component('img-select-component',require('./components/Img/ImgSelectComponent.vue').default);
@@ -78,6 +77,11 @@ Vue.component('contact-form-component',require('./components/contact/contactform
 Vue.component('contact-report-component',require('./components/contact/contactreportComponent.vue').default);
 Vue.component('main-contact-component',require('./components/contact/mainContactComponent.vue').default);
 Vue.component('contact-menu-component',require('./components/contact/contactMenuComponent.vue').default);
+
+Vue.component('partner-showcase-component',require('./components/contact/partnerShowcaseComponent.vue').default);
+Vue.component('partner-create-component',require('./components/contact/partnerCreateComponent.vue').default);
+Vue.component('partner-manager-component',require('./components/contact/partnerManagerComponent.vue').default);
+Vue.component('partner-edit-component',require('./components/contact/partnerEditComponent.vue').default);
 
 // Product & Service
 Vue.component('category-component',require('./components/ServiceAndProduct/ProductComponent.vue').default);   // For search product
@@ -101,7 +105,6 @@ Vue.component('user-manager-component',require('./components/user/userManager.vu
 Vue.component('user-editor-component',require('./components/user/editUser.vue').default);
 Vue.component('department-creator-component',require('./components/user/createDepartment.vue').default);
 Vue.component('department-manager-component',require('./components/user/departmentManager.vue').default);
-
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

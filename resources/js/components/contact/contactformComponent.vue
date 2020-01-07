@@ -137,14 +137,10 @@ export default {
         telChange(tel){
             this.tel = tel.replace(/ /g,"-");
             this.tel = this.tel.replace("-","");
-            console.log(this.tel.replace(/ /g,"-"));
         },
         getCountry(country){
             this.country = country.dialCode
         },
-        returnToMain(){
-            window.location.href = "https://twitter.com/home"
-        }
     },
 
 }

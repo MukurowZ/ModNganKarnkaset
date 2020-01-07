@@ -7,6 +7,7 @@
         <br>
         <button ref="contact" class="btn btn-success" v-on:click="contact()">ติดต่อเรา</button>
         <button ref="form" class="btn btn-success" v-on:click="form()">ส่งแบบฟอร์มติดต่อ</button>
+        <button ref="partner" class="btn btn-success" v-on:click="partner()">ติดต่อผ่านคู่ค้า</button>
         <br>
         <hr align="left" width="50%">
     </div>
@@ -24,6 +25,9 @@ export default {
         },
         form(){
             window.location.href = "/contact/form"
+        },
+        partner(){
+            window.location.href = "/contact/partner"
         },
         changeButtonClass(){
             this.type = window.location.pathname;

@@ -10,7 +10,11 @@ use Illuminate\Routing\Route;
 
 class AdminController extends Controller
 {
+    // Contact
     public function contact(){ return view('contact.contact_report');}
+    public function partner(){ return view('contact.partner_manager');}
+    public function editPartner(){ return view('contact.partner_edit');}
+    public function createPartner(){ return view('contact.partner_create');}
 
     // Category
     public function category(){ return view('product_service.category');}

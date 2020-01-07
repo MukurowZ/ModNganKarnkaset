@@ -1,5 +1,5 @@
 <template>
-<div style="font-family: Kanit; ">
+<div style="font-family: Kanit;">
     <Loading :active.sync="isLoading" :is-full-page="fullPage" :color="'#008000'" :loader="'dots'"></Loading>
     <b-navbar toggleable="lg" :sticky="getTrue()" type="light" style="background-color: #c4e6d2">
         <b-navbar-brand href="/" style="font-weight: 450;">มดงานการเกษตร</b-navbar-brand>
@@ -14,8 +14,8 @@
             <b-nav-item  href="/event">กิจกรรม <font-awesome-icon :icon="['fas', 'calendar-alt']" /></b-nav-item>
             <b-nav-item  href="/activity">ผลงาน <font-awesome-icon :icon="['fas', 'globe-asia']" /></b-nav-item>
             <b-nav-item href="/contact">ติดต่อเรา <font-awesome-icon :icon="['fas', 'phone']" /> </b-nav-item>
+            <b-nav-item href="/partner">คู่ค้า <font-awesome-icon :icon="['fas', 'handshake']" /> </b-nav-item>
         </b-navbar-nav>
-
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
             <!-- <b-nav-form>
@@ -35,14 +35,12 @@
                 <b-dropdown-item v-on:click="url('service')">บริการ</b-dropdown-item>
                 <b-dropdown-item v-on:click="url('category')">หมวดหมู่สินค้า/บริการ</b-dropdown-item>
                 <b-dropdown-item v-on:click="url('contact')">รายการติดต่อ</b-dropdown-item>
+                <b-dropdown-item v-on:click="url('partner')">คู่ค้า</b-dropdown-item>
                 <b-dropdown-item v-on:click="url('department')">หน่วยงาน</b-dropdown-item>
                 <b-dropdown-item v-on:click="url('user')">ผู้ใช้</b-dropdown-item>
                 <hr align="right" width="100%">
                 <b-dropdown-item v-on:click="logout">ออกจากระบบ</b-dropdown-item>
             </b-nav-item-dropdown>
-            <!-- <template slot="button-content"><em>User</em></template>
-            <b-dropdown-item href="#">Profile</b-dropdown-item>
-            <b-dropdown-item href="#">Sign Out</b-dropdown-item> -->
         </b-navbar-nav>
         </b-collapse>
     </b-navbar>
@@ -108,6 +106,9 @@ export default {
                     break;
                 case "category":
                     window.location.href = "/admin/category"+"?token="+this.token
+                    break;
+                case "partner":
+                    window.location.href = "/admin/partner"+"?token="+this.token
                     break;
             }
         },
