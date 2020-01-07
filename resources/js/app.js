@@ -9,11 +9,10 @@ import BootstrapVue from 'bootstrap-vue'
 import VueLazyload from 'vue-lazyload'
 import Multiselect from 'vue-multiselect'
 import ProductCarousel from 'vue-product-carousel'
-import Vuetify from 'vuetify'
 
 require('./bootstrap');
 
-// window.Vue = require('vue');
+window.Vue = require('vue');
 window.axios = require('axios');
 Vue.use(BootstrapVue);
 Vue.use(VueLazyload, {
@@ -22,7 +21,6 @@ Vue.use(VueLazyload, {
     loading: '/storage/main/Double_Ring-1s-143px.svg',
     attempt: 1
 });
-Vue.use(Vuetify);
 
 import { library }  from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
