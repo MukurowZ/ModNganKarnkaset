@@ -19,7 +19,7 @@
         <b-carousel-slide v-for="image in images" v-bind:key="image.id">
             <template v-slot:img>
                 <center>
-                    <div class="flex" width="100%">
+                    <div class="flex" width="100%" style="background-color:#757575">
                     <img v-lazy="fullPath(image.path)" height="500" class="mx-auto">
                     </div>
                 </center>
