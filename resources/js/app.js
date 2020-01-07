@@ -13,6 +13,8 @@ import Vuetify from 'vuetify'
 
 require('./bootstrap');
 
+// window.Vue = require('vue');
+window.axios = require('axios');
 Vue.use(BootstrapVue);
 Vue.use(VueLazyload, {
     preLoad: 1.3,
@@ -21,9 +23,6 @@ Vue.use(VueLazyload, {
     attempt: 1
 });
 Vue.use(Vuetify);
-
-window.Vue = require('vue');
-window.axios = require('axios');
 
 import { library }  from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
@@ -78,7 +77,11 @@ Vue.component('contact-form-component',require('./components/contact/contactform
 Vue.component('contact-report-component',require('./components/contact/contactreportComponent.vue').default);
 Vue.component('main-contact-component',require('./components/contact/mainContactComponent.vue').default);
 Vue.component('contact-menu-component',require('./components/contact/contactMenuComponent.vue').default);
+
 Vue.component('partner-showcase-component',require('./components/contact/partnerShowcaseComponent.vue').default);
+Vue.component('partner-create-component',require('./components/contact/partnerCreateComponent.vue').default);
+Vue.component('partner-manager-component',require('./components/contact/partnerManagerComponent.vue').default);
+Vue.component('partner-edit-component',require('./components/contact/partnerEditComponent.vue').default);
 
 // Product & Service
 Vue.component('category-component',require('./components/ServiceAndProduct/ProductComponent.vue').default);   // For search product

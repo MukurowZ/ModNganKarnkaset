@@ -1,17 +1,11 @@
 <template>
     <div style="font-family: Kanit; height:100vh" class="col-8 mx-auto">
-        <div v-if="partners==[]">
-            <div v-for="partner in partners" v-bind:key="partner.id">
-                <div>{{ partner.name }}</div>
-                <div>{{ partner.address }}</div>
-                <div>{{ partner.email }}</div>
-                <div>{{ partner.tel }}</div>
-            </div>
-        </div>
-        <div v-else class="d-flex justify-content-center align-middle">
-                <br>
-                <br>
-                <label>ยังไม่มีคู่ค้าในขณะนี้</label>
+        <div v-for="partner in partners" v-bind:key="partner.id">
+            <div class="font-weight-bold">{{ partner.name }}</div>
+            <div>ที่อยู่</div>
+            <div>{{ partner.address }}</div>
+            <div>Email: {{ partner.email }}</div>
+            <div>Tel: {{ partner.tel }}</div>
         </div>
     </div>
 </template>

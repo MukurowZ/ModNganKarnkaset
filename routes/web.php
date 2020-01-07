@@ -58,6 +58,12 @@ Route::group(['middleware' => ['jwt.verify']], function () {
             Route::get('/{id}/edit','View\AdminController@editEvent');
             Route::get('/create','View\AdminController@createEvent');
         });
+        
+        Route::group(['prefix'=>'/partner'], function ($id) {
+            Route::get('/','View\AdminController@partner');
+            Route::get('/{id}/edit','View\AdminController@editPartner');
+            Route::get('/create','View\AdminController@createPartner');
+        });
 
         Route::group(['prefix'=>'/activity'], function ($id) {
             Route::get('/','View\AdminController@event');
