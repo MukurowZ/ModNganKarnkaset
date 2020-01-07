@@ -78,6 +78,7 @@ Vue.component('contact-form-component',require('./components/contact/contactform
 Vue.component('contact-report-component',require('./components/contact/contactreportComponent.vue').default);
 Vue.component('main-contact-component',require('./components/contact/mainContactComponent.vue').default);
 Vue.component('contact-menu-component',require('./components/contact/contactMenuComponent.vue').default);
+Vue.component('partner-showcase-component',require('./components/contact/partnerShowcaseComponent.vue').default);
 
 // Product & Service
 Vue.component('category-component',require('./components/ServiceAndProduct/ProductComponent.vue').default);   // For search product

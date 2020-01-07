@@ -38,6 +38,7 @@ Route::group(['middleware' => ['jwt.verify']], function () {
 
 });
 
+Route::apiResource('partner','PartnerController')->only('index');
 Route::apiResource('category','CategoryController')->only('index');
 Route::apiResource('content','ContentController')->only('index','show');
 Route::apiResource('event','EventController')->only('index','show');

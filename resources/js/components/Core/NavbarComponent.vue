@@ -14,6 +14,7 @@
             <b-nav-item  href="/event">กิจกรรม <font-awesome-icon :icon="['fas', 'calendar-alt']" /></b-nav-item>
             <b-nav-item  href="/activity">ผลงาน <font-awesome-icon :icon="['fas', 'globe-asia']" /></b-nav-item>
             <b-nav-item href="/contact">ติดต่อเรา <font-awesome-icon :icon="['fas', 'phone']" /> </b-nav-item>
+            <b-nav-item href="/partner">คู่ค้า <font-awesome-icon :icon="['fas', 'handshake']" /> </b-nav-item>
         </b-navbar-nav>
 
         <!-- Right aligned nav items -->

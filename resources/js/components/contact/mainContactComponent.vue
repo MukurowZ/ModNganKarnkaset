@@ -1,5 +1,5 @@
 <template>
-    <div style="font-family: Kanit;" class="container">
+    <div style="font-family: Kanit; height:80vh;" class="container">
         <label style="font-size: 1.5em">แผนที่</label>
         <label style="font-size: 0.9em; margin-top:-6px; color:grey">Map</label>
         <label class="font-weight-light">3333/50 ซอย สุดประเสริฐ 3 เขตบางโคล่ แขวงบางคอแหลม กรุงเทพมหานคร 10120</label>

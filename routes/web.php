@@ -48,6 +48,8 @@ Route::group(['prefix'=>'/contact'], function (){
     Route::get('/form','View\ContactController@form');
 });
 
+Route::get('/partner','View\ContactController@partner');
+
 Route::group(['middleware' => ['jwt.verify']], function () {
     Route::group(['prefix'=>'/admin'], function(){
         Route::get('/contact','View\AdminController@contact');
