@@ -13,3 +13,9 @@
 // Vuetify
 // @import '~vuetify/dist/vuetify.min.css';
 
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
