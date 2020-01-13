@@ -27,7 +27,6 @@ class DepartmentController extends Controller
     {
         $validated = $request->validated();
         Department::create($validated);
-        return view('/');
     }
 
     /**
