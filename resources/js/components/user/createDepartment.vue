@@ -43,9 +43,6 @@ export default {
         getUrl(){
             return "/admin/user?token="+this.token
         },
-        getRedirect(){
-            return '/admin/department'+'?token='+this.token
-        }
     }
 };
 </script>
