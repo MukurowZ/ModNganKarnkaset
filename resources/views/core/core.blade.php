@@ -29,7 +29,7 @@
 <div id="nav">
     <navbar-component></navbar-component>
 </div>
-<div>
+<div style="flex: 1;">
     @yield('content')
 </div>
 <div id="foot">
