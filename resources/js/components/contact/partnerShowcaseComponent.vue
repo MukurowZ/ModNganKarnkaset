@@ -1,5 +1,5 @@
 <template>
-    <div style="font-family: Kanit; height:100vh" class="col-8 mx-auto">
+    <div style="font-family: Kanit;" class="col-8 mx-auto">
         <div v-for="partner in partners" v-bind:key="partner.id">
             <div class="font-weight-bold">{{ partner.name }}</div>
             <div>ที่อยู่</div>
