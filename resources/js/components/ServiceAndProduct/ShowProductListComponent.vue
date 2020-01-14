@@ -16,7 +16,7 @@
                                 {{ item.name }}
                             </h4>
                             <small style="color: rgb(158, 158, 158)"
-                                >Type: {{ item.type }}</small
+                                >Type: {{ item.typeName.name }} {{ item.typeName.THname }}</small
                             >
                             <p class="mbr-text mbr-fonts-style display-7">
                                 {{ item.description }}
@@ -74,7 +74,8 @@ export default {
                     this.backCategorys = e;
                     break;
                 case "item":
-                    e = this.renameCategory(e);
+                    // e = this.renameCategory(e);
+                    // console.log(e);
                     this.items = e;
                     break;
                 case "break":
