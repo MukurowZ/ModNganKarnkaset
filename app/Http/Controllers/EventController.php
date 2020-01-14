@@ -33,7 +33,6 @@ class EventController extends Controller
         ]);
         $validated['id'] = $x['id'];
         Event::create($validated);
-        return redirect()->view('../admin/event');
     }
 
     /**
