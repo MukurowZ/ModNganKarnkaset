@@ -160,7 +160,7 @@ export default {
                 video: this.video,
                 img_set_id: this.img_set,
                 owner_id: this.owner_id
-            });
+            }).then(location.reload());
         },
         getAllSet() {
             axios.get("/api/img_set").then(response => this.setSetData(response.data));

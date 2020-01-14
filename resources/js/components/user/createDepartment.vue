@@ -14,7 +14,6 @@
             <button type="submit" class="btn btn-success" v-on:click="addNewDepartment()">เพิ่มหน่วยงาน</button>
             <a class="btn btn-outline-secondary" style="margin-left:5px;" :href="getUrl()" >ยกเลิก</a>
         </div>
-
     </form>
     </div>
 </div>
@@ -36,12 +35,13 @@ export default {
             axios.post("/api/department"+"?token="+this.token, {
                 name: this.name,
             });
+            location.reload();
         },
         getPlaceHolder(e){
             return e;
         },
         getUrl(){
-            return "/admin/user?token="+this.token
+            return "/";
         },
     }
 };
