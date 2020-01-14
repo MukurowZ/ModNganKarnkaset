@@ -3,11 +3,7 @@
     <br />
     <div class="row">
       <div class="col-12 rounded-top border border-danger">
-        <b-navbar
-          type="light"
-          style="background-color: white"
-          class=""
-        >
+        <b-navbar type="light" style="background-color: white" class>
           <b-navbar-brand style="font-weight: 450;">สินค้าและบริการ</b-navbar-brand>
 
           <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -35,7 +31,7 @@
 
     <br />
     <div class="row">
-      <div class="col-2 align-self-start p-2 bd-highlight rounded-bottom border border-primary">
+      <div class="col-sm-12 col-md-2 align-self-start p-2 bd-highlight rounded-bottom border border-primary">
         <div class="list-group">
           <div v-for="category in categorys" v-bind:key="category.id">
             <a :href="getLink(category.name)" class="list-group-item list-group-item-action">
@@ -57,7 +53,7 @@
         </div>
       </div>
 
-      <div class="col-10 bd-highlight rounded-bottom border border-success">
+      <div class="col-sm-12 col-md-10 bd-highlight rounded-bottom border border-success">
         <div class="container py-0">
           <div v-if="showSearch == true">
             <div class="row">
