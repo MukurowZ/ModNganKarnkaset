@@ -30,7 +30,7 @@
                                     {{ product.description }}
                                 </div>
                             </div>
-                            <div v-html="product.video">
+                            <div v-html="getVideo(product.video)">
                             </div>
                             <a
                                 href="../contact"
@@ -120,7 +120,11 @@ export default {
                 this.image[i] = "/storage/imgs/" + this.img.imgid[i].path;
             }
             this.checker = true;
-        }
+        },
+        getVideo(e) {
+            var src = 'https://www.youtube.com/embed/' + e;
+            return '<iframe width="100%" height="315" src="' + src + '"frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+        },
     }
 };
 </script>
