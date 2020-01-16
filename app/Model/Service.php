@@ -30,4 +30,12 @@ class Service extends Model
     public function getImgAttribute(){
         return $this->attributes['img'] = Img::where('img_set_id',$this->attributes['img_set_id'])->get()->first();
     }
+
+    public function typeName(){
+        return $this->hasOne('App\Model\Category','id','type');
+    }
+
+    public function getTypeNameAttribute(){
+        return $this->attributes['typeName'] = Category::where('id',$this->attributes['type'])->get()->first();
+    }
 }

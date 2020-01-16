@@ -3,15 +3,9 @@
     <br />
     <div class="row">
       <div class="col-12 rounded-top border border-danger">
-        <b-navbar
-          type="light"
-          style="background-color: white"
-          class=""
-        >
+        <b-navbar type="light" style="background-color: white" class>
           <b-navbar-brand style="font-weight: 450;">สินค้าและบริการ</b-navbar-brand>
-
-          <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-
+          <!-- <b-navbar-toggle target="nav-collapse"></b-navbar-toggle> -->
           <b-collapse id="nav-collapse" is-nav>
             <!-- Right aligned nav items -->
             <b-navbar-nav class="ml-auto">
@@ -35,7 +29,7 @@
 
     <br />
     <div class="row">
-      <div class="col-2 align-self-start p-2 bd-highlight rounded-bottom border border-primary">
+      <div class="col-sm-12 col-md-2 align-self-start p-2 bd-highlight rounded-bottom border border-primary">
         <div class="list-group">
           <div v-for="category in categorys" v-bind:key="category.id">
             <a :href="getLink(category.name)" class="list-group-item list-group-item-action">
@@ -57,7 +51,7 @@
         </div>
       </div>
 
-      <div class="col-10 bd-highlight rounded-bottom border border-success">
+      <div class="col-sm-12 col-md-10 bd-highlight rounded-bottom border border-success">
         <div class="container py-0">
           <div v-if="showSearch == true">
             <div class="row">
@@ -77,8 +71,7 @@
                     {{ s_product.name }}
                     <br />
                     <small style="color: rgb(158, 158, 158)">
-                      Type:
-                      {{ s_product.type }}
+                      Type: {{ s_product.typeName.name }} {{ s_product.typeName.THname }}
                     </small>
                   </h5>
                   <p
@@ -86,7 +79,7 @@
                     style="height: 6rem; text-overflow: ellipsis; overflow: hidden;"
                   >{{ s_product.description }}</p>
                   <div class="price">{{ s_product.price }}&#3647;</div>
-                  <a v-on:click="getUrl(s_product.id)" class="btn btn-primary">More detail</a>
+                  <a v-on:click="getUrl(s_product.id)" class="btn btn-primary" style="font">More detail</a>
                 </div>
               </div>
             </div>
@@ -111,7 +104,7 @@
                   <h5 class="card-title">
                     {{ product.name }}
                     <br />
-                    <small style="color: rgb(158, 158, 158)">Type: {{ product.type }}</small>
+                    <small style="color: rgb(158, 158, 158)">Type: {{ product.typeName.name }} {{ product.typeName.THname }}</small>
                   </h5>
                   <p
                     class="card-text py-0"
@@ -249,18 +242,15 @@ export default {
           this.backCategorys = e;
           break;
         case "product":
-          e = this.renameCategory(e);
           this.products = e;
           break;
         case "service":
-          e = this.renameCategory(e);
           this.services = e;
           break;
         case "s_product":
           this.s_products = e;
           this.showSearch = true;
-          this.search = "";
-          this.s_products = JSON.parse(this.s_product);
+          // this.search = "";
           break;
         case "break":
           e = "";
@@ -284,19 +274,6 @@ export default {
         return "/storage/imgs/" + e;
       }
       return "";
-    },
-    renameCategory(e) {
-      var i = 0;
-      var c = JSON.parse(JSON.stringify(this.getBackCategorys()));
-      c = Object.entries(c);
-      for (i = 0; i < e.length; i++) {
-        c.forEach(b => {
-          if (b[1].id == e[i].type) {
-            e[i].type = b[1].name + " " + b[1].THname;
-          }
-        });
-      }
-      return e;
     },
     getBackCategorys() {
       return this.backCategorys;

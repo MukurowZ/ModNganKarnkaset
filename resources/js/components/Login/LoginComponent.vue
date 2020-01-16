@@ -4,7 +4,7 @@
             <form @submit="login">
                 <div style="text-align: center;"><h4 style="font-family: Kanit;">เข้าสู่ระบบ</h4></div>
                     <br>
-                    <b-input-group prepend="Username">
+                    <b-input-group prepend="Email">
                         <input v-model="email" type="text"
                         class="form-control" autocomplete="email"
                         placeholder="โปรดใส่อีเมลล์">

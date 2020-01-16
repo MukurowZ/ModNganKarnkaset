@@ -44,7 +44,6 @@ export default {
         },
         setData(e){
             this.categorys = e;
-            // this.loopData()
         },
         // loopData(){
         //     Object.keys(this.category).forEach(a =>{
