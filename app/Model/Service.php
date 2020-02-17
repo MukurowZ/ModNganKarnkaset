@@ -13,7 +13,7 @@ class Service extends Model
 
     protected $table = "service";
     protected $appends = [
-        'img'
+        'img', 'typeName'
     ];
 
     public $incrementing = true;

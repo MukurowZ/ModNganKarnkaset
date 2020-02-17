@@ -228,34 +228,31 @@ export default {
         .catch(err => this.setData(err, "break"));
     },
     getProduct() {
-      axios
-        .get("/api/" + this.itemType)
-        .then(response => this.setData(response.data, "product"))
-        .catch(err => this.setData(err, "break"));
+        axios
+            .get("/api/" + this.itemType)
+            .then(response => this.setData(response.data, "product"))
+            .catch(err => this.setData(err, "break"));
     },
     setData(e, f) {
-      switch (f) {
-        case "hcategory":
-          this.categorys = e;
-          break;
-        case "category":
-          this.backCategorys = e;
-          break;
-        case "product":
-          this.products = e;
-          break;
-        case "service":
-          this.services = e;
-          break;
-        case "s_product":
-          this.s_products = e;
-          this.showSearch = true;
-          // this.search = "";
-          break;
-        case "break":
-          e = "";
-          break;
-      }
+        switch (f) {
+            case "hcategory":
+                this.categorys = e;
+                break;
+            case "category":
+                this.backCategorys = e;
+                break;
+            case "product":
+                this.products = e;
+                break;
+            case "s_product":
+                this.s_products = e;
+                this.showSearch = true;
+                // this.search = "";
+                break;
+            case "break":
+                e = "";
+                break;
+        }
     },
     getUrl(e) {
       if (e != null) {
