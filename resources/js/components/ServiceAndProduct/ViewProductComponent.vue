@@ -122,8 +122,12 @@ export default {
             this.checker = true;
         },
         getVideo(e) {
-            var src = 'https://www.youtube.com/embed/' + e;
-            return '<iframe width="100%" height="315" src="' + src + '"frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+            if (e === 'no-video') {
+                return '';
+            } else {
+                var src = 'https://www.youtube.com/embed/' + e;
+                return '<iframe width="100%" height="315" src="' + src + '"frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+            }
         },
     }
 };
