@@ -9,6 +9,12 @@
             <button ref="contact" class="btn btn-success" v-on:click="contact()">ติดต่อเรา</button>
             <button ref="form" class="btn btn-success" v-on:click="form()">ส่งแบบฟอร์มติดต่อ</button>
             <button ref="partner" class="btn btn-success" v-on:click="partner()">ติดต่อผ่านคู่ค้า</button>
+            <a href="https://www.facebook.com/modngankarnkasetthai/?">
+                <img width="40px" src="/storage/main/facebook.png">
+            </a>
+            <a href="http://nav.cx/ipTIanR">
+                <img  src="https://scdn.line-apps.com/n/line_add_friends/btn/th.png" alt="เพิ่มเพื่อน" height="40px" border="0">
+            </a>
         </div>
         <hr align="left" width="50%">
     </div>
