@@ -42,7 +42,7 @@
                         </div>
                         <div class="mb-2">
                             <font-awesome-icon :icon="['fas', 'file-image']" style="font-size: 10px" class="ml-1"/>
-                            <span @click="toggleDialog('TH', 0)">กองวิจัยพัฒนาปัจจัยการผลิตทางการเกษตร</span>
+                            <span @click="toggleDialog('TH', 4)">กองวิจัยพัฒนาปัจจัยการผลิตทางการเกษตร</span>
                         </div>
                     </div>
                 </b-nav-item>
