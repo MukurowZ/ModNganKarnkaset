@@ -13,6 +13,8 @@ import ProductCarousel from 'vue-product-carousel'
 require('./bootstrap');
 
 window.axios = require('axios');
+// axios.defaults.baseURL = 'https://modngankarnkasetthai.com';
+
 Vue.use(BootstrapVue);
 Vue.use(VueLazyload, {
     preLoad: 1.3,

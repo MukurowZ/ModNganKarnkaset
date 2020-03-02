@@ -19,7 +19,7 @@ class Category extends Model
     public $timestamps = false;
 
     protected $hidden = [
-        'head'
+
     ];
 
     public function subCategory(){

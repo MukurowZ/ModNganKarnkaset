@@ -1,48 +1,51 @@
 <template>
-    <div style="font-family: Kanit;" class="row">
-        <div id="fb-root"></div>
-        <div class="col-8 mx-auto">
-            <ProductCarousel
-                v-if="checker"
-                :images="image"
-                style="position: relative;"
-            >
+    <div class="container">
+        <div style="font-family: Kanit;" class="row">
+            <div class="col-8 mx-auto">
+                <ProductCarousel
+                    v-if="checker"
+                    :images="image"
+                    style="position: relative;"
+                >
 
-                <!-- Sidebar content -->
-                <div class="row">
-                    <div class="col-md-12" style="min-height: 100%">
-                        <div style="background-color: white; height: 50em;" class="mx-2">
-                            <h1 style="font-family: Kanit; font-weight: bold">
-                                {{ product.name }}
-                                <h5 style="color: rgb(158, 158, 158)">
-                                    {{ product.type }}
-                                </h5>
-                            </h1>
-                            <h3 style="font-family: Kanit; font-weight: bolder">
-                                {{ product.price }} Baht
-                            </h3>
-                            <div class="card-text">
-                                <div style="color: rgb(43, 43, 43)">
-                                    <p>ความเป็นมาของผลิตภัณฑ์และบริการ</p>
-                                    {{ product.story }}
-                                    <br />
-                                    <p>คำอธิบายของผลิตภัณฑ์และบริการ</p>
-                                    {{ product.description }}
+                    <!-- Sidebar content -->
+                    <div class="row">
+                        <div class="col-md-12" style="min-height: 100%">
+                            <div style="background-color: white; height: 50em;" class="mx-2">
+                                <h2 style="font-family: Kanit; font-weight: bold">
+                                    {{ product.name }}
+                                    <h5 style="color: rgb(158, 158, 158)">
+                                        {{ product.type }}
+                                    </h5>
+                                </h2>
+                                <h3 style="font-family: Kanit; font-weight: bolder">
+                                    {{ product.price }} Baht
+                                </h3>
+                                <div v-html="getVideo(product.video)">
                                 </div>
+                                <a
+                                    href="../contact"
+                                    class="btn btn-primary"
+                                    style="position: absolute; right :2em; bottom: 3em"
+                                    >Order</a
+                                >
                             </div>
-                            <div v-html="getVideo(product.video)">
-                            </div>
-                            <a
-                                href="../contact"
-                                class="btn btn-primary"
-                                style="position: absolute; right :2em; bottom: 3em"
-                                >Order</a
-                            >
                         </div>
                     </div>
+                    <!-- End sidebar content -->
+                </ProductCarousel>
+            </div>
+        </div>
+
+        <div class="h-100 mt-4 mb-4">
+            <div style="color: rgb(43, 43, 43)">
+                <div class="mb-5">
+                    <h3>ความเป็นมาของผลิตภัณฑ์และบริการ</h3>
+                    {{ product.story }}
                 </div>
-                <!-- End sidebar content -->
-            </ProductCarousel>
+                <h3>คำอธิบายของผลิตภัณฑ์และบริการ</h3>
+                {{ product.description }}
+            </div>
         </div>
     </div>
 </template>

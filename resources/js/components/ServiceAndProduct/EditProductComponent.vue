@@ -2,7 +2,7 @@
 <div class="container" style="font-family: Kanit;">
     <div>
     <br />
-    <h2  class="font-weight-bold">เพิ่มสินค้าและบริการ</h2>
+    <h2  class="font-weight-bold">แก้ไขสินค้าและบริการ</h2>
     <br />
     <br />
     <form action="/product">
@@ -106,7 +106,7 @@ export default {
             img_set: "",
             description: "",
             video: "",
-            type: "",
+            type: 0,
             subType: "",
             sets: [],
             set: {
@@ -161,7 +161,8 @@ export default {
             this.story = e.story
             this.price = e.price
             this.description = e.description
-            this.subType = e.subType
+            this.type = e.typeName.head
+            this.subType = e.type
             this.video = e.video
             this.img_set = e.img_set
             this.owner_id = owner_id

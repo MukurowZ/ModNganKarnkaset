@@ -169,12 +169,12 @@ export default {
             if (lang === null && e === null) this.showImage = null;
             else if (lang === 'EN') {
                 if (e === 0) this.showImage = ['Certificate/Result/EN/Result02.jpg', 'Certificate/Result/EN/Result03.jpg'];
-                if (e === 1) this.showImage = ['Certificate/Result/EN/Result03.jpg'];
-                if (e === 2) this.showImage = ['Certificate/Result/EN/Result04.jpg', 'Certificate/Result/EN/Result05.jpg'];
+                if (e === 1) this.showImage = ['Certificate/Result/EN/Result04.jpg'];
+                if (e === 2) this.showImage = ['Certificate/Result/EN/Result05.jpg', 'Certificate/Result/EN/Result06.jpg'];
             } else if (lang === 'TH') {
                 if (e === 0) this.showImage = ['Certificate/Result/TH/Result02.jpg', 'Certificate/Result/TH/Result03.jpg'];
-                if (e === 1) this.showImage = ['Certificate/Result/Th/Result03.jpg'];
-                if (e === 2) this.showImage = ['Certificate/Result/TH/Result04.jpg', 'Certificate/Result/TH/Result05.jpg'];
+                if (e === 1) this.showImage = ['Certificate/Result/Th/Result04.jpg'];
+                if (e === 2) this.showImage = ['Certificate/Result/TH/Result05.jpg', 'Certificate/Result/TH/Result06.jpg'];
                 if (e === 3) this.showImage = ['Certificate/Permission/DronePermission.jpg'];
                 if (e === 4) this.showImage = ['Certificate/Result/TH/Result01.jpg'];
             }
