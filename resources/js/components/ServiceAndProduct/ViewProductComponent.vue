@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div style="font-family: Kanit;" class="row">
-            <div class="col-8 mx-auto">
+            <div class="col-12 mx-auto">
                 <ProductCarousel
                     v-if="checker"
                     :images="image"
